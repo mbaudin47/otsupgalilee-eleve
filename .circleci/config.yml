@@ -1,0 +1,36 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@0.2.1
+
+jobs:
+  build-and-test:
+    executor: python/default
+    steps:
+      - checkout
+      - run:
+          name: Install
+          command: |
+            wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME/miniconda.sh
+            bash $HOME/miniconda.sh -b -p $HOME/miniconda
+            export PATH="$HOME/miniconda/bin:$PATH"
+            source $HOME/miniconda/bin/activate
+            conda config --add channels conda-forge
+            conda install -y openturns=1.14
+            conda install -y otmorris
+            conda install -y jupyter
+            conda install -y matplotlib
+            conda install -y scipy
+            sudo apt-get install dvipng # For otmorris
+      - run:
+          name: Test
+          command: |
+            export PATH="$HOME/miniconda/bin:$PATH"
+            source $HOME/miniconda/bin/activate
+            ./.circleci/run_docker_linux.sh
+
+workflows:
+  main:
+    jobs:
+      - build-and-test
+
