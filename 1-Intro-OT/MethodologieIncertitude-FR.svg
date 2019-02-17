@@ -16,7 +16,10 @@
    version="1.1"
    inkscape:version="0.92.1 r15371"
    sodipodi:docname="MethodologieIncertitude-FR.svg"
-   viewBox="0 0 2241.292 1314.2562">
+   viewBox="0 0 2241.292 1314.2562"
+   inkscape:export-filename="Z:\Activites2019\PERSO\otsupgalilee-eleve\1-Intro-OT\MethodologieIncertitude-FR.png"
+   inkscape:export-xdpi="79"
+   inkscape:export-ydpi="79">
   <sodipodi:namedview
      id="base"
      pagecolor="#ffffff"
@@ -24,16 +27,16 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.4665165"
-     inkscape:cx="1232.4507"
-     inkscape:cy="774.88856"
+     inkscape:zoom="0.32987698"
+     inkscape:cx="1324.3768"
+     inkscape:cy="580.88392"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g27803"
      showgrid="false"
-     inkscape:window-width="1680"
-     inkscape:window-height="973"
-     inkscape:window-x="-9"
-     inkscape:window-y="-9"
+     inkscape:window-width="1536"
+     inkscape:window-height="801"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
      inkscape:window-maximized="1"
      fit-margin-top="0"
      fit-margin-left="0"
@@ -509,7 +512,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -785,24 +788,19 @@
              y="488.42804"
              x="-585.54657"
              sodipodi:role="line">Modélisation avec une </tspan><tspan
+             id="tspan3087"
              style="font-size:40px;line-height:1.25;font-family:sans-serif;fill:#00964a;fill-opacity:1"
              y="538.42804"
              x="-585.54657"
-             sodipodi:role="line"
-             id="tspan4743">loi de probabilité : </tspan><tspan
-             id="tspan3087"
-             style="font-size:40px;line-height:1.25;font-family:sans-serif;fill:#00964a;fill-opacity:1"
-             y="588.42804"
-             x="-585.54657"
-             sodipodi:role="line">probability distribution :</tspan><tspan
+             sodipodi:role="line">loi de probabilité : </tspan><tspan
              id="tspan3101"
              style="font-size:40px;line-height:1.25;font-family:sans-serif;fill:#00964a;fill-opacity:1"
-             y="638.42804"
+             y="588.42804"
              x="-585.54657"
              sodipodi:role="line">méthodes directes, </tspan><tspan
              id="tspan3089"
              style="font-size:40px;line-height:1.25;font-family:sans-serif;fill:#00964a;fill-opacity:1"
-             y="688.42804"
+             y="638.42804"
              x="-585.54657"
              sodipodi:role="line">statistiques, expertise. </tspan></text>
         <g
