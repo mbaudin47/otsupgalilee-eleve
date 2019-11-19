@@ -3,6 +3,4 @@
 # otsupgalilee-eleve
 Cours OpenTURNS à SupGalilée (Université Paris XIII)
 
-
-
-
+Ces scripts sont garantis pour OT 1.14.
