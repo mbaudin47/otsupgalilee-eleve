@@ -1,0 +1,25 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/python
+    steps:
+      - checkout
+      - run:
+          name: Install
+          command: |
+            curl -s -o Miniconda3-latest-Linux-x86_64.sh "https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh"
+            bash Miniconda3-latest-Linux-x86_64.sh -b -p $HOME/miniconda
+            export PATH="$HOME/miniconda/bin:$PATH"
+            source $HOME/miniconda/bin/activate
+            conda config --add channels conda-forge
+            conda install -y openturns=1.13
+            conda install -y otmorris
+            conda install -y jupyter
+            conda install -y matplotlib
+            conda install -y scipy
+      - run:
+          name: Build and test
+          command: ./.circleci/run_docker_linux.sh
+
