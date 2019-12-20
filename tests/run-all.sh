@@ -72,4 +72,8 @@ cd ..
 cd 7-SALOME-OT
 test_ipython_directory
 cd ..
+#
+cd 8-Calage
+test_ipython_directory
+cd ..
 
