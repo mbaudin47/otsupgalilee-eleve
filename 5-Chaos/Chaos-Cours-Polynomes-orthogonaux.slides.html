@@ -13228,9 +13228,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>Let $I$ be an interval in $\mathbb{R}$. A weight
-function $w$ is a nonnegative continuous integrable function of $x\in I$.</p>
-<p><strong>Definition: Weight function</strong></p>
+<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p><strong>Definition: Weight function</strong></p>
 <p>Let $I$ be an interval in $\mathbb{R}$. 
 A weight function $w$ is a nonnegative continuous integrable 
 function of $x\in I$.</p>
@@ -13311,7 +13309,7 @@ with $n+1$ nodes leads to quadrature rules of maximum exactness degree
 equal to $n$.</p>
 <p>Assume that we want to compute :
 $$
-I(g)=\int_I g(x)f(x)dx.
+A(g)=\int_I g(x)f(x)dx.
 $$</p>
 <p><strong>Definition: Quadrature rule</strong></p>
 <p>Let $x_1,x_2,...,x_{n+1}$ be $n+1$ real numbers in the interval 
@@ -13320,9 +13318,9 @@ Let $\alpha_1,\alpha_2,...,\alpha_{n+1}$ be $n+1$ nonnegative
 real numbers called the <em>weights</em>. 
 A quadrature rule is a formula :
 $$
-I_n(g)=\sum_{i=1}^{n+1} \alpha_i g(x_i),
+A_n(g)=\sum_{i=1}^{n+1} \alpha_i g(x_i),
 $$
-to approximate $I(g)$.</p>
+to approximate $A(g)$.</p>
 
 </div>
 </div>
@@ -13352,7 +13350,7 @@ for any $x\in I$.</p>
 <p>The degree of exactness of a quadrature rule is $d$ if 
 $d$ is the largest degree for which we have 
 $$
-I(p)=I_n(p),
+A(p)=A_n(p),
 $$
 for any polynomial $p\in\mathbb{P}_d$.</p>
 <p><strong>Theorem: Degree of exactness of Lagrange interpolation</strong></p>
