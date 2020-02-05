@@ -13232,12 +13232,30 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Hypoth&#232;ses">Hypoth&#232;ses<a class="anchor-link" href="#Hypoth&#232;ses">&#182;</a></h2><p>On considère une variable aléatoire standardisée $\xi\in\mathbb{R}^p$ où $n$ est la dimension de l'entrée. On considère la fonction $h$  :
+<h2 id="Hypoth&#232;ses">Hypoth&#232;ses<a class="anchor-link" href="#Hypoth&#232;ses">&#182;</a></h2><p>On considère la fonction $g$  :</p>
 $$
-Y = g(\xi)
+Y = g(X)
+$$<p>où $Y\in\mathbb{R}$ et $X\in\mathbb{R}^p$ où $p$ est la dimension de la variable aléatoire en entrée. 
+Soit $T$ la transformation iso-probabiliste associée et $\xi \in\mathbb{R}^p$ telle que 
+$\xi = T(X)$ pour tout $X\in\mathbb{R}^p$.</p>
+<p>On considère une variable aléatoire standardisée $\xi\in\mathbb{R}^p$. On considère la fonction $h$  :</p>
 $$
-où $Y\in\mathbb{R}$.</p>
-<p><em>Note</em> : On considère ici le cas où la sortie $Y$ est un scalaire. Le cas plus général où la sortie $Y$ est un vecteur se traite de manière analogue, pour chaque composante du vecteur de sortie. Plus précisément, cela revient à créer plusieurs polynômes du chaos, chaque polynôme étant associé à une composante du vecteur de sortie. Cela ne nécessite pas nécessairement de nouveaux appels à la la fonction $g$, mais requiert des calculs supplémentaires.</p>
+Y = h(\xi) 
+$$<p>où $h$ est définie par :</p>
+$$
+h(\xi) = g\circ T^{-1}(\xi) = g\left(T^{-1}(\xi)\right).
+$$<p>Dans l'équation précédente, la fonction $g\circ T^{-1}$ est la composition de la fonction $g$ par l'inverse de la transformation iso-probabiliste $T$.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Note</em> : On considère ici le cas où la sortie $Y$ est un scalaire.</p>
+<p>Le cas plus général où la sortie $Y$ est un vecteur se traite de manière analogue, pour chaque composante du vecteur de sortie.</p>
+<p>Plus précisément, cela revient à créer plusieurs polynômes du chaos, chaque polynôme étant associé à une composante du vecteur de sortie.</p>
+<p>Cela ne nécessite pas nécessairement de nouveaux appels à la la fonction $g$, mais requiert des calculs supplémentaires.</p>
 
 </div>
 </div>
