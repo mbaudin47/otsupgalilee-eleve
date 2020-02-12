@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
-<title>Cours-calage-deterministe slides</title>
+<title>Sensibilite-Cours-nonlineaire slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13202,45 +13202,18 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Deterministic-code-calibration">Deterministic code calibration<a class="anchor-link" href="#Deterministic-code-calibration">&#182;</a></h1><p>$\DeclareMathOperator*{\argmin}{arg\,min}$
-$\newcommand{\Rset}{\mathbb{R}}$
-$\newcommand{\Nset}{\mathbb{R}}$
-$\newcommand{\vect}[1]{\boldsymbol{#1}}$</p>
-<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ul>
-<li><p>N. H. Bingham and John M. Fry (2010). <em>Regression, Linear Models in Statistics</em>, Springer Undergraduate Mathematics Series. Springer.</p>
-</li>
-<li><p>S. Huet, A. Bouvier, M.A. Poursat, and E. Jolivet (2004). <em>Statistical Tools for Nonlinear Regression</em>, Springer.</p>
-</li>
-<li><p>C. E. Rasmussen and C. K. I. Williams (2006), <em>Gaussian Processes for Machine Learning</em>, The MIT Press.</p>
-</li>
+<h1 id="Analyse-de-sensibilit&#233;-non-lin&#233;aire">Analyse de sensibilit&#233; non lin&#233;aire<a class="anchor-link" href="#Analyse-de-sensibilit&#233;-non-lin&#233;aire">&#182;</a></h1><h2 id="R&#233;f&#233;rences">R&#233;f&#233;rences<a class="anchor-link" href="#R&#233;f&#233;rences">&#182;</a></h2><ul>
+<li>O. Le Maître and O. Knio, Stochastic Spectral Methods for Uncertainty Quantication with Applications to Computational Fluid Dynamics, Series on Scientific Computation, Springer, 520 pages, (2010)</li>
+<li>Andrea Saltelli, Stefano Tarantola, Francesca Compolongo, and Marco Ratto. Sensitivity analysis in practice. John Wiley and Sons, 2004.</li>
+<li>Jean-Marc Martinez. Gdr Ondes &amp; Mascot Num , Analyse de sensibilité globale par décomposition de la variance. Janvier 2011.</li>
+<li>M. Baudin, K. Boumhaout, T. Delage, B. Iooss and J-M. Martinez. Numerical stability of Sobol' indices estimation formula, Proceedings of the SAMO 2016 Conference, Reunion Island, France, December 2016</li>
+<li>Lois asymptotiques des estimateurs des indices de Sobol. Application de la méthode delta. Rapport technique. EDF par Phiméca.</li>
 </ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>We consider a computer model $\vect{h}$ (i.e. a deterministic
-function) to calibrate:</p>
-$$
-       \vect{z} = \vect{h}(\vect{x}, \vect{\theta}),
-$$<p>where</p>
+<p>Le texte présenté ci-dessous est en partie un résumé de :</p>
 <ul>
-<li>$\vect{x} \in \Rset^{d_x}$ is the input vector;</li>
-<li>$\vect{z} \in \Rset^{d_z}$ is the output vector;</li>
-<li>$\vect{\theta} \in \Rset^{d_h}$ are the unknown parameters of
-$\vect{h}$ to calibrate.</li>
+<li>Introduction to sensitivity analysis with NISP, Michael Baudin (EDF), Jean-Marc Martinez (CEA), Version 0.5, February 2014</li>
 </ul>
-<p>Let $n \in \Nset$ be the number of observations. The standard
-hypothesis of the probabilistic calibration is:</p>
-$$
-       \vect{Y}^i = \vect{z}^i + \vect{\varepsilon}^i,
-$$<p>for $i=1,...,n$ where $\vect{\varepsilon}^i$ is a random
-measurement error such that:</p>
-$$
-       E(\varepsilon)=\vect{0} \in \Rset^{d_z}, \qquad Cov(\varepsilon)=\Sigma \in \Rset^{d_z\times d_z},
-$$<p>where $\Sigma$ is the error covariance matrix.</p>
+<p>qui contient les démonstrations.</p>
 
 </div>
 </div>
@@ -13248,47 +13221,16 @@ $$<p>where $\Sigma$ is the error covariance matrix.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal of calibration is to estimate $\vect{\theta}$, based on
-observations of $n$ inputs
-$(\vect{x}^1, \ldots, \vect{x}^n)$ and the associated $n$
-observations of the output $(\vect{y}^1, \ldots, \vect{y}^n)$. In
-other words, the calibration process reduces the discrepancy between the
-observations $(\vect{y}^1, \ldots, \vect{y}^n)$ and the
-predictions $\vect{h}(\vect{\theta})$. Given that
-$(\vect{y}^1, \ldots, \vect{y}^n)$ are realizations of a random
-variable, the estimate of $\vect{\theta}$, denoted by
-$\hat{\vect{\theta}}$, is also a random variable. Hence, the
-secondary goal of calibration is to estimate the distribution of
-$\hat{\vect{\theta}}$ representing the uncertainty of the
-calibration process.</p>
-<p>The standard observation model makes the hypothesis that the covariance
-matrix of the error is diagonal, i.e.</p>
+<h2 id="D&#233;finition-intuitive">D&#233;finition intuitive<a class="anchor-link" href="#D&#233;finition-intuitive">&#182;</a></h2><p>Dans cette section, nous définissons les indices de Sobol' du premier ordre et totaux.</p>
+<p>Soit $X\in\mathbb{R}^p$ où $p$ est la dimension du vecteur d'entrée. Soit $g$ une fonction de $\mathbb{R}^p$ vers $\mathbb{R}$ définie par :</p>
 $$
-       \Sigma = \sigma^2 {\bf I}
-$$<p>where $\sigma^2 \in \Rset$ is the constant observation error
-variance.</p>
-<p>In the remaining of this section, the input $\vect{x}$ is not
-involved anymore in the equations. This is why we simplify the equation
-into:</p>
+Y = g(X)
+$$<p>où $Y\in\mathbb{R}$, pour tout $X\in\mathbb{R}^p$.</p>
+<p>On suppose que $X$ est une variable aléatoire de loi connue. On suppose de plus, et c'est une hypothèse très limitative, que les lois marginales de $X$ sont indépendantes.</p>
+<p>Dans la suite du texte, la présentation est grandement simplifiée si l'on suppose que les lois marginales du vecteur aléatoire $X$ sont uniformes entre 0 et 1. En d'autres termes, on fait l'hypothèse que $X$ est dans le cube unité $[0,1]^p$ :</p>
 $$
-       \vect{z} = \vect{h}(\vect{\theta}).
-$$
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Least-squares">Least squares<a class="anchor-link" href="#Least-squares">&#182;</a></h2><p>The residuals is the difference between the observations and the
-predictions:</p>
-$$
-       \vect{r}^i = \vect{y}^i - \vect{h}(\vect{\theta})^i
-$$<p>for $i=1,...,n$. The method of least squares minimizes the square
-of the euclidian norm of the residuals. This is why the least squares
-method is based on the cost function $C$ defined by:</p>
-$$
-       C(\vect{\theta}) = \frac{1}{2} \|\vect{y} - \vect{h}(\vect{\theta})\|^2 = \frac{1}{2} \sum_{i=1}^n \left( \vect{y}^i - \vect{h}(\vect{\theta})^i \right)^2,
-$$<p>for any $\vect{\theta} \in \Rset^{d_h}$.</p>
+Y = g(X), \qquad X\in[0,1]^p.
+$$<p>Cette dernière simplification n'est pas une limitation dans l'analyse, car il est possible de démontrer des résultats presque identiques sans cette restriction.</p>
 
 </div>
 </div>
@@ -13296,14 +13238,39 @@ $$<p>for any $\vect{\theta} \in \Rset^{d_h}$.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The least squares method minimizes the cost function $C$:</p>
+<p>On note $E(Y)$ l'espérance de $Y$ et $V(Y)$ la variance de $Y$. L'objectif de l'analyse de sensibilité globale est de quantifier l'impact de la variabilité de chaque variable d'entrée $X_i$ sur la variabilité de $Y$. En d'autres termes, on cherche à quantifier l'impact de $X_i$ sur $V(Y)$.</p>
+<p>Pour $i\in\{1,...,p\}$, supposons que $X_i$ est une variable qui a un <em>fort impact</em> sur $Y$. Essayons de donner un sens probabiliste qui permette de quantifier cet impact. Cela implique que, si on fixe $X_i$ à une valeur $x_i\in\mathbb{R}$ donnée, alors la variable $Y|X_i=x_i$ a une variabilité moins grande. En d'autres termes</p>
 $$
-       \hat{\vect{\theta}} = \argmin_{\vect{\theta} \in \Rset^{d_h}} \frac{1}{2} \|\vect{y} - \vect{h}(\vect{\theta})\|^2.
-$$<p>The unbiased estimator of the variance is:</p>
+V(Y|X_i=x_i) \ll V(Y).
+$$<p>Par conséquent, la différence</p>
 $$
-       \hat{\sigma}^2 = \frac{\|\vect{y} - \vect{h}(\vect{\theta})\|^2}{n - d_h}.
-$$<p>Notice that the previous estimator is not the maximum likelihood
-estimator (which is biased).</p>
+\delta_i = V(Y) - V(Y|X_i=x_i)
+$$<p>est grande. 
+La difficulté est que la différence $\delta_i$ dépend de la valeur de $x_i$ que nous choisissons. La valeur la plus appropriée est sans doute $x_i=E(X_i)$, mais, puisque $X_i$ est une variable aléatoire, il y a d'autres valeurs possibles. C'est pourquoi on souhaite obtenir la différence moyenne $E(\delta_i)$ :</p>
+\begin{align*}
+E(\delta_i) &amp;= E\left[V(Y) - V(Y|X_i)\right] \\
+&amp;= V(Y) - E[V(Y|X_i)].
+\end{align*}
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Le théorème de la variance totale implique :</p>
+$$
+V(Y) = E[V(Y|X_i)] + V[E(Y|X_i)]
+$$<p>pour $i=1,...,p$.</p>
+<p>On substitue $V(Y)$ dans l'équation précédente, ce qui implique :</p>
+$$
+E(\delta_i) = V[E(Y|X_i)]
+$$<p>pour $i=1,...,p$. 
+La difficulté est que l'expression précédente est absolue, et non relative à la valeur de $V(Y)$. C'est pourquoi on normalise le terme précédent par $V(Y)$.</p>
+<p>Par définition, l'indice du premier ordre de la variable $X_i$ par rapport à $g(X)$ est :</p>
+$$
+S_i = \frac{V[E(g(X)|X_i)]}{V(g(X))}
+$$<p>pour $i=1,...,p$.</p>
+<p>L'analyse précédente montre que, si la variable $X_i$ a un impact important sur la variabilité de $Y$, alors $S_i$ est grand.</p>
 
 </div>
 </div>
@@ -13311,23 +13278,16 @@ estimator (which is biased).</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Linear-least-squares">Linear least squares<a class="anchor-link" href="#Linear-least-squares">&#182;</a></h2><p>In the particular case where the deterministic function $\vect{h}$
-is linear with respect to the parameter $\vect{\theta}$, then the
-method reduces to the linear least squares. Let
-$J \in \Rset^{n \times d_h}$ be the Jacobian matrix made of the
-partial derivatives of $\vect{h}$ with respect to
-$\vect{\theta}$:</p>
+<h2 id="D&#233;composition-de-Sobol'">D&#233;composition de Sobol'<a class="anchor-link" href="#D&#233;composition-de-Sobol'">&#182;</a></h2><p>If $g$ can be integrated in $[0,1]^p$, then there is a unique 
+decomposition</p>
 $$
-       J(\vect{\theta}) = \frac{\partial \vect{h}}{\partial \vect{\theta}}.
-$$<p>Let $\vect{\mu} \in \Rset^{d_h}$ be a reference value of the
-parameter $\vect{\theta}$. Let us denote by
-$J=J(\vect{\mu})$ the value of the Jacobian at the reference point
-$\vect{\mu}$. Since the function is, by hypothesis, linear, the
-Jacobian is independent of the point where it is evaluated. Since
-$\vect{h}$ is linear, it is equal to its Taylor expansion:</p>
+y = h_0 + \sum_{i=1,2,\ldots,p} h_i(x_i) + \sum_{1\leq i &lt; j \leq p} h_{i,j}(x_i,x_j) + \ldots + 
+h_{1,2,\ldots,p}(x_1,x_2,\ldots,x_p),
+$$<p>where $h_0$ is a constant and the functions of the decomposition satisfy the equalities</p>
 $$
-       \vect{h}(\vect{\theta}) = \vect{h}(\vect{\mu}) + J (\vect{\theta} - \vect{\mu}),
-$$<p>for any $\vect{\theta} \in \Rset^{d_h}$.</p>
+\int_0^1 h_{i_1,\ldots,i_s}(x_{i_1},\ldots,x_{i_s})dx_{i_k} = 0,
+$$<p>for any $k=1,2,\ldots,s$ and any indices $1\leq i_1&lt; i_2&lt; \ldots&lt; i_s\leq p$ and 
+$s=1,2,\ldots,p$.</p>
 
 </div>
 </div>
@@ -13335,20 +13295,16 @@ $$<p>for any $\vect{\theta} \in \Rset^{d_h}$.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The corresponding linear least squares problem is:</p>
+<p>Let us denote by the vector $u$ the set of indices $(i_1,i_2,\ldots,i_s)$, 
+where $1\leq i_1&lt; i_2&lt; \ldots&lt; i_s\leq p$. 
+Hence, the vector $x_u=(x_{i_1},x_{i_2},\ldots,x_{i_s})$ is made of the 
+components of the vector $x=(x_1,x_2,\ldots,x_p)$ which indices are in the set $u$. 
+The equation can then be written in the 
+more compact, but more abstract, equation:</p>
 $$
-       \hat{\vect{\theta}} = \argmin_{\vect{\theta} \in \Rset^{d_h}} \frac{1}{2} \|\vect{y} - \vect{h}(\vect{\mu}) - J (\vect{\theta} - \vect{\mu})\|^2.
-$$<p>The Gauss-Markov theorem applied to this problem states that the
-solution is:</p>
-$$
-       \hat{\vect{\theta}} = \vect{\mu} + \left(J^T J\right)^{-1} J^T ( \vect{y} - \vect{h}(\vect{\mu})).
-$$<p>The previous equations are the <em>normal equations</em>. Notice, however, that
-the previous linear system of equations is not implemented as is, i.e.
-we generally do not compute and invert the Gram matrix $J^T J$.
-Alternatively, various orthogonalization methods such as the QR or the
-SVD decomposition can be used to solve the linear least squares problem
-so that potential ill-conditionning of the normal equations is
-mitigated.</p>
+g(x) = \sum_{u\subseteq \{1,2,\ldots,p\}} h_u(x_u).
+$$<p>Moreover, we define the function $h_\emptyset=h_0$, so that 
+the equations are consistent.</p>
 
 </div>
 </div>
@@ -13356,15 +13312,42 @@ mitigated.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This estimator can be proved to be the best linear unbiased estimator,
-the <em>BLUE</em>, that is, among the unbiased linear estimators, it is the one
-which minimizes the variance of the estimator.</p>
-<p>Assume that the random observations are gaussian:</p>
+<h2 id="D&#233;composition-de-la-variance">D&#233;composition de la variance<a class="anchor-link" href="#D&#233;composition-de-la-variance">&#182;</a></h2><p>La variance de la fonction $g$ peut être décomposée en :</p>
 $$
-       \varepsilon \sim \mathcal{N}(\vect{0},\sigma^2 {\bf I}).
-$$<p>Therefore, the distribution of $\hat{\vect{\theta}}$ is:</p>
+V(Y)=\sum_{i=1}^p V_i + \sum_{1\leq i &lt; j\leq p} V_{i,j} + \ldots + V_{1,2,\ldots,p},
+$$<p>où</p>
+\begin{eqnarray*}
+V_i &amp;=&amp; V(h_i(X_i)), \label{eq-sde-varvi1-2} \\
+V_{i,j} &amp;=&amp; V(h_{i,j}(X_i,X_j)), \\
+V_{i,j,k} &amp;=&amp; V(h_{i,j,k}(X_i,X_j,k)), \\
+\ldots&amp;&amp;\\
+V_{1,2,\ldots,p} &amp;=&amp; V(h_{1,2,\ldots,p}(X_1,X_2,\ldots,X_p)),
+\label{eq-sde-varv12p-2}
+\end{eqnarray*}<p>or, more generally,</p>
+\begin{eqnarray*}
+V_u = V(h_u(X_u)),
+\end{eqnarray*}<p>for any $u \subseteq \{1,2,\ldots,p\}$.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Therefore, the sensitivity indices are equal to</p>
+\begin{eqnarray*}
+S_i &amp;=&amp; \frac{V_i}{V(Y)} , \\
+S_{i,j} &amp;=&amp; \frac{V_{i,j}}{V(Y)} , \\
+S_{i,j,k} &amp;=&amp; \frac{V_{i,j,k}}{V(Y)} , \\
+\ldots &amp;&amp; \\
+S_{1,2,\ldots,p} &amp;=&amp; \frac{V_{1,2,\ldots,p}}{V(Y)}.
+\end{eqnarray*}<p>pour $i=1,...,p$.</p>
+<p>On peut démontrer que l'indice du premier ordre $S_i$ présenté dans l'équation précédente est égal à l'indice défini sur la base de la variance conditionnelle.</p>
+<p>For any $i=1,2,\ldots,p$, the total sensitivity index $T_i$ 
+with respect to the variable $X_i$ is the 
+sum of all the sensitivity indices associated with the variable $X_i$, i.e.</p>
 $$
-       \hat{\vect{\theta}} \sim \mathcal{N}(\vect{\theta},\sigma^2 J^T J).
+T_i = \sum_{u\ni i} S_u.
 $$
 </div>
 </div>
@@ -13372,19 +13355,34 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Non-Linear-Least-squares">Non Linear Least squares<a class="anchor-link" href="#Non-Linear-Least-squares">&#182;</a></h1><p>In the general case where the function $\vect{h}$ is non linear
-with respect to the parameter $\vect{\theta}$, then the resolution
-involves a non linear least squares optimization algorithm. Instead of
-directly minimizing the squared euclidian norm of the residuals, most
-implementations rely on the residual vector, which lead to an improved
-accuracy.</p>
-<p>The difficulty in the nonlinear least squares is that, compared to the
-linear situation, the theory does not provide the distribution of
-$\hat{\vect{\theta}}$ anymore.</p>
-<p>There are two practical solutions to overcome this limitation.</p>
+<h2 id="D&#233;finition-de-l'indice-de-sensibilit&#233;-total">D&#233;finition de l'indice de sensibilit&#233; total<a class="anchor-link" href="#D&#233;finition-de-l'indice-de-sensibilit&#233;-total">&#182;</a></h2><p>Soit $X\in\mathbb{R}^p$. Pour tout $i=1,...,p$, soit $X_{-i}\in\mathbb{R}^{p-1}$ le vecteur aléatoire constitué de toutes les composantes de $X$, sauf la i-ème. En d'autres termes, on a :</p>
+$$
+X_{-i} = (X_1,...,X_{i-1},X_{i+1},...,X_p).
+$$<p>Par conséquent, le vecteur $X$ est constitué des composantes $X_i$ et $X_{-i}$, ce qui implique $X = (X_i,X_{-i})$
+pour $i=1,...,p$.</p>
+<p>Ainsi la variable d'entrée de $Y=g(X)$ peut se décomposer en une part qui ne dépend que de $X_i$ et une autre part qui ne dépend que des composantes différentes de $X_i$ :</p>
+$$
+Y = g(X_i,X_{-i}),
+$$<p>pour $i=1,...,p$.
+Par définition, l'indice de sensibilité total de la variable d'entrée $X_i$ par rapport à la sortie $Y$ est :</p>
+$$
+T_i = 1 - \frac{V[E(g(X)|X_{-i})]}{V(g(X))}
+$$<p>pour $i=1,...,p$.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Analyse-des-indices">Analyse des indices<a class="anchor-link" href="#Analyse-des-indices">&#182;</a></h2><p>L'analyse des indices de sensibilité peut être faite en considérant leur valeur absolue et en les comparant entre eux.</p>
 <ul>
-<li>bootstrap,</li>
-<li>linearization.</li>
+<li>On a $S_i,T_i \in[0,1]$. </li>
+<li>On a $S_i \leq T_i$, autrement dit l'indice du premier ordre est inférieur à l'indice total. </li>
+<li>L'indice du premier ordre $S_i$ représente l'impact de la variable $X_i$ seule. </li>
+<li>L'indice total $T_i$ représente l'impact de la variable $X_i$, y compris ses interactions avec les autres variables. </li>
+<li>Si $T_i=0$ alors la variable $X_i$ peut être remplacée par une constante. En effet, même lorsqu'elle interagit avec autres variables, elle n'a pas d'impact sur la variance de $Y$. </li>
+<li>Si $S_i=T_i$ alors la variable $X_i$ n'interagit pas avec les autres variables. </li>
 </ul>
 
 </div>
@@ -13393,28 +13391,12 @@ $\hat{\vect{\theta}}$ anymore.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The bootstrap method is based on the following experiment. Provided that
-we can generate a set of input and output observations, we can compute
-the corresponding value of the parameter $\hat{\vect{\theta}}$.
-Reproducing this sampling experiment a large number of times would allow
-to get the distribution of the estimated parameter
-$\hat{\vect{\theta}}$. In practice, we only have one single sample
-of $n$ observations. If this sample is large enough and correctly
-represents the variability of the observations, the bootstrap method
-allows to generate observations resamples, which, in turn, allow to get
-a sample of $\hat{\vect{\theta}}$. An approximate distribution of
-$\hat{\vect{\theta}}$ can then be computed based on kernel
-smoothing, for example. In order to get a relatively accurate
-distribution of $\hat{\vect{\theta}}$, the boostrap sample size
-must be large enough. Hence, this method requires to solve a number of
-optimization problems, which can be time consuming.</p>
-<p>Alternatively, we can linearize the function $\vect{h}$ in the
-neighbourhood of the solution $\hat{\vect{\theta}}$ and use the
-gaussian distribution associated with the linear least squares. This
-method is efficient, but only accurate when the function
-$\vect{h}$ is approximately linear with respect to
-$\vect{\theta}$ in the neighbourhood of
-$\hat{\vect{\theta}}$.</p>
+<h2 id="Estimation-des-indices-de-sensibilit&#233;-de-Sobol'">Estimation des indices de sensibilit&#233; de Sobol'<a class="anchor-link" href="#Estimation-des-indices-de-sensibilit&#233;-de-Sobol'">&#182;</a></h2><p>Deux éléments s'avèrent déterminants lorsqu'on estime les indices de Sobol'.</p>
+<ul>
+<li>On pourrait considérer la variable $Y$ directement pour calculer les indices de sensibilité. En fait, il est plus pertinent de centrer $Y$ en le remplaçant par $Y-E(Y)$.</li>
+<li>On pourrait considérer deux boucles imbriquées pour estimer la variance de l'espérance conditionnelle. En fait, estimer les indices peut être réalisé par une intégration en dimension 2p-1, au lieu de deux intégrales imbriquées en dimensions p-1 et 1.</li>
+</ul>
+<p>Nous allons successivement approfondir ces deux sujets dans les deux paragraphes qui suivent.</p>
 
 </div>
 </div>
@@ -13422,19 +13404,57 @@ $\hat{\vect{\theta}}$.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Least-squares-and-minimization-of-likelihood">Least squares and minimization of likelihood<a class="anchor-link" href="#Least-squares-and-minimization-of-likelihood">&#182;</a></h2><p>A link between the method of least squares and the method of maximum
-likelihood can be done provided that two hypotheses are satisfied. The
-first hypothesis is that the random output observations
-$\vect{y}^i$ are independent. The second hypothesis is that the
-random measurement error $\vect{\varepsilon}$ has the gaussian
-distribution. In this particular case, it can be shown that the solution
-of the least squares problem maximizes the likelihood.</p>
-<p>This is the reason why, after a least squares calibration has been
-performed, the distribution of the residuals may be interesting to
-analyze. Indeed, if the distribution of the residuals is gaussian and if
-the outputs are independent, then the least squares estimator is the
-maximum likelihood estimator, which gives a richer interpretation to the
-solution.</p>
+<h2 id="Estimation-des-indices-:-centrage-de-la-fonction">Estimation des indices : centrage de la fonction<a class="anchor-link" href="#Estimation-des-indices-:-centrage-de-la-fonction">&#182;</a></h2><p>Soit $c\in\mathbb{R}$ une constante. Ajouter la constante $c$ à la fonction $g$ ne change pas ses indices de sensibilité. 
+En effet, soit $\tilde{g}$ la fonction définie par :</p>
+$$
+\tilde{g}(X) = g(X) + c
+$$<p>pour tout $X\in[0,1]^p$.</p>
+<p>Alors l'espérance de $\tilde{g}$ est égale à :</p>
+$$
+E[\tilde{g}(X)] = E[g(X) + c] = E[g(X)] + c.
+$$<p>Sa variance est :</p>
+\begin{align*}
+V[\tilde{g}(X)] 
+&amp;= E[(\tilde{g}(X)-E(\tilde{g}(X)))^2] \\
+&amp;= E[(g(X) + c-E[g(X)] - c)^2] \\
+&amp;= E[(g(X) -E[g(X)])^2] \\
+&amp; = V[g(X)] 
+\end{align*}
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>En d'autres termes, cela <em>décale</em> l'espérance, mais la variance est inchangée. 
+De la même manière, la variance conditionnelle est inchangée, puisque :</p>
+$$
+V[E(\tilde{g}(X)|X_i)] = V[E(g(X)|X_i)]
+$$<p>pour $i=1,...,p$.
+C'est pourquoi les indices de sensibilité du premier ordre et totaux sont inchangés lorsqu'on considère $\tilde{g}$ en lieu et place de $g$:</p>
+$$
+S_i = \frac{V[E(\tilde{g}(X)|X_i)]}{V(\tilde{g}(X))}, \qquad 
+T_i = 1 - \frac{V[E(\tilde{g}(X)|X_{-i})]}{V(\tilde{g}(X))}.
+$$<p>Pour estimer les indices de sensibilité, on choisit de centrer la fonction par son espérance, c'est à dire que l'on choisit la constante $c=-E[g(X)]$. 
+En d'autres termes, on considère la fonction :</p>
+$$
+\tilde{g}(X) = g(X) - E[g(X)]
+$$<p>pour tout $X\in[0,1]^p$. 
+Par conséquent,</p>
+$$
+E[\tilde{g}(X)]=E[g(X) - E(g(X))]
+$$<p>ce qui mène à l'équation :</p>
+$$
+E[\tilde{g}(X)]=0.
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>En pratique, dans OpenTURNS, on estime donc d'abord la moyenne $E[g(X)]$ et la variance $V[g(X)]$ à l'aide d'une première technique d'estimation comme, par exemple, un plan Monte-Carlo simple.</p>
+<p>Il s'avère que ce centrage permet de stabiliser l'estimation des indices de Sobol' pour des raisons à la fois numériques (l'estimation de la variance est plus précise, car elle mobilise des termes dont l'amplitude est réduite) et statistiques (l'estimation de la variance n'est plus biaisée).</p>
 
 </div>
 </div>
@@ -13442,21 +13462,294 @@ solution.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Regularization-and-ill-conditionned-problems">Regularization and ill-conditionned problems<a class="anchor-link" href="#Regularization-and-ill-conditionned-problems">&#182;</a></h2><p>If a problem is ill-conditionned, a small change in the observations can
-generate a large change in the estimate $\hat{\vect{\theta}}$.
-Hence, for problems which are ill-conditionned, calibration methods may
-include some regularization features.</p>
-<p>An ill-conditionned problem may appear in the particular case where the
-Jacobian matrix $J$ is rank-degenerate. For example, suppose that
-a linear least squares problem is considered, where some linear
-combinations of the columns of $J$ are linearily dependent. This
-implies that there is a linear subspace of the parameter space
-$\hat{\vect{\theta}}$ such that linear combinations of the
-parameters do not have any impact on the output. In this case, it is not
-possible to estimate the projection of the solution on that particular
-subpace. Gaussian calibration is a way of mitigating this situation, by
-constraining the solution to be <em>not too far away</em> from a reference
-solution, named the <em>prior</em>.</p>
+<h2 id="Indices-de-sensibilit&#233;-du-premier-ordre-par-une-int&#233;grale-en-dimension-&#233;tendue">Indices de sensibilit&#233; du premier ordre par une int&#233;grale en dimension &#233;tendue<a class="anchor-link" href="#Indices-de-sensibilit&#233;-du-premier-ordre-par-une-int&#233;grale-en-dimension-&#233;tendue">&#182;</a></h2><p>Pour $i=1,...,p$, on souhaite estimer l'indice de sensibilité du premier ordre $S_i$ et l'indice total $T_i$.</p>
+<p>Supposons que l'on utiliser une méthode d'échantillonage pour estimer les intégrales requises. Il peut sembler que deux intégrations imbriquées sont nécessaires :</p>
+<ul>
+<li>une première pour estimer l'espérance conditionnelle,</li>
+<li>une seconde pour estimer la variance.</li>
+</ul>
+<p>Si chaque boucle nécessite $n$ calculs, alors le coût de calcul total est $n^2$, ce qui est <em>formidable</em>.</p>
+<p>En fait, une astuce proposée par Sobol' permet de remplacer cette double intégration par une seule intégration en dimension $2p-1$. En effet, le numérateur de l'indice de Sobol' du premier ordre est :</p>
+$$
+V [E(Y|X_i)] 
+= E\left[ E(Y|X_i)^2 \right] - E(Y)^2. 
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>En pratique, OpenTURNS utilise la fonction $\tilde{g}$ à la place de $g$, de telle sorte que $E[\tilde{g}(X)]=0$. Non seulement cela simplifie l'expression précédente sur le plan formel, mais, surtout, cela évite de former une différence de deux carrés, pouvant mener à une perte de précision "catastrophique" par <em>cancellation</em>.</p>
+<p>Pour tout $i=1,...,p$, soit $x_i\in[0,1]$. 
+Par définition de l'espérance conditionnelle,</p>
+$$
+E(Y|X_i=x_i) = \int_{[0,1]^{p-1}} g(x_i,x_{-i}) dx_{-i}.
+$$<p>Soit $Z\in[0,1]^p$ un vecteur aléatoire de même loi que $X$ et indépendant de $X$. Alors la densité de probabilité du vecteur aléatoire $(X,Z)$ est le produit des densités marginales :</p>
+$$
+f_{X,Z}(x,z) = f_X(x) f_Z(z)
+$$<p>pour tout $x,z\in[0,1]^p$.</p>
+<p>Soit $Z_{-i}$ le vecteur aléatoire de dimension réduite : $Z_{-i}\in[0,1]^{p-1}$ :</p>
+$$
+Z_{-i} = (Z_1,...,Z_{i-1},Z_{i+1},...,Z_p).
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>On peut démontrer que :</p>
+$$
+E[E(Y|X_i)^2]
+= \int_{[0,1]^{2p-1}} g(x_i,x_{-i}) g(x_i,z_{-i}) dx_{-i} dz_{-i} dx_i.  
+$$<p>Soit $x^e\in[0,1]^{2p-1}$ la variable aléatoire en dimension $2p-1$ suivante :</p>
+\begin{align*}
+x^{e} &amp; = 
+(x_1, x_2, ..., x_p, z_1, ..., z_{i-1}, z_{i+1}, ..., z_{p})^T \\
+&amp;= (x_i,x_{-i},z_{-i}).
+\end{align*}<p>Soit $g^{e}$ la fonction en dimension étendue définie par :</p>
+\begin{align*}
+g^{e}\left(x^e\right) 
+&amp;= g(x_1, x_2, ..., x_i, ..., x_p) g(z_1, ..., z_{i-1}, x_i, z_{i+1}, ..., z_{p}) \\
+&amp;= g(x_i,x_{-i}) g(x_i,z_{-i})
+\end{align*}<p>pour tout $x\in[0,1]^p$ et tout $z_{-i}\in[0,1]^{p-1}$.</p>
+<p>L'équation précédente montre que le numérateur de l'indice de Sobol' du premier ordre est égal à l'intégrale de la fonction $g^{e}$ :</p>
+$$
+E[E(Y|X_i)^2]
+= \int_{[0,1]^{2p-1}} g^e(x^e) dx^e.
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Indices-de-sensibilit&#233;-total-par-une-int&#233;grale-en-dimension-&#233;tendue">Indices de sensibilit&#233; total par une int&#233;grale en dimension &#233;tendue<a class="anchor-link" href="#Indices-de-sensibilit&#233;-total-par-une-int&#233;grale-en-dimension-&#233;tendue">&#182;</a></h2><p>Pour estimer l'indice de sensibilité total, nous devons estimer :</p>
+$$
+V[E(g(X)|X_{-i})] = E[E(g(X)|X_{-i})^2] - E(Y)^2.
+$$<p>On peut démontrer que :</p>
+$$
+E[E(g(X)|X_{-i})^2]
+= \int_{[0,1]^{p+1}} g(x_i,x_{-i}) g(z_i,x_{-i}) dx_{-i} dx_i dz_i.  
+$$<p>Soit $x^f\in[0,1]^{p+1}$ la variable aléatoire en dimension $p+1$ suivante :</p>
+\begin{align*}
+x^{f} &amp; = 
+(x_1, x_2, ..., x_p, z_{i})^T \\
+&amp;= (x_i,x_{-i},z_{i}).
+\end{align*}
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Soit $g^{f}$ la fonction en dimension étendue définie par :</p>
+\begin{align*}
+g^{f}\left(x^f\right) 
+&amp;= g(x_1, x_2, ..., x_i, ..., x_p) g(x_1, ..., x_{i-1}, z_i, x_{i+1}, ..., x_{p}) \\
+&amp;= g(x_i,x_{-i}) g(z_i,x_{-i})
+\end{align*}<p>pour tout $x\in[0,1]^p$ et tout $z_{i}\in[0,1]$.</p>
+<p>Le numérateur de l'indice de Sobol' total est égal à l'intégrale de la fonction $g^{f}$ :</p>
+$$
+E[E(Y|X_{-i})^2]
+= \int_{[0,1]^{p+1}} g^f\left(x^f\right) dx^f.
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Estimateur-des-indices-de-sensibilit&#233;">Estimateur des indices de sensibilit&#233;<a class="anchor-link" href="#Estimateur-des-indices-de-sensibilit&#233;">&#182;</a></h2><p>Dans cette section, nous présentons une modification de la méthode de Sobol'-Saltelli pour l'estimation des indices du premier ordre. Cette méthode est une variante de la méthode dite "pick-freeze". Pour l'estimation des indices du premier ordre, la méthode de Saltelli est fondée sur un échantillonnage Monte-Carlo simple pour l'estimation de l'intégrale en dimension $2p-1$ associée à la fonction $g^e$. Pour les indices totaux, la méthode de Saltelli est fondée sur une intégrale en dimension $p+1$ associée à la fonction $g^f$.</p>
+<p>D'une manière plus générale, toute méthode d'estimation d'une intégrale est éligible pour estimer les indices de Sobol' comme par exemple :</p>
+<ul>
+<li>une séquence à faible discrépance,</li>
+<li>un plan Latin Hypercube Sampling (LHS).</li>
+</ul>
+<p>Pour les deux derniers types de plan d'expériences, l'estimation des indices du premier ordre impose de constituer un plan d'expériences en dimension $2p-1$ (une méthode fondée sur la concaténation de deux plans en dimension $p$ et $p-1$ ne peut pas être convergente).</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>L'algorithme est le suivant.</p>
+<ul>
+<li>On considère un plan d'expériences de type Monte-Carlo simple de taille $n$ et de dimension $2p-1$ pour la variable $x^e$, constitué des points $x^{e(1)}, ..., x^{e(n)}$. Les $p$ premières colonnes de ce plan d'expériences constituent un plan de type Monte-Carlo simple de taille $n$ et de dimension $p$ pour la variable $X$, constitué des points $x^{(1)}, ..., x^{(n)}$. </li>
+<li>On estime la moyenne $E(Y)$ par la moyenne empirique :</li>
+</ul>
+$$
+\bar{Y} = \frac{1}{n} \sum_{j=1}^n g\left(x^{(j)}\right).
+$$<ul>
+<li>On considère la fonction centrée $\tilde{g}$ définie par :</li>
+</ul>
+$$
+\tilde{g}(x) = g(x) - \bar{Y},
+$$<p>pour tout $x\in[0,1]^p$.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>On estime la variance $V(Y)$ par la variance empirique <em>biaisée</em> :</li>
+</ul>
+$$
+\hat{\sigma}^2 = \frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x^{(j)}\right)^2.
+$$<ul>
+<li>Pour $i=1,...,p$, on estime $E[E(Y|X_i)^2]$ par la moyenne empirique :</li>
+</ul>
+$$
+\hat{E}_i = \frac{1}{n} \sum_{j=1}^n \tilde{g}^e\left(x^{e(j)}\right)
+$$<p>où $\tilde{g}^e$ est la fonction centrée en dimension étendue $2p-1$.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>L'indice de sensibilité du premier ordre est estimé par :</li>
+</ul>
+\begin{align*}
+\hat{S}_i &amp;= \frac{\hat{E}_i}{\hat{\sigma}^2} \\
+&amp;= \frac{\frac{1}{n} \sum_{j=1}^n \tilde{g}^e\left(x^{e(j)}\right)}{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x^{(j)}\right)^2} \\
+&amp;= \frac{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x_i^{(j)},x_{-i}^{(j)}\right) \tilde{g}\left(x_i^{(j)},z_{-i}^{(j)}\right)}{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x^{(j)}\right)^2}
+\end{align*}<p>où $\tilde{g}$ est la fonction centrée.</p>
+<ul>
+<li>On estime $E[E(Y|X_{-i})^2]$ par la moyenne empirique :</li>
+</ul>
+$$
+\hat{E}_{-i} = \frac{1}{n} \sum_{j=1}^n \tilde{g}^f\left(x^{f(j)}\right).
+$$<p>où $\tilde{g}^f$ est la fonction centrée en dimension étendue $p+1$.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<ul>
+<li>L'indice de sensibilité total est estimé par :</li>
+</ul>
+\begin{align*}
+\hat{T}_i &amp;= 1 - \frac{\hat{E}_{-i}}{\hat{\sigma}^2} \\
+&amp;= 1 - \frac{\frac{1}{n} \sum_{j=1}^n \tilde{g}^f\left(x^{f(j)}\right)}{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x^{(j)}\right)^2} \\
+&amp;= 1 - \frac{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x_i^{(j)},x_{-i}^{(j)}\right) \tilde{g}\left(z_{i}^{(j)},x_{-i}^{(j)}\right)}{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x^{(j)}\right)^2}
+\end{align*}<p>où $\tilde{g}$ est la fonction centrée.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="La-m&#233;thode-pick-freeze-centr&#233;e-pour-l'estimation-des-indices-de-sensibilit&#233;">La m&#233;thode pick-freeze centr&#233;e pour l'estimation des indices de sensibilit&#233;<a class="anchor-link" href="#La-m&#233;thode-pick-freeze-centr&#233;e-pour-l'estimation-des-indices-de-sensibilit&#233;">&#182;</a></h2><p>Dans cette section, nous reformulons l'estimation des indices de sensibilité à l'aide de la méthode dit <em>"pick-freeze"</em>. Cette méthode clarifie les plans d'expériences impliqués dans l'estimation des indices de sensibilité du premier ordre et totaux, en particulier les variables différentes et communes dans chaque plan d'expériences fondé sur la méthode de Monte-Carlo simple.</p>
+<p>On considère trois plans d'expériences générés par échantillonnage Monte-Carlo simple notés $A$ et $B$ de taille $n$ et de dimension $p$. Plus précisément, on considère</p>
+$$
+A = 
+\begin{pmatrix}
+a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,p} \\
+a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,p} \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+a_{n,1} &amp; a_{n,2} &amp; \cdots &amp; a_{n,p}
+\end{pmatrix}
+, \qquad 
+B=
+\begin{pmatrix}
+b_{1,1}  &amp; b_{1,2}  &amp; \cdots  &amp; b_{1,p}  \\
+b_{2,1}  &amp; b_{2,2}  &amp; \cdots  &amp; b_{2,p}  \\
+\vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots  \\
+b_{n,1}  &amp; b_{n,2}  &amp; \cdots  &amp; b_{n,p} 
+\end{pmatrix}.
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Pour $i=1,...,p$, on souhaite estimer l'indice du premier ordre $S_i$. Pour cela on créée le plan $E$ sur la base des deux plans d'expériences $A$ et $B$. Ce plan est créé à partir de $A$, dans lequel la ième colonne est celle de $B$. Plus précisément, le plan $E$ est le suivant :</p>
+$$
+E=
+\begin{pmatrix}
+a_{1,1}  &amp; a_{1,2}  &amp; \cdots  &amp; b_{1,i} &amp; \cdots  &amp; a_{1,p}  \\
+a_{2,1}  &amp; a_{2,2}  &amp; \cdots  &amp; b_{2,i} &amp; \cdots  &amp; a_{2,p}  \\
+\vdots  &amp; \vdots  &amp;   &amp; \vdots &amp;   &amp; \vdots  \\
+a_{n,1}  &amp; a_{n,2}  &amp; \cdots  &amp; b_{n,i} &amp; \cdots  &amp; a_{n,p} 
+\end{pmatrix}.
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>On note $Y^{A,c}$, $Y^{B,c}$ et $Y^{E,c}$ le vecteur des sorties centrées du modèle $g$ sur les plans $A$, $B$ et $E$ :</p>
+$$
+Y^{A,c} = g(A) - \bar{Y}^A, \qquad 
+Y^{B,c} = g(B) - \bar{Y}^B, \qquad 
+Y^{E,c} = g(E) - \bar{Y}^E,
+$$<p>où $\bar{Y}^A$, $\bar{Y}^B$ et $\bar{Y}^E$ sont respectivement la moyenne empirique des 
+sorties des plans $A$, $B$ et $E$ :</p>
+$$
+\bar{Y}^A = \frac{1}{n} \sum_{j=1}^n Y^{A,j}, \qquad
+\bar{Y}^B = \frac{1}{n} \sum_{j=1}^n Y^{B,j}, \qquad
+\bar{Y}^E = \frac{1}{n} \sum_{j=1}^n Y^{E,j}.
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Pour $i=1,...,p$, l'indice de sensibilité du premier ordre peut être estimé par :</p>
+$$
+S_i = \frac{\sum_{j=1}^n Y^{c,B,j} Y^{c,E,j}}{\sum_{j=1}^n \left(Y^{c,A,j}\right)^2}.
+$$<p>Pour $i=1,...,p$, l'indice de sensibilité total peut être estimé par :</p>
+$$
+T_i = 1 - \frac{\sum_{j=1}^n Y^{c,A,j} Y^{c,E,j}}{\sum_{j=1}^n \left(Y^{c,A,j}\right)^2}.
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="La-m&#233;thode-de-Martinez-pour-l'estimation-des-indices-de-Sobol'">La m&#233;thode de Martinez pour l'estimation des indices de Sobol'<a class="anchor-link" href="#La-m&#233;thode-de-Martinez-pour-l'estimation-des-indices-de-Sobol'">&#182;</a></h2><p>La méthode de J.-M.Martinez est certainement l'estimateur le plus simple pour les indices de Sobol'.</p>
+<p>Cet estimateur repose sur le coefficient de corrélation linéaire empirique $\rho_n$ de Pearson.</p>
+<p>Soient $X$ et $Y$ deux vecteurs de dimension $n$. Alors</p>
+$$
+\rho_n(X,Y) = \frac{\sum_{j=1}^n (x_i - \bar{x})(y_i-\bar{y})}{\sqrt{\sum_{j=1}^n (x_i - \bar{x})^2(y_i-\bar{y})^2}},
+$$<p>où $\bar{x}$ et $\bar{y}$ sont les moyennes empiriques des vecteurs $X$ et $Y$ :</p>
+$$
+\bar{x} = \sum_{j=1}^n x_i, \qquad \bar{y} = \sum_{j=1}^n y_i.
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Sur la base des notations précédentes, l'estimateur de Martinez est :</p>
+$$
+S_i = \rho_n\left(Y^B,Y^E\right), \qquad T_i = 1 - \rho_n\left(Y^A,Y^E\right).
+$$<p>On remarque que, puisque le coefficient de corrélation linéaire est centré, l'estimateur de Martinez évite par construction les difficultés associés aux autres estimateurs.</p>
+<p>De plus, si la sortie $Y$ suit la loi gaussienne, alors J.-M.Martinez a utilisé la transformation de Fisher pour obtenir la loi de l'estimateur.</p>
+
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>Notre expérience est que, si la fonction est centrée, les différents estimateurs d'OpenTURNS (Saltelli, Jansen, Mauntz-Kucherenko et Martinez) sont souvents équivalents du point de vue de la précision, tant sur les indices du premier ordre que les indices totaux. De plus, leur comportement est également comparablement imparfait lorsqu'il s'agit d'estimer des indices proches de zéro : en effet, estimer une moyenne proche de zéro par une méthode de Monte-Carlo est difficile avec une grande précision <em>relative</em>. Puisque les indices sont entre zéro et un, dans la plupart des situations, une estimation avec un à deux chiffres significatifs est suffisante.</p>
+<p>De plus, la méthode delta peut être utilisée pour obtenir la distribution asymptotique gaussienne des estimateurs.</p>
 
 </div>
 </div>

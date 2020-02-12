@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
-<title>Cours-calage-deterministe slides</title>
+<title>Sensibilite-Cours-lineaire slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13202,18 +13202,66 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Deterministic-code-calibration">Deterministic code calibration<a class="anchor-link" href="#Deterministic-code-calibration">&#182;</a></h1><p>$\DeclareMathOperator*{\argmin}{arg\,min}$
-$\newcommand{\Rset}{\mathbb{R}}$
-$\newcommand{\Nset}{\mathbb{R}}$
-$\newcommand{\vect}[1]{\boldsymbol{#1}}$</p>
-<h2 id="References">References<a class="anchor-link" href="#References">&#182;</a></h2><ul>
-<li><p>N. H. Bingham and John M. Fry (2010). <em>Regression, Linear Models in Statistics</em>, Springer Undergraduate Mathematics Series. Springer.</p>
-</li>
-<li><p>S. Huet, A. Bouvier, M.A. Poursat, and E. Jolivet (2004). <em>Statistical Tools for Nonlinear Regression</em>, Springer.</p>
-</li>
-<li><p>C. E. Rasmussen and C. K. I. Williams (2006), <em>Gaussian Processes for Machine Learning</em>, The MIT Press.</p>
-</li>
-</ul>
+<h1 id="Analyse-de-sensibilit&#233;-lin&#233;aire">Analyse de sensibilit&#233; lin&#233;aire<a class="anchor-link" href="#Analyse-de-sensibilit&#233;-lin&#233;aire">&#182;</a></h1><h2 id="Analyse-du-mod&#232;le-lin&#233;aire">Analyse du mod&#232;le lin&#233;aire<a class="anchor-link" href="#Analyse-du-mod&#232;le-lin&#233;aire">&#182;</a></h2><p>Assume that the random variables $X_i$ are independent, with 
+mean $E(X_i)$ and finite variances $V(X_i)$, for $i=1,2,\ldots,p$.
+Let us suppose that $Y$ is an affine function of the
+variables $X_i$:
+$$
+Y = g(X) = \beta_0 + \sum_{i=1,2,\ldots,p} \beta_i X_i,
+$$
+where $\beta_i$ are real parameters, for $i=1,2,\ldots,p$.</p>
+<p>The expectation of the sum of variables is the sum of the expectations, 
+so that</p>
+\begin{eqnarray*}
+E(Y) 
+&amp;=&amp; E(\beta_0) + \sum_{i=1,2,\ldots,p} E(\beta_i X_i) \\
+&amp;=&amp; \beta_0 + \sum_{i=1,2,\ldots,p} \beta_i E(X_i).
+\end{eqnarray*}
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice that the previous computation can be performed 
+even when the variables are dependent. 
+As we are going to see, we can derive a similar equality for the 
+variance, although the independence of the variable is 
+then a strict requirement.</p>
+<p>The standardized regression coefficient is</p>
+$$
+SRC_i = \frac{\beta_i^2 V(X_i)}{V(Y)},
+$$<p>for $i=1,2,\ldots,p$.</p>
+<p>Obviously, we have $SRC_i\geq 0$, for $i=1,...,p$. 
+Moreover, the following proposition shows that the sum of 
+standardized regression coefficients is equal to one.</p>
+<p>For an affine model $g$, the sum of the standardized regression coefficients is one:</p>
+$$
+SRC_1 + SRC_2 + \ldots + SRC_p = 1. \qquad \textrm{(1)}
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><em>Proof</em></p>
+<p>Since the variables $X_i$ are independent, the variance of the 
+sum of variables is the sum of the variances. 
+Hence, 
+$$
+V(Y) = V(\beta_0) + \sum_{i=1,2,\ldots,p} V(\beta_i X_i).
+$$
+But $V(\beta_0)=0$ and, for each $i=1,2,\ldots,p$, 
+we have $V(\beta_i X_i)=\beta_i^2 V(X_i)$. 
+This leads to the equality
+$$
+V(Y) = \sum_{i=1,2,\ldots,p} \beta_i^2 V(X_i).
+$$
+Hence, each term $\beta_i^2 V(X_i)$ is the part of the 
+total variance $V(Y)$ which is caused by the variable $X_i$.
+We divide the previous equality by $V(Y)$ and get the 
+equation (1), which concludes the proof. $\blacksquare$</p>
 
 </div>
 </div>
@@ -13221,26 +13269,25 @@ $\newcommand{\vect}[1]{\boldsymbol{#1}}$</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>We consider a computer model $\vect{h}$ (i.e. a deterministic
-function) to calibrate:</p>
+<h2 id="Linear-correlation-coefficient-and-SRC-indices">Linear correlation coefficient and SRC indices<a class="anchor-link" href="#Linear-correlation-coefficient-and-SRC-indices">&#182;</a></h2><p>In this section, we present the link between the linear 
+correlation coefficients of an affine model, and the 
+standardized regression coefficients.</p>
+<p>Assume that the random variables $X_i$ are independent, with 
+mean $E(X_i)$ and finite variances $V(X_i)$, for $i=1,2,\ldots,p$.
+Let us consider the random variable $Y$, which depends linearily on the 
+variables $X_i$. 
+We are interested in the correlation coefficient $Corr(Y,X_i)$.</p>
+<p>Let us consider two jointly distributed random variables $X$ and $Y$. 
+The covariance is 
 $$
-       \vect{z} = \vect{h}(\vect{x}, \vect{\theta}),
-$$<p>where</p>
-<ul>
-<li>$\vect{x} \in \Rset^{d_x}$ is the input vector;</li>
-<li>$\vect{z} \in \Rset^{d_z}$ is the output vector;</li>
-<li>$\vect{\theta} \in \Rset^{d_h}$ are the unknown parameters of
-$\vect{h}$ to calibrate.</li>
-</ul>
-<p>Let $n \in \Nset$ be the number of observations. The standard
-hypothesis of the probabilistic calibration is:</p>
+Cov(Y,X_i) = E[(Y-E(Y))(X_i-E(X_i))],
 $$
-       \vect{Y}^i = \vect{z}^i + \vect{\varepsilon}^i,
-$$<p>for $i=1,...,n$ where $\vect{\varepsilon}^i$ is a random
-measurement error such that:</p>
+for $i=1,2,\ldots,p$.
+The linear correlation coefficient is 
 $$
-       E(\varepsilon)=\vect{0} \in \Rset^{d_z}, \qquad Cov(\varepsilon)=\Sigma \in \Rset^{d_z\times d_z},
-$$<p>where $\Sigma$ is the error covariance matrix.</p>
+Corr(Y,X_i) = \frac{Cov(Y,X_i)}{\sqrt{V(Y)}\sqrt{V(X_i)}}
+$$
+for $i=1,2,\ldots,p$.</p>
 
 </div>
 </div>
@@ -13248,30 +13295,27 @@ $$<p>where $\Sigma$ is the error covariance matrix.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The goal of calibration is to estimate $\vect{\theta}$, based on
-observations of $n$ inputs
-$(\vect{x}^1, \ldots, \vect{x}^n)$ and the associated $n$
-observations of the output $(\vect{y}^1, \ldots, \vect{y}^n)$. In
-other words, the calibration process reduces the discrepancy between the
-observations $(\vect{y}^1, \ldots, \vect{y}^n)$ and the
-predictions $\vect{h}(\vect{\theta})$. Given that
-$(\vect{y}^1, \ldots, \vect{y}^n)$ are realizations of a random
-variable, the estimate of $\vect{\theta}$, denoted by
-$\hat{\vect{\theta}}$, is also a random variable. Hence, the
-secondary goal of calibration is to estimate the distribution of
-$\hat{\vect{\theta}}$ representing the uncertainty of the
-calibration process.</p>
-<p>The standard observation model makes the hypothesis that the covariance
-matrix of the error is diagonal, i.e.</p>
+<p>Assume that the output $Y$ is the affine model.
+Assume that the input variables $X_i$ are independent. 
+Therefore 
 $$
-       \Sigma = \sigma^2 {\bf I}
-$$<p>where $\sigma^2 \in \Rset$ is the constant observation error
-variance.</p>
-<p>In the remaining of this section, the input $\vect{x}$ is not
-involved anymore in the equations. This is why we simplify the equation
-into:</p>
+SRC_i = Corr(Y,X_i)^2,
 $$
-       \vect{z} = \vect{h}(\vect{\theta}).
+for $i=1,2,\ldots,p$.</p>
+<p><em>Proof</em></p>
+<p>We have</p>
+$$
+Cov(Y,X_i) = Cov(\beta_0,X_i) + \beta_1 Cov(X_1,X_i)+ \ldots + \beta_p Cov(X_p,X_i),
+$$<p>because the covariance function is linear with respect to 
+its arguments. 
+Obviously, we have $Cov(\beta_0,X_i)=0$ since $\beta_0$ is a constant. 
+Moreover, the random variables $X_i$ are independent, which implies that $Cov(X_j,X_i) = 0$, 
+for any $j \neq i$. 
+Therefore,</p>
+$$
+Cov(Y,X_i) 
+= \beta_i Cov(X_i,X_i) 
+= \beta_i V(X_i).
 $$
 </div>
 </div>
@@ -13279,16 +13323,17 @@ $$
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Least-squares">Least squares<a class="anchor-link" href="#Least-squares">&#182;</a></h2><p>The residuals is the difference between the observations and the
-predictions:</p>
+<p>Hence, the correlation coefficient can be simplified into</p>
+\begin{eqnarray*}
+Corr(Y,X_i) 
+&amp;=&amp; \frac{\beta_i V(X_i)}{\sqrt{V(Y)} \sqrt{V(X_i)}} \\
+&amp;=&amp; \frac{\beta_i \sqrt{V(X_i)}}{\sqrt{V(Y)}}.
+\end{eqnarray*}<p>We square the previous equality and get
 $$
-       \vect{r}^i = \vect{y}^i - \vect{h}(\vect{\theta})^i
-$$<p>for $i=1,...,n$. The method of least squares minimizes the square
-of the euclidian norm of the residuals. This is why the least squares
-method is based on the cost function $C$ defined by:</p>
+Corr(Y,X_i)^2= \frac{\beta_i^2 V(X_i)}{V(Y)}.
 $$
-       C(\vect{\theta}) = \frac{1}{2} \|\vect{y} - \vect{h}(\vect{\theta})\|^2 = \frac{1}{2} \sum_{i=1}^n \left( \vect{y}^i - \vect{h}(\vect{\theta})^i \right)^2,
-$$<p>for any $\vect{\theta} \in \Rset^{d_h}$.</p>
+In the previous equality, we recognize the SRC coefficient, 
+which concludes the proof. $\blacksquare$</p>
 
 </div>
 </div>
@@ -13296,14 +13341,22 @@ $$<p>for any $\vect{\theta} \in \Rset^{d_h}$.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The least squares method minimizes the cost function $C$:</p>
+<h2 id="R&#233;gression-lin&#233;aire">R&#233;gression lin&#233;aire<a class="anchor-link" href="#R&#233;gression-lin&#233;aire">&#182;</a></h2><p>En général, on ne sait pas si la fonction $g$ est linéaire. Dans les méthodes que nous décrivons, la fonction $g$ est une boîte noire dans laquelle la seule information observable est la sortie en fonction de l'entrée. Dans ce cas, on peut créer un modèle de regression linéaire comme une approximation de la fonction $g$. Cela permet ensuite d'utiliser les indices SRC, si le modèle linéaire est de qualité. Nous allons voir que cette qualité peut être quantifiée grâce au coefficient $R^2$.</p>
+<p>Le vecteur des prédictions du modèle linéaire est une combinaison linéaire des composantes du vecteur $X$ :
 $$
-       \hat{\vect{\theta}} = \argmin_{\vect{\theta} \in \Rset^{d_h}} \frac{1}{2} \|\vect{y} - \vect{h}(\vect{\theta})\|^2.
-$$<p>The unbiased estimator of the variance is:</p>
+y = \beta_0 + X^T \beta + \epsilon
 $$
-       \hat{\sigma}^2 = \frac{\|\vect{y} - \vect{h}(\vect{\theta})\|^2}{n - d_h}.
-$$<p>Notice that the previous estimator is not the maximum likelihood
-estimator (which is biased).</p>
+où $\epsilon$ est une variable aléatoire et $(\beta_0,\beta_1,...,\beta_p)^T\in\mathbb{R}^{p+1}$ est le vecteur des paramètres. 
+Soit $n$ la taille de l'échantillon et soit $X^{(1)},...,X^{(n)}$ un échantillon i.i.d. du vecteur aléatoire $X$. La matrice de conception du modèle linéaire est :
+$$
+A = 
+\begin{pmatrix}
+1 &amp; X_1^{(1)} &amp; ... &amp; X_p^{(1)} \\
+1 &amp; X_1^{(2)} &amp; ... &amp; X_p^{(2)} \\
+\vdots &amp; \vdots &amp; &amp; \vdots \\
+1 &amp; X_1^{(n)} &amp; ... &amp; X_p^{(n)}
+\end{pmatrix}.
+$$</p>
 
 </div>
 </div>
@@ -13311,23 +13364,19 @@ estimator (which is biased).</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Linear-least-squares">Linear least squares<a class="anchor-link" href="#Linear-least-squares">&#182;</a></h2><p>In the particular case where the deterministic function $\vect{h}$
-is linear with respect to the parameter $\vect{\theta}$, then the
-method reduces to the linear least squares. Let
-$J \in \Rset^{n \times d_h}$ be the Jacobian matrix made of the
-partial derivatives of $\vect{h}$ with respect to
-$\vect{\theta}$:</p>
+<p>Soit $y$ le vecteur des sorties de la fonction $g$ :
 $$
-       J(\vect{\theta}) = \frac{\partial \vect{h}}{\partial \vect{\theta}}.
-$$<p>Let $\vect{\mu} \in \Rset^{d_h}$ be a reference value of the
-parameter $\vect{\theta}$. Let us denote by
-$J=J(\vect{\mu})$ the value of the Jacobian at the reference point
-$\vect{\mu}$. Since the function is, by hypothesis, linear, the
-Jacobian is independent of the point where it is evaluated. Since
-$\vect{h}$ is linear, it is equal to its Taylor expansion:</p>
+y^{(j)} = g\left(X^{(j)}\right), \quad j=1,...,n.
 $$
-       \vect{h}(\vect{\theta}) = \vect{h}(\vect{\mu}) + J (\vect{\theta} - \vect{\mu}),
-$$<p>for any $\vect{\theta} \in \Rset^{d_h}$.</p>
+Le problème de regression linéaire consiste à résoudre le problème :
+$$
+\min_{\beta\in\mathbb{R}^p} \|y - A\beta\|_2.
+$$
+Si la matrice $A$ est de rang plein, la solution est unique. C'est celle donnée par les équations normales :
+$$
+\hat{\beta} = \left(A^T A\right)^{-1} A^T y.
+$$
+En pratique, bien que la méthode des équations normales soit appropriée dans certaines circonstances, on utilise le plus souvent une méthode fondée sur une décomposition orthogonale de la matrice $A$, comme par exemple la décomposition QR ou la décomposition SVD.</p>
 
 </div>
 </div>
@@ -13335,128 +13384,22 @@ $$<p>for any $\vect{\theta} \in \Rset^{d_h}$.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The corresponding linear least squares problem is:</p>
+<h2 id="Qualit&#233;-de-la-regression-lin&#233;aire">Qualit&#233; de la regression lin&#233;aire<a class="anchor-link" href="#Qualit&#233;-de-la-regression-lin&#233;aire">&#182;</a></h2><p>Une fois que les coefficients $\beta$ sont calculés, on doit déterminer si le modèle linéaire est une approximation appropriée de la fonction $g$. 
+Soit 
 $$
-       \hat{\vect{\theta}} = \argmin_{\vect{\theta} \in \Rset^{d_h}} \frac{1}{2} \|\vect{y} - \vect{h}(\vect{\mu}) - J (\vect{\theta} - \vect{\mu})\|^2.
-$$<p>The Gauss-Markov theorem applied to this problem states that the
-solution is:</p>
+\bar{y} = \frac{1}{n} \sum_{j=1}^n y^{(j)}
 $$
-       \hat{\vect{\theta}} = \vect{\mu} + \left(J^T J\right)^{-1} J^T ( \vect{y} - \vect{h}(\vect{\mu})).
-$$<p>The previous equations are the <em>normal equations</em>. Notice, however, that
-the previous linear system of equations is not implemented as is, i.e.
-we generally do not compute and invert the Gram matrix $J^T J$.
-Alternatively, various orthogonalization methods such as the QR or the
-SVD decomposition can be used to solve the linear least squares problem
-so that potential ill-conditionning of the normal equations is
-mitigated.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This estimator can be proved to be the best linear unbiased estimator,
-the <em>BLUE</em>, that is, among the unbiased linear estimators, it is the one
-which minimizes the variance of the estimator.</p>
-<p>Assume that the random observations are gaussian:</p>
+la moyenne empirique des sorties $y$. 
+Soit $\hat{y}$ le vecteur des prédictions du modèle de regression linéaire :
 $$
-       \varepsilon \sim \mathcal{N}(\vect{0},\sigma^2 {\bf I}).
-$$<p>Therefore, the distribution of $\hat{\vect{\theta}}$ is:</p>
+\hat{y} = A\hat{\beta}.
 $$
-       \hat{\vect{\theta}} \sim \mathcal{N}(\vect{\theta},\sigma^2 J^T J).
+Le coefficient $R^2\in[0,1]$ est :
 $$
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Non-Linear-Least-squares">Non Linear Least squares<a class="anchor-link" href="#Non-Linear-Least-squares">&#182;</a></h1><p>In the general case where the function $\vect{h}$ is non linear
-with respect to the parameter $\vect{\theta}$, then the resolution
-involves a non linear least squares optimization algorithm. Instead of
-directly minimizing the squared euclidian norm of the residuals, most
-implementations rely on the residual vector, which lead to an improved
-accuracy.</p>
-<p>The difficulty in the nonlinear least squares is that, compared to the
-linear situation, the theory does not provide the distribution of
-$\hat{\vect{\theta}}$ anymore.</p>
-<p>There are two practical solutions to overcome this limitation.</p>
-<ul>
-<li>bootstrap,</li>
-<li>linearization.</li>
-</ul>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>The bootstrap method is based on the following experiment. Provided that
-we can generate a set of input and output observations, we can compute
-the corresponding value of the parameter $\hat{\vect{\theta}}$.
-Reproducing this sampling experiment a large number of times would allow
-to get the distribution of the estimated parameter
-$\hat{\vect{\theta}}$. In practice, we only have one single sample
-of $n$ observations. If this sample is large enough and correctly
-represents the variability of the observations, the bootstrap method
-allows to generate observations resamples, which, in turn, allow to get
-a sample of $\hat{\vect{\theta}}$. An approximate distribution of
-$\hat{\vect{\theta}}$ can then be computed based on kernel
-smoothing, for example. In order to get a relatively accurate
-distribution of $\hat{\vect{\theta}}$, the boostrap sample size
-must be large enough. Hence, this method requires to solve a number of
-optimization problems, which can be time consuming.</p>
-<p>Alternatively, we can linearize the function $\vect{h}$ in the
-neighbourhood of the solution $\hat{\vect{\theta}}$ and use the
-gaussian distribution associated with the linear least squares. This
-method is efficient, but only accurate when the function
-$\vect{h}$ is approximately linear with respect to
-$\vect{\theta}$ in the neighbourhood of
-$\hat{\vect{\theta}}$.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Least-squares-and-minimization-of-likelihood">Least squares and minimization of likelihood<a class="anchor-link" href="#Least-squares-and-minimization-of-likelihood">&#182;</a></h2><p>A link between the method of least squares and the method of maximum
-likelihood can be done provided that two hypotheses are satisfied. The
-first hypothesis is that the random output observations
-$\vect{y}^i$ are independent. The second hypothesis is that the
-random measurement error $\vect{\varepsilon}$ has the gaussian
-distribution. In this particular case, it can be shown that the solution
-of the least squares problem maximizes the likelihood.</p>
-<p>This is the reason why, after a least squares calibration has been
-performed, the distribution of the residuals may be interesting to
-analyze. Indeed, if the distribution of the residuals is gaussian and if
-the outputs are independent, then the least squares estimator is the
-maximum likelihood estimator, which gives a richer interpretation to the
-solution.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Regularization-and-ill-conditionned-problems">Regularization and ill-conditionned problems<a class="anchor-link" href="#Regularization-and-ill-conditionned-problems">&#182;</a></h2><p>If a problem is ill-conditionned, a small change in the observations can
-generate a large change in the estimate $\hat{\vect{\theta}}$.
-Hence, for problems which are ill-conditionned, calibration methods may
-include some regularization features.</p>
-<p>An ill-conditionned problem may appear in the particular case where the
-Jacobian matrix $J$ is rank-degenerate. For example, suppose that
-a linear least squares problem is considered, where some linear
-combinations of the columns of $J$ are linearily dependent. This
-implies that there is a linear subspace of the parameter space
-$\hat{\vect{\theta}}$ such that linear combinations of the
-parameters do not have any impact on the output. In this case, it is not
-possible to estimate the projection of the solution on that particular
-subpace. Gaussian calibration is a way of mitigating this situation, by
-constraining the solution to be <em>not too far away</em> from a reference
-solution, named the <em>prior</em>.</p>
+R^2 = 1- \frac{\sum_{j=1}^n \left(y^{(j)} - \hat{y}^{(j)}\right)^2}{\sum_{j=1}^n \left(y^{(j)} - \bar{y}\right)^2}
+$$
+Le coefficient $R^2$ mesure la part de variance expliquée par le modèle linéaire.</p>
+<p>On considère souvent qu'un coefficient de prédictivité $R^2&gt;0.9$ est le signe d'une qualité suffisante. Un coefficient $R^2&lt;0.5$ est inacceptable pour une utilisation pratique : c'est le signe que, vraisemblablement, le modèle n'est <em>pas</em> linéaire.</p>
 
 </div>
 </div>
