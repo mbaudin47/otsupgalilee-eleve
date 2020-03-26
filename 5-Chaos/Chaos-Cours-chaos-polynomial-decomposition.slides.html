@@ -13202,7 +13202,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction-aux-polyn&#244;mes-de-chaos-:-d&#233;composition-en-chaos-polynomial">Introduction aux polyn&#244;mes de chaos : d&#233;composition en chaos polynomial<a class="anchor-link" href="#Introduction-aux-polyn&#244;mes-de-chaos-:-d&#233;composition-en-chaos-polynomial">&#182;</a></h1><h2 id="R&#233;sum&#233;">R&#233;sum&#233;<a class="anchor-link" href="#R&#233;sum&#233;">&#182;</a></h2><p>Dans cette page, nous présentons la décomposition en polynômes du chaos d'une fonction multivariée. Nous présentons l'esimation des moments et des indices de sensibilité d'un chaos polynomial.</p>
+<h1 id="Introduction-aux-polyn&#244;mes-de-chaos-:-d&#233;composition-en-chaos-polynomial">Introduction aux polyn&#244;mes de chaos : d&#233;composition en chaos polynomial<a class="anchor-link" href="#Introduction-aux-polyn&#244;mes-de-chaos-:-d&#233;composition-en-chaos-polynomial">&#182;</a></h1><h2 id="R&#233;sum&#233;">R&#233;sum&#233;<a class="anchor-link" href="#R&#233;sum&#233;">&#182;</a></h2><p>Dans cette page, nous présentons la décomposition en polynômes du chaos d'une fonction multivariée. Nous présentons l'estimation des moments et des indices de sensibilité d'un chaos polynomial.</p>
 <h2 id="R&#233;f&#233;rences">R&#233;f&#233;rences<a class="anchor-link" href="#R&#233;f&#233;rences">&#182;</a></h2><p>OpenTURNS :</p>
 <ul>
 <li><a href="http://openturns.github.io/openturns/master/theory/meta_modeling/chaos_basis.html">http://openturns.github.io/openturns/master/theory/meta_modeling/chaos_basis.html</a></li>
@@ -13236,9 +13236,9 @@ a.anchor-link {
 $$
 Y = g(X)
 $$<p>où $Y\in\mathbb{R}$ et $X\in\mathbb{R}^p$ où $p$ est la dimension de la variable aléatoire en entrée. 
-Soit $T$ la transformation iso-probabiliste associée et $\xi \in\mathbb{R}^p$ telle que 
+Soit $T$ la transformation iso-probabiliste associée et $\xi \in\mathbb{R}^p$ la variable aléatoire telle que 
 $\xi = T(X)$ pour tout $X\in\mathbb{R}^p$.</p>
-<p>On considère une variable aléatoire standardisée $\xi\in\mathbb{R}^p$. On considère la fonction $h$  :</p>
+<p>On considère la fonction $h$  :</p>
 $$
 Y = h(\xi) 
 $$<p>où $h$ est définie par :</p>
@@ -13337,17 +13337,17 @@ $$</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Proposition: Coefficients of the truncated decomposition</strong></p>
-<p>Assume that the truncated decomposition is exact, i.e.
+<p><strong>Proposition: Coefficients de la décomposition tronquée</strong></p>
+<p>Supposons que la décomposition tronquée est exacte :
 $$
 g(\xi) = \sum_{j=0}^P a_j\psi_j(\xi)
 $$
-for any $\xi\in\mathbb{R}^p$.
-Therefore, the truncated expansion is such that
+pour tout $\xi\in\mathbb{R}^p$.
+Par conséquent, le développement est tel que 
 $$
 a_j=\frac{(g,\psi_j)}{\|\psi_j\|^2},
 $$
-for $k=0,...,P$.</p>
+pour $j=0,...,P$.</p>
 
 </div>
 </div>
@@ -13356,7 +13356,7 @@ for $k=0,...,P$.</p>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Preuve</strong>
-Indeed, for $k=0,...,P$, we have:</p>
+En effet, pour $k=0,...,P$, on a :</p>
 \begin{eqnarray*}
 (g,\psi_k)
 &amp;=&amp; \int_{\mathbb{R}^p} g(\xi) \psi_k(\xi) f(\xi)d\xi\\
@@ -13365,7 +13365,7 @@ Indeed, for $k=0,...,P$, we have:</p>
 &amp;=&amp; \sum_{j=0}^{P} a_j (\psi_j,\psi_k) \\
 &amp;=&amp; a_k (\psi_k,\psi_k) \\
 &amp;=&amp; a_k \|\psi_k\|^2,
-\end{eqnarray*}<p>since $(\psi_j,\psi_k)=0$ if $j\neq k$.</p>
+\end{eqnarray*}<p>puisque $(\psi_j,\psi_k)=0$ si $j\neq k$.</p>
 
 </div>
 </div>
@@ -13462,7 +13462,7 @@ pour tout $\xi\in\mathbb{R}^p$.</p>
 Ainsi, les polynômes considérés dépendent exclusivement de $\xi_i$ et pas des autres variables, ce qui permet de mesurer l'effet de la variable $\xi_i$ seule. 
 Plus précisément, soit $\mathcal{J}_i^S$ l'ensemble des multi-indices tels que $\alpha_i&gt;0$ et tel que les autres composantes du multi-indice sont nulles :
 $$
-\mathcal{J}_i^S=\left\{\alpha=(0,...0,\alpha_i,0,...,0)\in\mathcal{J}_P, \quad \alpha_i&gt;0\right\}.
+\mathcal{J}_i^S=\left\{\alpha=(0,..., 0,\alpha_i,0,...,0)\in\mathcal{J}_P, \quad \alpha_i&gt;0\right\}.
 $$
 Alors l'indice du premier ordre $S_i$ est la somme des carrés des coefficients associés à la i-ème variable :
 $$
