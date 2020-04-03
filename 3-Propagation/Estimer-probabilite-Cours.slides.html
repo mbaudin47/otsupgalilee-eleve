@@ -9,7 +9,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
-<title>Chaos-Cours-chaos-polynomial-decomposition slides</title>
+<title>Estimer-probabilite-Cours slides</title>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -13202,11 +13202,34 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Introduction-aux-polyn&#244;mes-de-chaos-:-d&#233;composition-en-chaos-polynomial">Introduction aux polyn&#244;mes de chaos : d&#233;composition en chaos polynomial<a class="anchor-link" href="#Introduction-aux-polyn&#244;mes-de-chaos-:-d&#233;composition-en-chaos-polynomial">&#182;</a></h1><h2 id="R&#233;sum&#233;">R&#233;sum&#233;<a class="anchor-link" href="#R&#233;sum&#233;">&#182;</a></h2><p>Dans cette page, nous présentons la décomposition en polynômes du chaos d'une fonction multivariée. Nous présentons l'estimation des moments et des indices de sensibilité d'un chaos polynomial.</p>
-<h2 id="R&#233;f&#233;rences">R&#233;f&#233;rences<a class="anchor-link" href="#R&#233;f&#233;rences">&#182;</a></h2><p>OpenTURNS :</p>
-<ul>
-<li><a href="http://openturns.github.io/openturns/master/theory/meta_modeling/chaos_basis.html">http://openturns.github.io/openturns/master/theory/meta_modeling/chaos_basis.html</a></li>
-</ul>
+<h1 id="Estimer-une-probabilit&#233;-de-d&#233;passement-de-seuil">Estimer une probabilit&#233; de d&#233;passement de seuil<a class="anchor-link" href="#Estimer-une-probabilit&#233;-de-d&#233;passement-de-seuil">&#182;</a></h1><h2 id="Introduction">Introduction<a class="anchor-link" href="#Introduction">&#182;</a></h2><p>Soit $X = (X_1,..., X_p)\in\mathbb{R}^p$ le vecteur aléatoire d’entrée. On note $f$ la densité de probabilité de la variable $X$.</p>
+<p>Soit $g$ une fonction de $\mathbb{R}^p$ vers $\mathbb{R}$. On considère la variable aléatoire :</p>
+$$
+Y = g(X).
+$$<p>Soit $s\in\mathbb{R}$ un seuil donné. Nous souhaitons estimer la probabilité :</p>
+$$
+p_f = P(Y &gt; s).
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Bien sûr, nous pourrions considérer que cette probabilité peut se calculer comme l'espérance d'une fonction indicatrice. 
+En effet, soit $\mathbb{1}_{g(X)&gt;s}$ la fonction indicatrice définie par :</p>
+\begin{align*}
+\mathbb{1}_{g(X)&gt;s}(x)
+= \left\{
+\begin{array}{l}
+1, \textrm{ si } g(x)&gt;s, \\
+0, \textrm{ sinon}.
+\end{array}
+\right.
+\end{align*}<p>Alors, la probabilité $p_f$ est l'espérance de la fonction indicatrice :</p>
+$$
+p_f = E\left(\mathbb{1}_{g(X)&gt;s}(X)\right) = \int_{\mathbb{R}^p} \mathbb{1}_{g(X)&gt;s}(x) f(x) dx.
+$$<p>En fait, une telle formulation pose souvent des difficultés. La plus importante est qu'il peut s'avérer que la probabilité recherchée est faible, ce qui peut nécessiter des méthodes spécifiques.</p>
 
 </div>
 </div>
@@ -13214,17 +13237,43 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="R&#233;f&#233;rences">R&#233;f&#233;rences<a class="anchor-link" href="#R&#233;f&#233;rences">&#182;</a></h2><p>Ouvrages, articles, thèses :</p>
-<ul>
-<li>O.P Le Maître, O.M.Knio, Spectral methods for uncertainty quantification, Springer, 2010</li>
-<li>Wuan Luo. Wiener Chaos Expansion and Numerical Solutions of Stochastic Stochastic Partial Differential Equations. PhD thesis, California Institute of Technology, May 2006.</li>
-<li>R. H. Cameron and W. T. Martin. The orthogonal development of nonlinear functionals in series of Fourier-Hermite functionals. Annals of Mathematics, 48(2):385-392, April 1947.</li>
-<li>Adaptive sparse polynomial chaos expansions for uncertainty propagation and sensitivity analysis, Thèse, Géraud Blatman, 2009</li>
-</ul>
-<p>Pour les plus aventuriers, vous pouvez prendre de risque de consulter mon propre texte qui contient la démonstration de plusieurs résultats présentés ici.</p>
-<ul>
-<li>Introduction to polynomials chaos with NISP. Michael Baudin. Version 0.5. March 2015</li>
-</ul>
+<h2 id="Estimer-une-probabilit&#233;-avec-la-m&#233;thode-de-Monte-Carlo-simple">Estimer une probabilit&#233; avec la m&#233;thode de Monte-Carlo simple<a class="anchor-link" href="#Estimer-une-probabilit&#233;-avec-la-m&#233;thode-de-Monte-Carlo-simple">&#182;</a></h2><p>Soit $n$ un entier représentant la taille de l'échantillon. 
+Soient $y^{(1)},...,y^{(n)}$ des réalisations indépendantes 
+de la variable $Y$, pour $j=1,2,...,n$.</p>
+<p>Soit $Z_j$ la variable dont les réalisations sont</p>
+$$
+z^{(j)}=
+\left\{
+\begin{array}{l}
+1\textrm{ si } y^{(j)}&gt;s\\
+0\textrm{ sinon.}
+\end{array}
+\right.
+$$<p>La variable $Z^{(j)}$ est une variable de Bernoulli de paramètre $p_f$. 
+Par conséquent, son espérance est $p_f$ et sa variance est $p_f(1-p_f)$.</p>
+<p>Soit $b_n$ la variable définie par:</p>
+$$
+b_n=z^{(1)}+...+z^{(n)}.
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>La probabilité de dépassement $p_f$ est estimée par</p>
+$$
+\tilde{p}_f=\frac{b_n}{n}.
+$$<p>La variable</p>
+$$
+B_n = Z^{(1)}+\ldots+Z^{(n)}
+$$<p></p>
+<p>est une variable binomiale de paramètres $p_f$ et $n$. 
+Par conséquent, son espérance est $np_f$ et sa variance est $np_f(1-p_f)$. 
+L'espérance de la variable</p>
+$$
+\tilde{p}_f=\frac{B_n}{n}
+$$<p>est donc $p_f$ et sa variance est $p_f(1-p_f)/n$.</p>
 
 </div>
 </div>
@@ -13232,19 +13281,15 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Hypoth&#232;ses">Hypoth&#232;ses<a class="anchor-link" href="#Hypoth&#232;ses">&#182;</a></h2><p>On considère la fonction $g$  :</p>
+<h2 id="Pr&#233;cision-d'estimation">Pr&#233;cision d'estimation<a class="anchor-link" href="#Pr&#233;cision-d'estimation">&#182;</a></h2><p>Dans le contexte de l'estimation d'une probabilité de dépassement de seuil $p_f$, il est pratique de pouvoir estimer la précision <em>relative</em> d'estimation de $p_f$. C'est particulièrement vrai lorsqu'on s'intéresse aux faibles valeurs de probabilité.</p>
+<p>Soit $\sigma_{p_f}^2$ la variance de l'estimateur de la probabilité de dépassement :</p>
 $$
-Y = g(X)
-$$<p>où $Y\in\mathbb{R}$ et $X\in\mathbb{R}^p$ où $p$ est la dimension de la variable aléatoire en entrée. 
-Soit $T$ la transformation iso-probabiliste associée et $\xi \in\mathbb{R}^p$ la variable aléatoire telle que 
-$\xi = T(X)$ pour tout $X\in\mathbb{R}^p$.</p>
-<p>On considère la fonction $h$  :</p>
+\sigma_{p_f} = \sqrt{\frac{p_f(1-p_f)}{n}}.
+$$<p>Le coefficient de variation est :</p>
 $$
-Y = h(\xi) 
-$$<p>où $h$ est définie par :</p>
-$$
-h(\xi) = g\circ T^{-1}(\xi) = g\left(T^{-1}(\xi)\right).
-$$<p>Dans l'équation précédente, la fonction $g\circ T^{-1}$ est la composition de la fonction $g$ par l'inverse de la transformation iso-probabiliste $T$.</p>
+CV_{p_f} = \frac{\sigma_{p_f}}{p_f}, 
+$$<p>si $p_f&gt;0$.</p>
+<p>Puisque, en pratique, nous ne connaissons pas $p_f$ mais seulement son estimation $\tilde{p}_f$, on substitue $p_f$ par $\tilde{p}_f$ dans les expressions précédentes. Cela  mène à des estimations approchées, mais satisfaisantes lorsque $n$ est suffisamment grand.</p>
 
 </div>
 </div>
@@ -13252,10 +13297,19 @@ $$<p>Dans l'équation précédente, la fonction $g\circ T^{-1}$ est la compositi
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>Note</em> : On considère ici le cas où la sortie $Y$ est un scalaire.</p>
-<p>Le cas plus général où la sortie $Y$ est un vecteur se traite de manière analogue, pour chaque composante du vecteur de sortie.</p>
-<p>Plus précisément, cela revient à créer plusieurs polynômes du chaos, chaque polynôme étant associé à une composante du vecteur de sortie.</p>
-<p>Cela ne nécessite pas nécessairement de nouveaux appels à la la fonction $g$, mais requiert des calculs supplémentaires.</p>
+<p>Supposons que $p_f&gt;0$. 
+Alors,</p>
+\begin{align*}
+CV 
+&amp;= \frac{1}{p_f} \sqrt{\frac{p_f(1-p_f)}{n}} \\
+&amp;= \sqrt{\frac{1-p_f}{p_f n}}.
+\end{align*}<p>Si le seuil $s$ augmente, alors $p_f\rightarrow 0$.</p>
+<p>Cela implique $1-p_f\rightarrow 1$ et par conséquent :</p>
+\begin{align*}
+CV 
+&amp;\rightarrow \sqrt{\frac{1}{p_f n}},
+\end{align*}<p>quand $p_f\rightarrow 0$.
+On observe que le coefficient de variation tend vers l'infini si $n$ est fixé. De manière plus intuitive, si la probabilité $p_f$ est divisée par 4, alors le coefficient de variation est multiplié par 2.</p>
 
 </div>
 </div>
@@ -13263,16 +13317,15 @@ $$<p>Dans l'équation précédente, la fonction $g\circ T^{-1}$ est la compositi
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>Supposons que :</p>
-<ul>
-<li>la variance de la sortie $Y$ est finie,</li>
-<li>les marginales de $\xi$ sont indépendantes. </li>
-</ul>
-<p>Sous ces hypothèses, notons $f_i$ la loi marginale de la variable aléatoire $\xi_i\in\mathbb{R}$, pour $i=1,...,n$. Puisque les variables sont indépentantes, la densité de probabilité du vecteur aléatoire $\xi$ est le produit des lois marginales, c'est à dire :
+<p>Inversons la relation précédente. On obtient :</p>
 $$
-f(\xi) = \prod_{i=1}^p f_i(\xi_i)
+n \approx \frac{1}{p_f CV^2},
+$$<p>si $p_f \approx 0$.</p>
+<p>Par exemple, si on souhaite une probabilité égale à $p_f = 10^{-m}$ avec un coefficient de variation égal à $CV=0.1$, alors il faut environ</p>
 $$
-pour tout $\xi\in\mathbb{R}^p$.</p>
+n \approx \frac{1}{10^{-2} 10^{-m}} = 10^{m+2}
+$$<p>simulations, si $p_f \approx 0$.</p>
+<p>Une valeur fréquemment utilisée est $CV_{p_f} = 0.01$, ce qui correspond approximativement à une erreur relative de 1% sur la probabilité $p_f$. Cela correspond approximativement à 2 chiffres significatifs sur $p_f$, ce qui est faible mais nécessite souvent une taille d'échantillon assez grande. Par exemple, si on souhaite estimer une probabilité $p_f$ proche de 0.5, une taille d'échantillon de l'ordre de n=10000 est nécessaire.</p>
 
 </div>
 </div>
@@ -13280,17 +13333,47 @@ pour tout $\xi\in\mathbb{R}^p$.</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="D&#233;composition-en-chaos-polynomial">D&#233;composition en chaos polynomial<a class="anchor-link" href="#D&#233;composition-en-chaos-polynomial">&#182;</a></h2><p>La décomposition précédente est une décomposition <em>spectrale</em>, analogue à la décomposition de Fourier. Lorsque la variable $X$ suit une loi gaussienne de marginales indépendantes, on utilise la base des polynômes d'Hermite multivariés (créés par tensorisation des polynômes d'Hermites univariés). Dans ce cas, cette décomposition s'appelle <em>décomposition en polynômes de chaos</em>.</p>
-<p>Dans le cas général où les marginales ne sont pas nécessairement gaussiennes, cette décomposition se nomme <em>décomposition en polynômes de chaos généralisés</em>.</p>
-<p>La preuve de la convergence des polynômes du cas (i.e. dans le cas particulier gaussien) est dûe, dans un cadre un peu plus général, à Cameron et Martin (voir (Le Maître, Knio, 2010) page 29). Le théorème de Cameron-Martin implique une variable aléatoire $\xi$ en dimension infinie, c'est à dire que $\xi=(\xi_1,\xi_2,...)$.</p>
-<p>Soit $\{\psi_j(\xi)\}_{j\geq 0}$ une famille de polynômes orthogonaux multivariés. On définit le produit scalaire entre deux polynômes : 
+<h2 id="Loi-de-l'estimateur">Loi de l'estimateur<a class="anchor-link" href="#Loi-de-l'estimateur">&#182;</a></h2><p>Nous avons déjà vu que l'estimateur de la probabilité suit une loi binomiale. Nous allons voir que cette loi converge vers la loi gaussienne lorsque la taille de l'échantillon tend vers l'infini.</p>
+<p>En effet, le théorème limite central implique que la variable aléatoire $\tilde{p}_f$ converge en distribution vers la loi gaussienne. 
+Plus précisément :</p>
 $$
-\left( \psi_{j}(\xi),\psi_{k}(\xi) \right) = \mathbb{E} (\psi_{j}(\xi) \psi_{k}(\xi))
+\sqrt{n}(\tilde{p}_f - p_f) \xrightarrow{d} \mathcal{N}(0,p_f(1-p_f)).
 $$
-pour $j,k\geq 1$. Par définition de l'espérance, on a :
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Par conséquent,</p>
 $$
-\left( \psi_{j}(\xi),\psi_{k}(\xi) \right) = \int_{\mathbb{R}^n} \psi_{j}(\xi) \psi_{k}(\xi) f(\xi) d\xi.
-$$</p>
+\tilde{p}_f - p_f \xrightarrow{d} \mathcal{N}\left(0,\frac{p_f(1-p_f)}{n}\right)
+$$<p>ce qui implique :</p>
+$$
+\tilde{p}_f \xrightarrow{d} \mathcal{N}\left(p_f,\frac{p_f(1-p_f)}{n}\right).
+$$<p>Par conséquent :</p>
+$$
+\tilde{p}_f \xrightarrow{d} \mathcal{N}\left(p_f,\sigma_{p_f}^2\right).
+$$
+</div>
+</div>
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Intervalle-de-confiance-de-la-probabilit&#233;">Intervalle de confiance de la probabilit&#233;<a class="anchor-link" href="#Intervalle-de-confiance-de-la-probabilit&#233;">&#182;</a></h2><p>On peut exprimer directement un intervalle de confiance pour 
+la variable aléatoire $\tilde{p}_f$, puisqu'elle suit la loi binomiale. 
+La tradition consiste à l'exprimer en fonction d'une loi normale standard. 
+En effet, le T.C.L. implique :</p>
+$$
+\frac{\tilde{p}_f - p_f}{\sigma_{p_f}} \xrightarrow{d} \mathcal{N}(0,1).
+$$<p>Soit $\alpha\in[0,1/2]$ un niveau de confiance. 
+Soit $q$ le quantile d'ordre $1-\alpha/2$ de la loi normale standard :</p>
+$$
+q=\Phi^{-1}(1-\alpha/2),
+$$<p>où $\Phi$ est la fonction de répartition de la loi gaussienne 
+de moyenne nulle et d'écart-type unité. 
+Par exemple, si $\alpha=0.05$, alors $\alpha/2=0.025$ ce qui implique $q=1.960$.</p>
 
 </div>
 </div>
@@ -13298,16 +13381,16 @@ $$</p>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>On fait l'hypothèse que les polynômes multivariés $\psi_j$ sont orthogonaux, c'est à dire que le produit scalaire est égal à zéro pour deux polynômes différents :
+<p>Puisque la distribution de la variable $(\tilde{p}_f - p_f)/\sigma_{p_f}$ converge vers la loi normale standard, cela implique</p>
 $$
-\left( \psi_j(\xi),\psi_k(\xi) \right) = 0,
+P\left(\frac{\tilde{p}_f - p_f}{\sigma_{p_f}} \in [-q,q]\right) \rightarrow 1-\alpha.
+$$<p>Par conséquent,</p>
 $$
-pour $j\neq k$.</p>
-<p>Alors la sortie peut être décomposée sous la forme d'une combinaison linéaire des polynômes multivariés :
-$$
-Y = \sum_{j=0}^{\infty} a_j\psi_j(\xi),
-$$
-où $a_j\in\mathbb{R}$ sont les coefficients de la décomposition en polynômes du chaos et $\xi=(\xi_1,\xi_2,...)$ est une variable aléatoire en dimension infinie.</p>
+P\left(\tilde{p}_f \in \left[p_f-q \sigma_{p_f} ,p_f+q \sigma_{p_f} \right]\right) \rightarrow 1-\alpha.
+$$<p>Le problème de l'intervalle de confiance précédent est que la probabilité $p_f$ est inconnue, 
+de telle sorte que l'écart-type $\sigma_{p_f}$ dans l'expression précédente 
+ne peut être calculé directement. 
+Pour obtenir un intervalle de confiance approché, on substitue $p_f$ par $\tilde{p}_f$.</p>
 
 </div>
 </div>
@@ -13315,186 +13398,13 @@ où $a_j\in\mathbb{R}$ sont les coefficients de la décomposition en polynômes 
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>La première troncature consiste à restreindre le vecteur aléatoire $\xi=(\xi_1,...,\xi_p)$ à une dimension $p$ finie. 
-La seconde troncature consiste à restreindre le nombre de termes dans la série, pour ne conserver que les $P$ premiers termes, où $P$ est un entier. 
-Alors la sortie peut être décomposée sous la forme d'une combinaison linéaire des polynômes multivariés (voir (Le Maître, Knio, 2010) page 34) :
+<p>Soit $\tilde{\sigma}_{p_f}^2$ la variance approchée de l'estimateur de la probabilité de dépassement :</p>
 $$
-Y = \sum_{j=0}^P a_j\psi_j(\xi) + \epsilon(p,P),
+\tilde{\sigma}_{p_f} = \sqrt{\frac{\tilde{p}_f(1-\tilde{p}_f)}{n}}.
+$$<p>Cela implique :</p>
 $$
-où $\xi=(\xi_1,...,\xi_p)$, $\epsilon(p,P)$ est une variable aléatoire et 
+P\left(\tilde{p}_f \in \left[p_f- q \tilde{\sigma}_{p_f},p_f+q \tilde{\sigma}_{p_f}\right]\right) \xrightarrow{\tilde{\,}} 1-\alpha.
 $$
-a_j=\frac{(g,\psi_j)}{\|\psi_j\|^2},
-$$
-pour $j\geq 0$.
-De plus, la décomposition précédente converge dans le sens $L^2$ :
-$$
-\lim_{p,P\rightarrow \infty} \|\epsilon(p,P)\| = 0.
-$$</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Proposition: Coefficients de la décomposition tronquée</strong></p>
-<p>Supposons que la décomposition tronquée est exacte :
-$$
-g(\xi) = \sum_{j=0}^P a_j\psi_j(\xi)
-$$
-pour tout $\xi\in\mathbb{R}^p$.
-Par conséquent, le développement est tel que 
-$$
-a_j=\frac{(g,\psi_j)}{\|\psi_j\|^2},
-$$
-pour $j=0,...,P$.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p><strong>Preuve</strong>
-En effet, pour $k=0,...,P$, on a :</p>
-\begin{eqnarray*}
-(g,\psi_k)
-&amp;=&amp; \int_{\mathbb{R}^p} g(\xi) \psi_k(\xi) f(\xi)d\xi\\
-&amp;=&amp; \int_{\mathbb{R}^p} \left(\sum_{j=0}^P a_j\psi_j(\xi)\right) \psi_k(\xi) f(\xi)d\xi\\
-&amp;=&amp; \sum_{j=0}^{P} a_j \int_{\mathbb{R}^p} \psi_j(\xi) \psi_k(\xi) w(x)d\xi\\
-&amp;=&amp; \sum_{j=0}^{P} a_j (\psi_j,\psi_k) \\
-&amp;=&amp; a_k (\psi_k,\psi_k) \\
-&amp;=&amp; a_k \|\psi_k\|^2,
-\end{eqnarray*}<p>puisque $(\psi_j,\psi_k)=0$ si $j\neq k$.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Considérons maintenant le cas particulier où les polynômes multivariés $\psi_j$ sont orthonormaux. 
-On note $\delta_{j,k}$ le symbole de Kronecker :
-$$
-\delta_{j,k} = 
-\begin{cases} 
-1 &amp; \mbox{si } j=k,  \\ 
-0 &amp; \mbox{si } j \ne k
-\end{cases}
-$$
-pour tout $j,k\geq 0$.
-Par définition d'une famille de polynômes orthonormaux, on a 
-$$
-\left( \psi_j(\xi),\psi_k(\xi) \right) = \delta_{j,k},
-$$
-pour $j,k=0,...,P$.
-Alors $\|\psi_j\|=1$ pour $j\geq 0$. 
-Par conséquent, les coefficients de la décomposition en polynômes du chaos sont 
-$$
-a_j=(g,\psi_j),
-$$
-pour $j=0,...,P$.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Moments-et-indices-de-sensibilit&#233;-d'un-chaos-polynomial">Moments et indices de sensibilit&#233; d'un chaos polynomial<a class="anchor-link" href="#Moments-et-indices-de-sensibilit&#233;-d'un-chaos-polynomial">&#182;</a></h2><p>Dans cette section, nous présentons comment calculer la moyenne, la variance et les indices de sensibilité du premier ordre et totaux d'un chaos polynomial.</p>
-<p>Supposons que l'on a décomposé la fonction $g$ en chaos polynomial $\tilde{g}$. Si le chaos polynomial est une mauvaise approximation de la fonction, alors il ne peut être utilisé. C'est la raison pour laquelle le thème de la quantification de la qualité d'un métamodèle est un sujet important en pratique. Au contraire, si le métamodèle est une bonne approximation de la fonction $g$, alors on peut, en poussant notre avantage, substituer $\tilde{g}$ à la place de $g$. De cette manière, toutes les caractéristiques que nous souhaiterions connaître sur $g$, nous pouvons les tirer de $\tilde{g}$.</p>
-<p>La plupart des propriétés de la variable aléatoire peuvent être directement déduites des coefficients $a\in\mathbb{R}^{P+1}$ où $P+1$ est le nombre de coefficients. En particulier, si la base polynomiale est orthonormée (et non pas seulement orthogonale), les caractéristiques sont particulièrement faciles à obtenir.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Supposons que la décomposition en chaos polynomiale est :
-$$
-\tilde{g}(\xi) = \sum_{j=0}^P a_j\psi_j(\xi)
-$$
-for any $\xi\in\mathbb{R}^p$.</p>
-<p>La moyenne du chaos polynomial est 
-$$
-E\left[\tilde{g}(\xi)\right]= a_0,
-$$
-c'est à dire le premier coefficient de la décomposition.</p>
-<p>De plus, 
-$$
-V\left[\tilde{g}(\xi)\right]=\sum_{j=1}^P a_j^2 \|\psi_j\|^2.
-$$
-Dans l'expression précédente, soulignons que la variance est une somme de carrés, à <em>l'exclusion</em> du terme $a_0$ qui n'apparaît pas. 
-Si la base polynomiale est orthonormale, alors l'expression est particulièrement simple :
-$$
-V\left[\tilde{g}(\xi)\right]=\sum_{j=1}^P a_j^2.
-$$</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Pour calculer les indices de sensibilité, on observe que la variance $V\left[\tilde{g}(\xi)\right]$ est décomposée comme une somme de carrés par le chaos polynomial, chaque terme ne dépendant que de $\psi_j$. C'est pourquoi le calcul des indices de sensibilité est particulièrement simple, en ne considérant que les termes appropriés dans chaque cas.</p>
-<p>Pour exprimer les indices de sensibilité, il est plus facile de le faire en utilisant les multi-indices. 
-Notons $\mathcal{J}$ l'ensemble des multi-indices de dimension $p$ :
-$$
-\mathcal{J}=\left\{\alpha=(\alpha_1,...,\alpha_p), \alpha_i\in\{0,1,2,...\}\right\}.
-$$
-Soit $\mathcal{J}_P$ l'ensemble des multi-indices associés à la troncature à l'ordre $P$ du chaos polynomial. 
-Plus précisément, la taille de l'ensemble $\mathcal{J}_P$ est égale à $P+1$, c'est à dire que $card\left(\mathcal{J}_P\right)=P+1$. 
-Supposons que la décomposition en chaos polynomiale est :
-$$
-\tilde{g}(\xi) = \sum_{\alpha\in\mathcal{J}_P} a_\alpha \psi_\alpha(\xi)
-$$
-pour tout $\xi\in\mathbb{R}^p$.</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Pour $i=1,...,p$, on souhaite calculer l'indice de sensibilité du premier ordre $S_i$ et total $T_i$.</p>
-<p>Pour calculer $S_i$, il faut considérer l'ensemble des multi-indices $\alpha$ associés uniquement à la variable $\xi_i$. 
-Ainsi, les polynômes considérés dépendent exclusivement de $\xi_i$ et pas des autres variables, ce qui permet de mesurer l'effet de la variable $\xi_i$ seule. 
-Plus précisément, soit $\mathcal{J}_i^S$ l'ensemble des multi-indices tels que $\alpha_i&gt;0$ et tel que les autres composantes du multi-indice sont nulles :
-$$
-\mathcal{J}_i^S=\left\{\alpha=(0,..., 0,\alpha_i,0,...,0)\in\mathcal{J}_P, \quad \alpha_i&gt;0\right\}.
-$$
-Alors l'indice du premier ordre $S_i$ est la somme des carrés des coefficients associés à la i-ème variable :
-$$
-S_i = \frac{\sum_{\alpha\in\mathcal{J}_i^S} a_\alpha^2 \|\psi_\alpha\|^2}{V\left[\tilde{g}(\xi)\right]}.
-$$
-Si la base polynomiale est orthonormale, alors :
-$$
-S_i = \frac{\sum_{\alpha\in\mathcal{J}_i^S} a_\alpha^2}{V\left[\tilde{g}(\xi)\right]}.
-$$</p>
-
-</div>
-</div>
-</div></section></section><section><section>
-<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>Pour calculer $T_i$, il faut considérer l'ensemble des multi-indices $\alpha$ associés à la variable $\xi_i$, y compris ses interactions avec les autres variables. 
-Ainsi, les polynômes considérés dépendent tous de $\xi_i$ et, dans certains cas, également des autres variables, ce qui permet de mesurer l'effet de la variable $\xi_i$ y compris ses interactions. 
-Plus précisément, soit $\mathcal{J}_i^T$ l'ensemble des multi-indices tels que $\alpha_i&gt; 0$ :
-$$
-\mathcal{J}_i^T=\left\{\alpha=(\alpha_1,...,\alpha_i,...,\alpha_p)\in\mathcal{J}_P, \quad \alpha_i&gt;0\right\}.
-$$
-Alors l'indice total $T_i$ est la somme des carrés des coefficients associés à la i-ème variable :
-$$
-T_i = \frac{\sum_{\alpha\in\mathcal{J}_i^T} a_\alpha^2 \|\psi_\alpha\|^2}{V\left[\tilde{g}(\xi)\right]}.
-$$
-Si la base polynomiale est orthonormale, alors :
-$$
-T_i = \frac{\sum_{\alpha\in\mathcal{J}_i^T} a_\alpha^2}{V\left[\tilde{g}(\xi)\right]}.
-$$</p>
-<p>On peut également obtenir des indices similaires, non plus seulement pour une variable donnée, mais pour un groupe de variables. Cette idée permet d'identifier, par exemple, quelles variables d'entrée peuvent être fixées et rendues égales à leur valeur moyenne.</p>
-
 </div>
 </div>
 </div></section></section>

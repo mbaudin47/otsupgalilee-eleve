@@ -13235,16 +13235,16 @@ a.anchor-link {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Vecteur-al&#233;atoire-d'entr&#233;e">Vecteur al&#233;atoire d'entr&#233;e<a class="anchor-link" href="#Vecteur-al&#233;atoire-d'entr&#233;e">&#182;</a></h2><p>On considère une variable aléatoire $X\in\mathbb{R}^p$ où $p$ est la dimension de l'entrée.</p>
-<p>Supposons que les marginales de $X$ sont indépendantes. Soit $T$ la transformation permettant de transformer la variable aléatoire physique $X$ en une variable aléatoire standardisée $\xi$ :
+<p>Supposons que les marginales de $X$ sont indépendantes. Soit $T_i$ la transformation permettant de transformer la variable aléatoire physique $X$ en une variable aléatoire standardisée $\xi$ :
 $$
-\xi_i = T(X_i),
+\xi_i = T_i(X_i),
 $$
 pour $i=1,\dots,p$.</p>
-<p>Sous ces hypothèses, notons $f_{\xi_i}$ la loi marginale de la variable aléatoire $\xi_i$, pour $i=1,...,p$. Puisque les variables sont indépentantes, la densité de probabilité du vecteur aléatoire $X$ est le produit des lois marginales, c'est à dire :
+<p>Sous ces hypothèses, notons $f_{\xi_i}$ la loi marginale de la variable aléatoire $\xi_i$, pour $i=1,...,p$. Puisque les variables sont indépentantes, la densité de probabilité du vecteur aléatoire $\xi$ est le produit des lois marginales, c'est à dire :
 $$
 f_\xi(\xi) = \prod_{i=1}^p f_{\xi_i}(\xi_i)
 $$
-pour tout $x\in\mathbb{R}^p$.</p>
+pour tout $\xi\in\mathbb{R}^p$.</p>
 
 </div>
 </div>
@@ -13256,7 +13256,7 @@ pour tout $x\in\mathbb{R}^p$.</p>
 $$
 \left\{ \pi^{(i)}_j, j\geq 0\right\}
 $$ 
-la famile de polynômes orthogonaux associés à la variable $X_i$ où $\pi^{(i)}_j$ est le polynôme de degré $j$ associée à la variable $X_i$.</p>
+la famile de polynômes orthogonaux associés à la variable $\xi_i$ où $\pi^{(i)}_j$ est le polynôme de degré $j$ associée à la variable $X_i$.</p>
 <p>On considère le produit scalaire :
 $$
 \left( \pi^{(i)}_j,\pi^{(i)}_k \right) = \int_{\mathbb{R}} \pi^{(i)}_{j}(\xi) \pi^{(i)}_{k}(\xi) f_{\xi_i}(\xi_i) d\xi_i,
@@ -13282,12 +13282,11 @@ où $\alpha_1,...,\alpha_p \in\mathbf{N}$. Dans ce multi-indice, la composante $
 $$
 \psi_{\alpha}(\xi) = \pi^{(1)}_{\alpha_1}(\xi_1) \times \cdots \times \pi^{(p)}_{\alpha_p}(\xi_p)
 $$
-pour tout $x\in\mathbb{R}^p$. Le degré <em>total</em> du polynôme multivarié $\psi_{\alpha}$, noté $|\alpha|$, est la somme des degrés des polynômes multivariés qui le composent :
+pour tout $\xi\in\mathbb{R}^p$. Le degré <em>total</em> du polynôme multivarié $\psi_{\alpha}$, noté $|\alpha|$, est la somme des degrés des polynômes multivariés qui le composent :
 $$
 |\alpha| = \alpha_1 + ... + \alpha_p.
 $$</p>
-<p>Denote the set of multi-indices with finite number of 
-nonzero components as 
+<p>L'ensemble des multi-indices en dimension $p$ est noté :
 $$
 \mathcal{J}=\left\{\alpha=(\alpha_1,...,\alpha_p), \alpha_i\in\{0,1,2,...\}\right\}.
 $$</p>
@@ -13416,8 +13415,8 @@ Pour une valeur donnée de $|\alpha|$, l'algorithme consiste à parcourir toutes
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Nombre-de-polyn&#244;mes-multivari&#233;s">Nombre de polyn&#244;mes multivari&#233;s<a class="anchor-link" href="#Nombre-de-polyn&#244;mes-multivari&#233;s">&#182;</a></h2><p><strong>Proposition: Number of multivariate polynomials</strong></p>
-<p>The number of degree $d$ multivariate polynomials of $p$ variables is (see (Le Maître, Knio, 2010) page 33):
+<h2 id="Nombre-de-polyn&#244;mes-multivari&#233;s">Nombre de polyn&#244;mes multivari&#233;s<a class="anchor-link" href="#Nombre-de-polyn&#244;mes-multivari&#233;s">&#182;</a></h2><p><strong>Proposition: Nombre de polynômes multivariés</strong></p>
+<p>Le nombre de polynômes multivariés de degré $d$ associés à $p$ variables est (voir (Le Maître, Knio, 2010) page 33):
 $$
 P = {p+d\choose d}.
 $$</p>
@@ -13506,15 +13505,15 @@ $$</p>
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Polyn&#244;mes-orthonomaux-multivari&#233;s">Polyn&#244;mes orthonomaux multivari&#233;s<a class="anchor-link" href="#Polyn&#244;mes-orthonomaux-multivari&#233;s">&#182;</a></h2><p>Soit $\left\{\psi_j\right\}_{j\geq 0}$ une famille de polynômes orthogonaux multivariés. On définit le produit scalaire entre deux polynômes : 
 $$
-\left( \psi_{j}(X),\psi_{k}(X) \right) = \mathbb{E} \left(\psi_{j}(X) \psi_{k}(X)\right)
+\left( \psi_{j}(\xi),\psi_{k}(\xi) \right) = \mathbb{E} \left(\psi_{j}(\xi) \psi_{k}(\xi)\right)
 $$
 pour $j,k\geq 0$. Par définition de l'espérance, on a :
 $$
-\left( \psi_{j}(X),\psi_{k}(X) \right) = \int_{\mathbb{R}^p} \psi_{j}(x) \psi_{k}(x) f_X(x) dx.
+\left( \psi_{j}(\xi),\psi_{k}(\xi) \right) = \int_{\mathbb{R}^p} \psi_{j}(\xi) \psi_{k}(\xi) f_\xi(\xi) d\xi.
 $$
 On utilise la norme :
 $$
-\|\psi_{j}\|^2 = \left( \psi_{j}(X),\psi_{j}(X) \right)
+\|\psi_{j}\|^2 = \left( \psi_{j}(\xi),\psi_{j}(\xi) \right)
 $$
 pour tout $j\neq 0$.</p>
 <p>On note $\delta_{j,k}$ le symbole de Kronecker :
@@ -13528,7 +13527,7 @@ $$
 pour tout $j,k\geq 0$.</p>
 <p>Si les polynômes univariés sont orthonomaux et si les variables sont indépendantes, on peut démontrer que les polynômes $\psi_j$ sont orthogonaux, c'est à dire que le produit scalaire est égal à zéro pour deux polynômes différents ou égal à un sinon :
 $$
-\left( \psi_j(X),\psi_k(X) \right) = \delta_{j,k},
+\left( \psi_j(\xi),\psi_k(\xi) \right) = \delta_{j,k},
 $$
 pour $j,k\geq 1$.</p>
 
