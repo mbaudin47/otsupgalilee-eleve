@@ -14465,10 +14465,11 @@ $$</p>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">openturns</span> <span class="k">as</span> <span class="nn">ot</span>
+
 <span class="n">X0</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 <span class="n">X1</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 <span class="n">X2</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-<span class="n">inputDistribution</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">ComposedDistribution</span><span class="p">((</span><span class="n">X0</span><span class="p">,</span><span class="n">X1</span><span class="p">,</span><span class="n">X2</span><span class="p">))</span>
+<span class="n">inputDistribution</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">ComposedDistribution</span><span class="p">((</span><span class="n">X0</span><span class="p">,</span> <span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">))</span>
 <span class="n">inputRandomVector</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">RandomVector</span><span class="p">(</span><span class="n">inputDistribution</span><span class="p">)</span>
 </pre></div>
 
@@ -14531,8 +14532,8 @@ $$</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myfunction</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">PythonFunction</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mySimulator</span> <span class="p">)</span>
-<span class="n">outputVect</span> <span class="o">=</span>  <span class="n">ot</span><span class="o">.</span><span class="n">CompositeRandomVector</span><span class="p">(</span><span class="n">myfunction</span><span class="p">,</span> <span class="n">inputRandomVector</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myfunction</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">PythonFunction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mySimulator</span><span class="p">)</span>
+<span class="n">outputVect</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">CompositeRandomVector</span><span class="p">(</span><span class="n">myfunction</span><span class="p">,</span> <span class="n">inputRandomVector</span><span class="p">)</span>
 <span class="n">montecarlosize</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="n">outputSample</span> <span class="o">=</span> <span class="n">outputVect</span><span class="o">.</span><span class="n">getSample</span><span class="p">(</span><span class="n">montecarlosize</span><span class="p">)</span>
 <span class="n">empiricalMean</span> <span class="o">=</span> <span class="n">outputSample</span><span class="o">.</span><span class="n">computeMean</span><span class="p">()</span>
@@ -14672,20 +14673,23 @@ myfunction=PythonFunction(nbInputs, nbOutputs, func_sample=mySimulator)</code></
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<span class="k">def</span> <span class="nf">mySimulatorVect</span> <span class="p">(</span><span class="n">x</span><span class="p">):</span>
+
+
+<span class="k">def</span> <span class="nf">mySimulatorVect</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c1"># Conversion Sample &gt; Array Numpy</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">x0</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="c1"># Extraction de la colonne 0</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># Extraction de la colonne 0</span>
     <span class="n">x1</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
     <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span>
     <span class="n">y0</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">+</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">x2</span>
     <span class="n">y1</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">-</span> <span class="n">x1</span> <span class="o">*</span> <span class="n">x2</span>
     <span class="c1"># Empilement de deux lignes</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span> <span class="p">((</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span> <span class="p">))</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">transpose</span> <span class="p">()</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">((</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">))</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">y</span><span class="o">.</span><span class="n">transpose</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">y</span>
-<span class="n">myfunctionVect</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">PythonFunction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> \
-                                   <span class="n">func_sample</span> <span class="o">=</span> <span class="n">mySimulatorVect</span> <span class="p">)</span>
+
+
+<span class="n">myfunctionVect</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">PythonFunction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">func_sample</span><span class="o">=</span><span class="n">mySimulatorVect</span><span class="p">)</span>
 </pre></div>
 
      </div>
@@ -14699,7 +14703,7 @@ myfunction=PythonFunction(nbInputs, nbOutputs, func_sample=mySimulator)</code></
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">outputVect</span> <span class="o">=</span>  <span class="n">ot</span><span class="o">.</span><span class="n">CompositeRandomVector</span><span class="p">(</span><span class="n">myfunctionVect</span><span class="p">,</span> <span class="n">inputRandomVector</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">outputVect</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">CompositeRandomVector</span><span class="p">(</span><span class="n">myfunctionVect</span><span class="p">,</span> <span class="n">inputRandomVector</span><span class="p">)</span>
 <span class="n">montecarlosize</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="n">outputSample</span> <span class="o">=</span> <span class="n">outputVect</span><span class="o">.</span><span class="n">getSample</span><span class="p">(</span><span class="n">montecarlosize</span><span class="p">)</span>
 <span class="n">empiricalMean</span> <span class="o">=</span> <span class="n">outputSample</span><span class="o">.</span><span class="n">computeMean</span><span class="p">()</span>
@@ -14780,7 +14784,7 @@ myfunction=PythonFunction(nbInputs, nbOutputs, func_sample=mySimulator)</code></
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myfunction</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">PythonFunction</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mySimulator</span> <span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myfunction</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">PythonFunction</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">mySimulator</span><span class="p">)</span>
 <span class="n">myfunction</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">MemoizeFunction</span><span class="p">(</span><span class="n">myfunction</span><span class="p">)</span>
 </pre></div>
 
@@ -14882,7 +14886,7 @@ myfunction=PythonFunction(nbInputs, nbOutputs, func_sample=mySimulator)</code></
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Fonction-symbolique-:-prototype">Fonction symbolique : prototype<a class="anchor-link" href="#Fonction-symbolique-:-prototype">&#182;</a></h2><p>Prototype :</p>
-<p><code>myfunction = SymbolicFunction(liste_des_entrees ,liste_des_formules )</code></p>
+<p><code>myfunction = SymbolicFunction(liste_des_entrees, liste_des_formules)</code></p>
 <p>où</p>
 <ul>
 <li><code>liste_des_entrees</code> : une liste de <code>nbInputs</code> chaînes de caractères, le nom des variables d’entrées</li>
@@ -14897,10 +14901,11 @@ myfunction=PythonFunction(nbInputs, nbOutputs, func_sample=mySimulator)</code></
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">openturns</span> <span class="k">as</span> <span class="nn">ot</span>
+
 <span class="n">X0</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 <span class="n">X1</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
 <span class="n">X2</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">Normal</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
-<span class="n">inputDistribution</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">ComposedDistribution</span><span class="p">((</span><span class="n">X0</span><span class="p">,</span><span class="n">X1</span><span class="p">,</span><span class="n">X2</span><span class="p">))</span>
+<span class="n">inputDistribution</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">ComposedDistribution</span><span class="p">((</span><span class="n">X0</span><span class="p">,</span> <span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">))</span>
 <span class="n">inputRandomVector</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">RandomVector</span><span class="p">(</span><span class="n">inputDistribution</span><span class="p">)</span>
 </pre></div>
 
@@ -14915,8 +14920,7 @@ myfunction=PythonFunction(nbInputs, nbOutputs, func_sample=mySimulator)</code></
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myfunction</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">SymbolicFunction</span><span class="p">((</span><span class="s2">&quot;x0&quot;</span><span class="p">,</span><span class="s2">&quot;x1&quot;</span><span class="p">,</span><span class="s2">&quot;x2&quot;</span><span class="p">),</span> 
-                                 <span class="p">(</span><span class="s2">&quot;x0 + x1 + x2&quot;</span><span class="p">,</span><span class="s2">&quot;x0 - x1 * x2&quot;</span><span class="p">))</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myfunction</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">SymbolicFunction</span><span class="p">((</span><span class="s2">&quot;x0&quot;</span><span class="p">,</span> <span class="s2">&quot;x1&quot;</span><span class="p">,</span> <span class="s2">&quot;x2&quot;</span><span class="p">),</span> <span class="p">(</span><span class="s2">&quot;x0 + x1 + x2&quot;</span><span class="p">,</span> <span class="s2">&quot;x0 - x1 * x2&quot;</span><span class="p">))</span>
 <span class="n">myfunction</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">MemoizeFunction</span><span class="p">(</span><span class="n">myfunction</span><span class="p">)</span>
 </pre></div>
 
@@ -14931,7 +14935,7 @@ myfunction=PythonFunction(nbInputs, nbOutputs, func_sample=mySimulator)</code></
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">outputVect</span> <span class="o">=</span>  <span class="n">ot</span><span class="o">.</span><span class="n">CompositeRandomVector</span><span class="p">(</span><span class="n">myfunction</span><span class="p">,</span> <span class="n">inputRandomVector</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">outputVect</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">CompositeRandomVector</span><span class="p">(</span><span class="n">myfunction</span><span class="p">,</span> <span class="n">inputRandomVector</span><span class="p">)</span>
 <span class="n">montecarlosize</span> <span class="o">=</span> <span class="mi">10000</span>
 <span class="n">outputSample</span> <span class="o">=</span> <span class="n">outputVect</span><span class="o">.</span><span class="n">getSample</span><span class="p">(</span><span class="n">montecarlosize</span><span class="p">)</span>
 <span class="n">empiricalMean</span> <span class="o">=</span> <span class="n">outputSample</span><span class="o">.</span><span class="n">computeMean</span><span class="p">()</span>
@@ -14971,7 +14975,7 @@ myfunction=PythonFunction(nbInputs, nbOutputs, func_sample=mySimulator)</code></
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">outputs</span> <span class="o">=</span> <span class="n">myfunction</span><span class="o">.</span><span class="n">getOutputHistory</span><span class="p">()</span>
-<span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,:]</span>
+<span class="n">outputs</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span> <span class="p">:]</span>
 </pre></div>
 
      </div>
@@ -15171,11 +15175,11 @@ on peut utiliser l'instruction suivante :</p>
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;X1&#39;</span><span class="p">,</span> <span class="s1">&#39;X2&#39;</span><span class="p">]</span> 
-<span class="n">outputs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Y1&#39;</span><span class="p">,</span> <span class="s1">&#39;Y2&#39;</span><span class="p">]</span>
-<span class="n">formula</span> <span class="o">=</span> <span class="s1">&#39;var T := X1 * X2; Y1 := X1 + T; Y2 := X2 - 3 * T&#39;</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inputs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;X1&quot;</span><span class="p">,</span> <span class="s2">&quot;X2&quot;</span><span class="p">]</span>
+<span class="n">outputs</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Y1&quot;</span><span class="p">,</span> <span class="s2">&quot;Y2&quot;</span><span class="p">]</span>
+<span class="n">formula</span> <span class="o">=</span> <span class="s2">&quot;var T := X1 * X2; Y1 := X1 + T; Y2 := X2 - 3 * T&quot;</span>
 <span class="n">myFunction</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">SymbolicFunction</span><span class="p">(</span><span class="n">inputs</span><span class="p">,</span> <span class="n">outputs</span><span class="p">,</span> <span class="n">formula</span><span class="p">)</span>
-<span class="n">myFunction</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span><span class="mf">2.</span><span class="p">])</span>
+<span class="n">myFunction</span><span class="p">([</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">])</span>
 </pre></div>
 
      </div>
@@ -15238,6 +15242,8 @@ $$</p>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+
 <span class="k">def</span> <span class="nf">myHighDimSimulator</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">dim</span> <span class="o">=</span> <span class="n">ot</span><span class="o">.</span><span class="n">Point</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">getDimension</span><span class="p">()</span>
     <span class="n">y0</span> <span class="o">=</span> <span class="mf">0.0</span>
@@ -15245,7 +15251,7 @@ $$</p>
     <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">dim</span><span class="p">):</span>
         <span class="n">y0</span> <span class="o">=</span> <span class="n">y0</span> <span class="o">+</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
         <span class="n">y1</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
-    <span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="n">y0</span><span class="p">,</span><span class="n">y1</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="n">y0</span><span class="p">,</span> <span class="n">y1</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">y</span>
 </pre></div>
 
