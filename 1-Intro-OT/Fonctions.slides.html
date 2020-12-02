@@ -14483,7 +14483,7 @@ $$</p>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="PythonFunction-:-constructeur">PythonFunction : constructeur<a class="anchor-link" href="#PythonFunction-:-constructeur">&#182;</a></h2><p>La classe <code>PythonFunction</code> permet de créer une fonction OpenTURNS en utilisant une fonction Python crée avec l'opérateur <code>def</code>.</p>
 <p>Le constructeur de la classe PythonFunction est</p>
-<p><code>PythonFunction ( nbInputs , nbOutputs , myPythonFunc )</code></p>
+<p><code>PythonFunction(nbInputs, nbOutputs, myPythonFunc)</code></p>
 <p>où</p>
 <ul>
 <li><code>nbInputs</code> : nombre de variables d’entrées,</li>
@@ -14616,10 +14616,11 @@ $$</p>
 <ul>
 <li>Utile si le simulateur est disponible en Python.</li>
 <li>Possibilité de vectorisation avec l’option <code>func_sample</code>.</li>
+<li>Peut être parallélisé sur plusieurs processeurs avec l'option <code>n_cpus</code> (voir l'exercice 8).</li>
 </ul>
 <p>Inconvénients :</p>
 <ul>
-<li>Pas multithread.</li>
+<li>Pas de calcul exact des dérivées.</li>
 </ul>
 
 </div>
@@ -15054,14 +15055,14 @@ gradient G'(x) au point d’entrée X = (1, 2, 3).</li>
 matrice Hessienne de G.</p>
 </li>
 <li><p>Utiliser les instructions suivantes pour configurer un gradient calculé
-par une formule de différences finies décentrée, avec un pas h = 10−2.</p>
+par une formule de différences finies décentrée, avec un pas $h = 10^{−2}$.</p>
 </li>
 </ul>
 
 <pre><code>functionImpl = myfunction.getEvaluation()
-h = 1.e -2
+h = 1.e-2
 myGradient = ot.NonCenteredFiniteDifferenceGradient(h, functionImpl)
-myfunction.setGradient ( myGradient )</code></pre>
+myfunction.setGradient(myGradient)</code></pre>
 <ul>
 <li>Evaluer à nouveau le gradient avec la méthode gradient et comparer avec le résultat précédent.</li>
 <li>On peut transmettre à OT une fonction Python qui évalue le gradient. Pour cela on peut utiliser la séquence d'appel :
