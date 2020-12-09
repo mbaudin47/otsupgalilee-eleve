@@ -1,0 +1,14 @@
+numpy
+matplotlib
+scipy
+jupyter
+jupyterlab
+nbconvert
+black==19.10b0
+pre-commit
+flake8
+spyder
+statsmodels
+openturns==1.14
+otmorris
+
