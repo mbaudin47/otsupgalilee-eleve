@@ -7,7 +7,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
 
-<title>Sensibilite-Cours-lineaire slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Cours-Sensibilite-lineaire slides</title><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 
 <!-- General and theme style sheets -->
 <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.0.2/dist/reveal.css">
@@ -65,7 +65,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <style type="text/css">
-    pre { line-height: 125%; }
+    pre { line-height: 125%; margin: 0; }
 td.linenos pre { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
 td.linenos pre.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
@@ -14526,12 +14526,21 @@ which concludes the proof. $\blacksquare$</p>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="R&#233;gression-lin&#233;aire">R&#233;gression lin&#233;aire<a class="anchor-link" href="#R&#233;gression-lin&#233;aire">&#182;</a></h2><p>En général, on ne sait pas si la fonction $g$ est linéaire. Dans les méthodes que nous décrivons, la fonction $g$ est une boîte noire dans laquelle la seule information observable est la sortie en fonction de l'entrée. Dans ce cas, on peut créer un modèle de regression linéaire comme une approximation de la fonction $g$. Cela permet ensuite d'utiliser les indices SRC, si le modèle linéaire est une bonne approximation de la fonction $g$. Nous allons voir que cette qualité peut être quantifiée grâce au coefficient $R^2$.</p>
-<p>Le vecteur des prédictions du modèle linéaire est une combinaison linéaire des composantes du vecteur $X$ :
+<p>$\newcommand{\vect}[1]{{\mathbf{\boldsymbol{{#1}}}}}$</p>
+<p>La prédiction du modèle linéaire est une combinaison linéaire des composantes du vecteur $\vect{X}$ :</p>
 $$
-y = \beta_0 + X^T \beta + \epsilon
+y = \beta_0 + \vect{X}^T (\beta_1,...,\beta_p)^T + \epsilon
+$$<p>où $\epsilon\in\mathbb{R}$ est une variable aléatoire, $\beta_0 \in \mathbb{R}$ et $(\beta_1,...,\beta_p)^T\in\mathbb{R}^{p}$ est le vecteur des paramètres.</p>
+<p>On peut aussi écrire le problème avec les vecteurs étendus</p>
 $$
-où $\epsilon$ est une variable aléatoire et $(\beta_0,\beta_1,...,\beta_p)^T\in\mathbb{R}^{p+1}$ est le vecteur des paramètres. 
-Soit $n$ la taille de l'échantillon et soit $\{X^{(1)},...,X^{(n)}\}$ un échantillon i.i.d. du vecteur aléatoire $X$. La matrice de conception du modèle linéaire est :
+y = (1,\vect{X}^T) \vect{\beta} + \epsilon
+$$<p>où $\vect{\beta} = (\beta_0, \beta_1,...,\beta_p)^T\in\mathbb{R}^{p+1}$ est le vecteur des paramètres.</p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Soit $n$ la taille de l'échantillon et soit $\{X^{(1)},...,X^{(n)}\}$ un échantillon i.i.d. du vecteur aléatoire $\vect{X}$. La matrice de conception du modèle linéaire est :
 $$
 A = 
 \begin{pmatrix}
@@ -14546,17 +14555,17 @@ $$</p>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Soit $y$ le vecteur des sorties de la fonction $g$ :
+<p>Soit $\vect{y}$ le vecteur des sorties de la fonction $g$ :
 $$
 y^{(j)} = g\left(X^{(j)}\right), \quad j=1,...,n.
 $$
 Le problème de regression linéaire consiste à résoudre le problème :
 $$
-\min_{\beta\in\mathbb{R}^p} \|y - A\beta\|_2.
+\min_{\vect{\beta}\in\mathbb{R}^{p+1}} \|\vect{y} - A\vect{\beta}\|_2.
 $$
 Si la matrice $A$ est de rang plein, la solution est unique. C'est celle donnée par les équations normales :
 $$
-\hat{\beta} = \left(A^T A\right)^{-1} A^T y.
+\hat{\vect{\beta}} = \left(A^T A\right)^{-1} A^T \vect{y}.
 $$
 En pratique, bien que la méthode des équations normales soit appropriée dans certaines circonstances, on utilise le plus souvent une méthode fondée sur une décomposition orthogonale de la matrice $A$, comme par exemple la décomposition QR ou la décomposition SVD.</p>
 
@@ -14573,8 +14582,13 @@ la moyenne empirique des sorties $y$.
 Soit $\hat{y}$ le vecteur des prédictions du modèle de regression linéaire :
 $$
 \hat{y} = A\hat{\beta}.
-$$
-Le coefficient $R^2\in[0,1]$ est :
+$$</p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Le coefficient $R^2\in[0,1]$ est :
 $$
 R^2 = 1- \frac{\sum_{j=1}^n \left(y^{(j)} - \hat{y}^{(j)}\right)^2}{\sum_{j=1}^n \left(y^{(j)} - \bar{y}\right)^2}
 $$

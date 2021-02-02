@@ -65,7 +65,7 @@ if( window.location.search.match( /print-pdf/gi ) ) {
     <!-- End of mathjax configuration -->
 
 <style type="text/css">
-    pre { line-height: 125%; }
+    pre { line-height: 125%; margin: 0; }
 td.linenos pre { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
 span.linenos { color: #000000; background-color: #f0f0f0; padding-left: 5px; padding-right: 5px; }
 td.linenos pre.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
@@ -14436,7 +14436,7 @@ $$
 V(Y|X_i=x_i) \ll V(Y).
 $$<p>Par conséquent, la différence</p>
 $$
-\delta_i = V(Y) - V(Y|X_i=x_i)
+\delta_i = V(Y) - V(Y|X_i=x_i) \gg 0
 $$<p>est grande. 
 La difficulté est que la différence $\delta_i$ dépend de la valeur de $x_i$ que nous choisissons. La valeur la plus appropriée est sans doute $x_i=E(X_i)$, mais, puisque $X_i$ est une variable aléatoire, il y a d'autres valeurs possibles. C'est pourquoi on souhaite obtenir la différence moyenne $E(\delta_i)$ :</p>
 \begin{align*}
@@ -14876,7 +14876,7 @@ $$
 \rho_n(X,Y) = \frac{\sum_{j=1}^n (x_i - \bar{x})(y_i-\bar{y})}{\sqrt{\sum_{j=1}^n (x_i - \bar{x})^2(y_i-\bar{y})^2}},
 $$<p>où $\bar{x}$ et $\bar{y}$ sont les moyennes empiriques des vecteurs $X$ et $Y$ :</p>
 $$
-\bar{x} = \sum_{j=1}^n x_i, \qquad \bar{y} = \sum_{j=1}^n y_i.
+\bar{x} = \frac{1}{n} \sum_{j=1}^n x_i, \qquad \bar{y} = \frac{1}{n} \sum_{j=1}^n y_i.
 $$
 </div>
 </div></section></section><section><section>
