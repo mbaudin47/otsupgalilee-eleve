@@ -18,10 +18,11 @@ jobs:
             conda config --add channels conda-forge
             conda install -y openturns=1.16
             conda install -y otmorris
+            sudo apt-get install dvipng # For otmorris
             conda install -y jupyter
             conda install -y matplotlib
             conda install -y scipy
-            sudo apt-get install dvipng # For otmorris
+            conda install -y pandas
       - run:
           name: Test
           command: |
