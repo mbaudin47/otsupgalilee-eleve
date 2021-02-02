@@ -14638,7 +14638,118 @@ $$
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Indices-de-sensibilit&#233;-du-premier-ordre-par-une-int&#233;grale-en-dimension-&#233;tendue">Indices de sensibilit&#233; du premier ordre par une int&#233;grale en dimension &#233;tendue<a class="anchor-link" href="#Indices-de-sensibilit&#233;-du-premier-ordre-par-une-int&#233;grale-en-dimension-&#233;tendue">&#182;</a></h2><p>Pour $i=1,...,p$, on souhaite estimer l'indice de sensibilité du premier ordre $S_i$ et l'indice total $T_i$.</p>
+<h2 id="Estimateur-des-indices-de-sensibilit&#233;">Estimateur des indices de sensibilit&#233;<a class="anchor-link" href="#Estimateur-des-indices-de-sensibilit&#233;">&#182;</a></h2><p>Dans cette section, nous présentons une modification de la méthode de Sobol'-Saltelli pour l'estimation des indices du premier ordre. Cette méthode est une variante de la méthode dite "pick-freeze".</p>
+<p>D'une manière plus générale, toute méthode d'estimation d'une intégrale est éligible pour estimer les indices de Sobol' comme par exemple :</p>
+<ul>
+<li>une séquence à faible discrépance,</li>
+<li>un plan Latin Hypercube Sampling (LHS).</li>
+</ul>
+<p>Pour les deux derniers types de plan d'expériences, l'estimation des indices du premier ordre impose de constituer un plan d'expériences en dimension $2p-1$ (une méthode fondée sur la concaténation de deux plans en dimension $p$ et $p-1$ ne peut pas être convergente).</p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="La-m&#233;thode-pick-freeze-centr&#233;e-pour-l'estimation-des-indices-de-sensibilit&#233;">La m&#233;thode pick-freeze centr&#233;e pour l'estimation des indices de sensibilit&#233;<a class="anchor-link" href="#La-m&#233;thode-pick-freeze-centr&#233;e-pour-l'estimation-des-indices-de-sensibilit&#233;">&#182;</a></h2><p>Dans cette section, nous reformulons l'estimation des indices de sensibilité à l'aide de la méthode dit <em>"pick-freeze"</em>. Cette méthode clarifie les plans d'expériences impliqués dans l'estimation des indices de sensibilité du premier ordre et totaux, en particulier les variables différentes et communes dans chaque plan d'expériences fondé sur la méthode de Monte-Carlo simple.</p>
+<p>On considère trois plans d'expériences générés par échantillonnage Monte-Carlo simple notés $A$ et $B$ de taille $n$ et de dimension $p$. Plus précisément, on considère</p>
+$$
+A = 
+\begin{pmatrix}
+a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,p} \\
+a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,p} \\
+\vdots  &amp; \vdots  &amp;        &amp; \vdots \\
+a_{n,1} &amp; a_{n,2} &amp; \cdots &amp; a_{n,p}
+\end{pmatrix}
+, \qquad 
+B=
+\begin{pmatrix}
+b_{1,1}  &amp; b_{1,2}  &amp; \cdots  &amp; b_{1,p}  \\
+b_{2,1}  &amp; b_{2,2}  &amp; \cdots  &amp; b_{2,p}  \\
+\vdots   &amp; \vdots   &amp;         &amp; \vdots  \\
+b_{n,1}  &amp; b_{n,2}  &amp; \cdots  &amp; b_{n,p} 
+\end{pmatrix}.
+$$
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Pour $i=1,...,p$, on souhaite estimer l'indice du premier ordre $S_i$. Pour cela on crée le plan $E$ sur la base des deux plans d'expériences $A$ et $B$. Ce plan est créé à partir de $A$, dans lequel la ième colonne est celle de $B$. Plus précisément, le plan $E$ est le suivant :</p>
+$$
+E=
+\begin{pmatrix}
+a_{1,1}  &amp; a_{1,2}  &amp; \cdots  &amp; b_{1,i} &amp; \cdots  &amp; a_{1,p}  \\
+a_{2,1}  &amp; a_{2,2}  &amp; \cdots  &amp; b_{2,i} &amp; \cdots  &amp; a_{2,p}  \\
+\vdots  &amp; \vdots  &amp;   &amp; \vdots &amp;   &amp; \vdots  \\
+a_{n,1}  &amp; a_{n,2}  &amp; \cdots  &amp; b_{n,i} &amp; \cdots  &amp; a_{n,p} 
+\end{pmatrix}.
+$$
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>On note $Y^{A,c}$, $Y^{B,c}$ et $Y^{E,c}$ le vecteur des sorties centrées du modèle $g$ sur les plans $A$, $B$ et $E$ :</p>
+$$
+Y^{A,c} = g(A) - \bar{Y}^A, \qquad 
+Y^{B,c} = g(B) - \bar{Y}^B, \qquad 
+Y^{E,c} = g(E) - \bar{Y}^E,
+$$<p>où $\bar{Y}^A$, $\bar{Y}^B$ et $\bar{Y}^E$ sont respectivement la moyenne empirique des 
+sorties des plans $A$, $B$ et $E$ :</p>
+$$
+\bar{Y}^A = \frac{1}{n} \sum_{j=1}^n Y^{A,j}, \qquad
+\bar{Y}^B = \frac{1}{n} \sum_{j=1}^n Y^{B,j}, \qquad
+\bar{Y}^E = \frac{1}{n} \sum_{j=1}^n Y^{E,j}.
+$$
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Pour $i=1,...,p$, l'indice de sensibilité du premier ordre peut être estimé par :</p>
+$$
+S_i = \frac{\sum_{j=1}^n Y^{c,B,j} Y^{c,E,j}}{\sum_{j=1}^n \left(Y^{c,A,j}\right)^2}.
+$$<p>Pour $i=1,...,p$, l'indice de sensibilité total peut être estimé par :</p>
+$$
+T_i = 1 - \frac{\sum_{j=1}^n Y^{c,A,j} Y^{c,E,j}}{\sum_{j=1}^n \left(Y^{c,A,j}\right)^2}.
+$$
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="La-m&#233;thode-de-Martinez-pour-l'estimation-des-indices-de-Sobol'">La m&#233;thode de Martinez pour l'estimation des indices de Sobol'<a class="anchor-link" href="#La-m&#233;thode-de-Martinez-pour-l'estimation-des-indices-de-Sobol'">&#182;</a></h2><p>La méthode de J.-M.Martinez est certainement l'estimateur le plus simple pour les indices de Sobol'.</p>
+<p>Cet estimateur repose sur le coefficient de corrélation linéaire empirique $\rho_n$ de Pearson.</p>
+<p>Soient $X$ et $Y$ deux vecteurs de dimension $n$. Alors</p>
+$$
+\rho_n(X,Y) = \frac{\sum_{j=1}^n \left( x^{(j)} - \bar{x} \right) \left( y^{(j)} - \bar{y} \right)}{\sqrt{\sum_{j=1}^n \left(x^{(j)} - \bar{x} \right) ^2 \left( y^{(j)}-\bar{y} \right)^2}},
+$$<p>où $\bar{x}$ et $\bar{y}$ sont les moyennes empiriques des vecteurs $X$ et $Y$ :</p>
+$$
+\bar{x} = \frac{1}{n} \sum_{j=1}^n x^{(j)}, \qquad \bar{y} = \frac{1}{n} \sum_{j=1}^n y^{(j)}.
+$$
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Sur la base des notations précédentes, l'estimateur de Martinez est :</p>
+$$
+S_i = \rho_n\left(Y^B,Y^E\right), \qquad T_i = 1 - \rho_n\left(Y^A,Y^E\right).
+$$<p>On remarque que, puisque le coefficient de corrélation linéaire est centré, l'estimateur de Martinez évite par construction les difficultés associés aux autres estimateurs.</p>
+<p>De plus, si la sortie $Y$ suit la loi gaussienne, alors J.-M.Martinez a utilisé la transformation de Fisher pour obtenir la loi de l'estimateur.</p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>Notre expérience est que, si la fonction est centrée, les différents estimateurs d'OpenTURNS (Saltelli, Jansen, Mauntz-Kucherenko et Martinez) sont souvents équivalents du point de vue de la précision, tant sur les indices du premier ordre que les indices totaux. De plus, leur comportement est également comparablement imparfait lorsqu'il s'agit d'estimer des indices proches de zéro : en effet, estimer une moyenne proche de zéro par une méthode de Monte-Carlo est difficile avec une grande précision <em>relative</em>. Puisque les indices sont entre zéro et un, dans la plupart des situations, une estimation avec un à deux chiffres significatifs est suffisante.</p>
+<p>De plus, la méthode delta peut être utilisée pour obtenir la distribution asymptotique gaussienne des estimateurs.</p>
+
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Annexes">Annexes<a class="anchor-link" href="#Annexes">&#182;</a></h2>
+</div>
+</div></section></section><section><section>
+<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Indice-de-sensibilit&#233;-du-premier-ordre-par-une-int&#233;grale-en-dimension-&#233;tendue">Indice de sensibilit&#233; du premier ordre par une int&#233;grale en dimension &#233;tendue<a class="anchor-link" href="#Indice-de-sensibilit&#233;-du-premier-ordre-par-une-int&#233;grale-en-dimension-&#233;tendue">&#182;</a></h2><p>Pour $i=1,...,p$, on souhaite estimer l'indice de sensibilité du premier ordre $S_i$ et l'indice total $T_i$.</p>
 <p>Supposons que l'on utiliser une méthode d'échantillonage pour estimer les intégrales requises. Il peut sembler que deux intégrations imbriquées sont nécessaires :</p>
 <ul>
 <li>une première pour estimer l'espérance conditionnelle,</li>
@@ -14695,7 +14806,7 @@ $$
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Indices-de-sensibilit&#233;-total-par-une-int&#233;grale-en-dimension-&#233;tendue">Indices de sensibilit&#233; total par une int&#233;grale en dimension &#233;tendue<a class="anchor-link" href="#Indices-de-sensibilit&#233;-total-par-une-int&#233;grale-en-dimension-&#233;tendue">&#182;</a></h2><p>Pour estimer l'indice de sensibilité total, nous devons estimer :</p>
+<h2 id="Indice-de-sensibilit&#233;-total-par-une-int&#233;grale-en-dimension-&#233;tendue">Indice de sensibilit&#233; total par une int&#233;grale en dimension &#233;tendue<a class="anchor-link" href="#Indice-de-sensibilit&#233;-total-par-une-int&#233;grale-en-dimension-&#233;tendue">&#182;</a></h2><p>Pour estimer l'indice de sensibilité total, nous devons estimer :</p>
 $$
 V[E(g(X)|X_{-i})] = E[E(g(X)|X_{-i})^2] - E(Y)^2.
 $$<p>On peut démontrer que :</p>
@@ -14727,18 +14838,8 @@ $$
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Estimateur-des-indices-de-sensibilit&#233;">Estimateur des indices de sensibilit&#233;<a class="anchor-link" href="#Estimateur-des-indices-de-sensibilit&#233;">&#182;</a></h2><p>Dans cette section, nous présentons une modification de la méthode de Sobol'-Saltelli pour l'estimation des indices du premier ordre. Cette méthode est une variante de la méthode dite "pick-freeze". Pour l'estimation des indices du premier ordre, la méthode de Saltelli est fondée sur un échantillonnage Monte-Carlo simple pour l'estimation de l'intégrale en dimension $2p-1$ associée à la fonction $g^e$. Pour les indices totaux, la méthode de Saltelli est fondée sur une intégrale en dimension $p+1$ associée à la fonction $g^f$.</p>
-<p>D'une manière plus générale, toute méthode d'estimation d'une intégrale est éligible pour estimer les indices de Sobol' comme par exemple :</p>
-<ul>
-<li>une séquence à faible discrépance,</li>
-<li>un plan Latin Hypercube Sampling (LHS).</li>
-</ul>
-<p>Pour les deux derniers types de plan d'expériences, l'estimation des indices du premier ordre impose de constituer un plan d'expériences en dimension $2p-1$ (une méthode fondée sur la concaténation de deux plans en dimension $p$ et $p-1$ ne peut pas être convergente).</p>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Une-proposition-d'estimateur-en-dimension-&#233;tendue">Une proposition d'estimateur en dimension &#233;tendue<a class="anchor-link" href="#Une-proposition-d'estimateur-en-dimension-&#233;tendue">&#182;</a></h2><p>En cohérence avec l'analyse en dimension étendue précédente, nous proposons l'estimateur suivant.</p>
+<p>Pour l'estimation des indices du premier ordre, la méthode de Saltelli est fondée sur un échantillonnage Monte-Carlo simple pour l'estimation de l'intégrale en dimension $2p-1$ associée à la fonction $g^e$. Pour les indices totaux, la méthode de Saltelli est fondée sur une intégrale en dimension $p+1$ associée à la fonction $g^f$.</p>
 <p>L'algorithme est le suivant.</p>
 <ul>
 <li>On considère un plan d'expériences de type Monte-Carlo simple de taille $n$ et de dimension $2p-1$ pour la variable $x^e$, constitué des points $x^{e(1)}, ..., x^{e(n)}$. Les $p$ premières colonnes de ce plan d'expériences constituent un plan de type Monte-Carlo simple de taille $n$ et de dimension $p$ pour la variable $X$, constitué des points $x^{(1)}, ..., x^{(n)}$. </li>
@@ -14800,100 +14901,6 @@ $$<p>où $\tilde{g}^f$ est la fonction centrée en dimension étendue $p+1$.</p>
 &amp;= 1 - \frac{\frac{1}{n} \sum_{j=1}^n \tilde{g}^f\left(x^{f(j)}\right)}{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x^{(j)}\right)^2} \\
 &amp;= 1 - \frac{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x_i^{(j)},x_{-i}^{(j)}\right) \tilde{g}\left(z_{i}^{(j)},x_{-i}^{(j)}\right)}{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x^{(j)}\right)^2}
 \end{align*}<p>où $\tilde{g}$ est la fonction centrée.</p>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="La-m&#233;thode-pick-freeze-centr&#233;e-pour-l'estimation-des-indices-de-sensibilit&#233;">La m&#233;thode pick-freeze centr&#233;e pour l'estimation des indices de sensibilit&#233;<a class="anchor-link" href="#La-m&#233;thode-pick-freeze-centr&#233;e-pour-l'estimation-des-indices-de-sensibilit&#233;">&#182;</a></h2><p>Dans cette section, nous reformulons l'estimation des indices de sensibilité à l'aide de la méthode dit <em>"pick-freeze"</em>. Cette méthode clarifie les plans d'expériences impliqués dans l'estimation des indices de sensibilité du premier ordre et totaux, en particulier les variables différentes et communes dans chaque plan d'expériences fondé sur la méthode de Monte-Carlo simple.</p>
-<p>On considère trois plans d'expériences générés par échantillonnage Monte-Carlo simple notés $A$ et $B$ de taille $n$ et de dimension $p$. Plus précisément, on considère</p>
-$$
-A = 
-\begin{pmatrix}
-a_{1,1} &amp; a_{1,2} &amp; \cdots &amp; a_{1,p} \\
-a_{2,1} &amp; a_{2,2} &amp; \cdots &amp; a_{2,p} \\
-\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
-a_{n,1} &amp; a_{n,2} &amp; \cdots &amp; a_{n,p}
-\end{pmatrix}
-, \qquad 
-B=
-\begin{pmatrix}
-b_{1,1}  &amp; b_{1,2}  &amp; \cdots  &amp; b_{1,p}  \\
-b_{2,1}  &amp; b_{2,2}  &amp; \cdots  &amp; b_{2,p}  \\
-\vdots  &amp; \vdots  &amp; \ddots  &amp; \vdots  \\
-b_{n,1}  &amp; b_{n,2}  &amp; \cdots  &amp; b_{n,p} 
-\end{pmatrix}.
-$$
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Pour $i=1,...,p$, on souhaite estimer l'indice du premier ordre $S_i$. Pour cela on créée le plan $E$ sur la base des deux plans d'expériences $A$ et $B$. Ce plan est créé à partir de $A$, dans lequel la ième colonne est celle de $B$. Plus précisément, le plan $E$ est le suivant :</p>
-$$
-E=
-\begin{pmatrix}
-a_{1,1}  &amp; a_{1,2}  &amp; \cdots  &amp; b_{1,i} &amp; \cdots  &amp; a_{1,p}  \\
-a_{2,1}  &amp; a_{2,2}  &amp; \cdots  &amp; b_{2,i} &amp; \cdots  &amp; a_{2,p}  \\
-\vdots  &amp; \vdots  &amp;   &amp; \vdots &amp;   &amp; \vdots  \\
-a_{n,1}  &amp; a_{n,2}  &amp; \cdots  &amp; b_{n,i} &amp; \cdots  &amp; a_{n,p} 
-\end{pmatrix}.
-$$
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>On note $Y^{A,c}$, $Y^{B,c}$ et $Y^{E,c}$ le vecteur des sorties centrées du modèle $g$ sur les plans $A$, $B$ et $E$ :</p>
-$$
-Y^{A,c} = g(A) - \bar{Y}^A, \qquad 
-Y^{B,c} = g(B) - \bar{Y}^B, \qquad 
-Y^{E,c} = g(E) - \bar{Y}^E,
-$$<p>où $\bar{Y}^A$, $\bar{Y}^B$ et $\bar{Y}^E$ sont respectivement la moyenne empirique des 
-sorties des plans $A$, $B$ et $E$ :</p>
-$$
-\bar{Y}^A = \frac{1}{n} \sum_{j=1}^n Y^{A,j}, \qquad
-\bar{Y}^B = \frac{1}{n} \sum_{j=1}^n Y^{B,j}, \qquad
-\bar{Y}^E = \frac{1}{n} \sum_{j=1}^n Y^{E,j}.
-$$
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Pour $i=1,...,p$, l'indice de sensibilité du premier ordre peut être estimé par :</p>
-$$
-S_i = \frac{\sum_{j=1}^n Y^{c,B,j} Y^{c,E,j}}{\sum_{j=1}^n \left(Y^{c,A,j}\right)^2}.
-$$<p>Pour $i=1,...,p$, l'indice de sensibilité total peut être estimé par :</p>
-$$
-T_i = 1 - \frac{\sum_{j=1}^n Y^{c,A,j} Y^{c,E,j}}{\sum_{j=1}^n \left(Y^{c,A,j}\right)^2}.
-$$
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="La-m&#233;thode-de-Martinez-pour-l'estimation-des-indices-de-Sobol'">La m&#233;thode de Martinez pour l'estimation des indices de Sobol'<a class="anchor-link" href="#La-m&#233;thode-de-Martinez-pour-l'estimation-des-indices-de-Sobol'">&#182;</a></h2><p>La méthode de J.-M.Martinez est certainement l'estimateur le plus simple pour les indices de Sobol'.</p>
-<p>Cet estimateur repose sur le coefficient de corrélation linéaire empirique $\rho_n$ de Pearson.</p>
-<p>Soient $X$ et $Y$ deux vecteurs de dimension $n$. Alors</p>
-$$
-\rho_n(X,Y) = \frac{\sum_{j=1}^n (x_i - \bar{x})(y_i-\bar{y})}{\sqrt{\sum_{j=1}^n (x_i - \bar{x})^2(y_i-\bar{y})^2}},
-$$<p>où $\bar{x}$ et $\bar{y}$ sont les moyennes empiriques des vecteurs $X$ et $Y$ :</p>
-$$
-\bar{x} = \frac{1}{n} \sum_{j=1}^n x_i, \qquad \bar{y} = \frac{1}{n} \sum_{j=1}^n y_i.
-$$
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Sur la base des notations précédentes, l'estimateur de Martinez est :</p>
-$$
-S_i = \rho_n\left(Y^B,Y^E\right), \qquad T_i = 1 - \rho_n\left(Y^A,Y^E\right).
-$$<p>On remarque que, puisque le coefficient de corrélation linéaire est centré, l'estimateur de Martinez évite par construction les difficultés associés aux autres estimateurs.</p>
-<p>De plus, si la sortie $Y$ suit la loi gaussienne, alors J.-M.Martinez a utilisé la transformation de Fisher pour obtenir la loi de l'estimateur.</p>
-
-</div>
-</div></section></section><section><section>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Conclusion">Conclusion<a class="anchor-link" href="#Conclusion">&#182;</a></h2><p>Notre expérience est que, si la fonction est centrée, les différents estimateurs d'OpenTURNS (Saltelli, Jansen, Mauntz-Kucherenko et Martinez) sont souvents équivalents du point de vue de la précision, tant sur les indices du premier ordre que les indices totaux. De plus, leur comportement est également comparablement imparfait lorsqu'il s'agit d'estimer des indices proches de zéro : en effet, estimer une moyenne proche de zéro par une méthode de Monte-Carlo est difficile avec une grande précision <em>relative</em>. Puisque les indices sont entre zéro et un, dans la plupart des situations, une estimation avec un à deux chiffres significatifs est suffisante.</p>
-<p>De plus, la méthode delta peut être utilisée pour obtenir la distribution asymptotique gaussienne des estimateurs.</p>
 
 </div>
 </div></section></section>
