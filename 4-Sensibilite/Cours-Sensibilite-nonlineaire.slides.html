@@ -14416,14 +14416,15 @@ div.jp-OutputPrompt {
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="D&#233;finition-intuitive">D&#233;finition intuitive<a class="anchor-link" href="#D&#233;finition-intuitive">&#182;</a></h2><p>Dans cette section, nous définissons les indices de Sobol' du premier ordre et totaux.</p>
-<p>Soit $X\in\mathbb{R}^p$ où $p$ est la dimension du vecteur d'entrée. Soit $g$ une fonction de $\mathbb{R}^p$ vers $\mathbb{R}$ définie par :</p>
+<p>$\newcommand{\vect}[1]{{\mathbf{\boldsymbol{{#1}}}}}$</p>
+<p>Soit $\vect{X}\in\mathbb{R}^p$ où $p$ est la dimension du vecteur d'entrée. Soit $g$ une fonction de $\mathbb{R}^p$ vers $\mathbb{R}$ définie par :</p>
 $$
-Y = g(X)
-$$<p>où $Y\in\mathbb{R}$, pour tout $X\in\mathbb{R}^p$.</p>
-<p>On suppose que $X$ est une variable aléatoire de loi connue. On suppose de plus, et c'est une hypothèse très limitative, que les lois marginales de $X$ sont indépendantes.</p>
-<p>Dans la suite du texte, la présentation est grandement simplifiée si l'on suppose que les lois marginales du vecteur aléatoire $X$ sont uniformes entre 0 et 1. En d'autres termes, on fait l'hypothèse que $X$ est dans le cube unité $[0,1]^p$ :</p>
+Y = g(\vect{X})
+$$<p>où $Y\in\mathbb{R}$, pour tout $\vect{X}\in\mathbb{R}^p$.</p>
+<p>On suppose que $\vect{X}$ est un vecteur aléatoire de loi connue. On suppose de plus, et c'est une hypothèse très limitative, que les lois marginales de $\vect{X}$ sont indépendantes.</p>
+<p>Dans la suite du texte, la présentation est grandement simplifiée si l'on suppose que les lois marginales du vecteur aléatoire $\vect{X}$ sont uniformes entre 0 et 1. En d'autres termes, on fait l'hypothèse que $\vect{X}$ est dans le cube unité $[0,1]^p$ :</p>
 $$
-Y = g(X), \qquad X\in[0,1]^p.
+Y = g(\vect{X}), \qquad \vect{X}\in[0,1]^p.
 $$<p>Cette dernière simplification n'est pas une limitation dans l'analyse, car il est possible de démontrer des résultats presque identiques sans cette restriction.</p>
 
 </div>
@@ -14438,9 +14439,9 @@ $$<p>Par conséquent, la différence</p>
 $$
 \delta_i = V(Y) - V(Y|X_i=x_i) \gg 0
 $$<p>est grande. 
-La difficulté est que la différence $\delta_i$ dépend de la valeur de $x_i$ que nous choisissons. La valeur la plus appropriée est sans doute $x_i=E(X_i)$, mais, puisque $X_i$ est une variable aléatoire, il y a d'autres valeurs possibles. C'est pourquoi on souhaite obtenir la différence moyenne $E(\delta_i)$ :</p>
+La difficulté est que la différence $\delta_i$ dépend de la valeur de $x_i$ que nous choisissons. La valeur la plus appropriée est sans doute $x_i=E(X_i)$, mais, puisque $X_i$ est une variable aléatoire, il y a d'autres valeurs possibles. C'est pourquoi on souhaite obtenir la différence moyenne $E(\Delta_i)$ où $\Delta_i = V(Y) - V(Y|X_i)$. On a :</p>
 \begin{align*}
-E(\delta_i) &amp;= E\left[V(Y) - V(Y|X_i)\right] \\
+E(\Delta_i) &amp;= E\left[V(Y) - V(Y|X_i)\right] \\
 &amp;= V(Y) - E[V(Y|X_i)].
 \end{align*}
 </div>
@@ -14456,9 +14457,9 @@ $$
 E(\delta_i) = V[E(Y|X_i)]
 $$<p>pour $i=1,...,p$. 
 La difficulté est que l'expression précédente est absolue, et non relative à la valeur de $V(Y)$. C'est pourquoi on normalise le terme précédent par $V(Y)$.</p>
-<p>Par définition, l'indice du premier ordre de la variable $X_i$ par rapport à $g(X)$ est :</p>
+<p>Par définition, l'indice du premier ordre de la variable $X_i$ par rapport à $g(\vect{X})$ est :</p>
 $$
-S_i = \frac{V[E(g(X)|X_i)]}{V(g(X))}
+S_i = \frac{V[E(g(X)|X_i)]}{V(g(\vect{X}))}
 $$<p>pour $i=1,...,p$.</p>
 <p>L'analyse précédente montre que, si la variable $X_i$ a un impact important sur la variabilité de $Y$, alors $S_i$ est grand.</p>
 
@@ -14481,14 +14482,14 @@ $s=1,2,\ldots,p$.</p>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Let us denote by the vector $u$ the set of indices $(i_1,i_2,\ldots,i_s)$, 
+<p>Let us denote by the vector $\vect{u}$ the set of indices $(i_1,i_2,\ldots,i_s)$, 
 where $1\leq i_1&lt; i_2&lt; \ldots&lt; i_s\leq p$. 
-Hence, the vector $x_u=(x_{i_1},x_{i_2},\ldots,x_{i_s})$ is made of the 
-components of the vector $x=(x_1,x_2,\ldots,x_p)$ which indices are in the set $u$. 
+Hence, the vector $\vect{x}_\vect{u}=(x_{i_1},x_{i_2},\ldots,x_{i_s})$ is made of the 
+components of the vector $\vect{x}=(x_1,x_2,\ldots,x_p)$ which indices are in the set $\vect{u}$. 
 The equation can then be written in the 
 more compact, but more abstract, equation:</p>
 $$
-g(x) = \sum_{u\subseteq \{1,2,\ldots,p\}} h_u(x_u).
+g(\vect{x}) = \sum_{\vect{u}\subseteq \{1,2,\ldots,p\}} h_\vect{u}(x_\vect{u}).
 $$<p>Moreover, we define the function $h_\emptyset=h_0$, so that 
 the equations are consistent.</p>
 
@@ -14509,8 +14510,8 @@ V_{1,2,\ldots,p} &amp;=&amp; V(h_{1,2,\ldots,p}(X_1,X_2,\ldots,X_p)),
 \label{eq-sde-varv12p-2}
 \end{eqnarray*}<p>or, more generally,</p>
 \begin{eqnarray*}
-V_u = V(h_u(X_u)),
-\end{eqnarray*}<p>for any $u \subseteq \{1,2,\ldots,p\}$.</p>
+V_\vect{u} = V(h_\vect{u}(X_\vect{u})),
+\end{eqnarray*}<p>for any $\vect{u} \subseteq \{1,2,\ldots,p\}$.</p>
 
 </div>
 </div></section></section><section><section>
@@ -14529,21 +14530,21 @@ S_{1,2,\ldots,p} &amp;=&amp; \frac{V_{1,2,\ldots,p}}{V(Y)}.
 with respect to the variable $X_i$ is the 
 sum of all the sensitivity indices associated with the variable $X_i$, i.e.</p>
 $$
-T_i = \sum_{u\ni i} S_u.
+T_i = \sum_{\vect{u}\ni i} S_\vect{u}.
 $$
 </div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Re-d&#233;finition-de-l'indice-de-sensibilit&#233;-total">Re-d&#233;finition de l'indice de sensibilit&#233; total<a class="anchor-link" href="#Re-d&#233;finition-de-l'indice-de-sensibilit&#233;-total">&#182;</a></h2><p>On peut définir l'indice de sensibilité total d'une toute autre manière.</p>
-<p>Soit $X\in\mathbb{R}^p$. Pour tout $i=1,...,p$, soit $X_{-i}\in\mathbb{R}^{p-1}$ le vecteur aléatoire constitué de toutes les composantes de $X$, sauf la i-ème. En d'autres termes, on a :</p>
+<p>Soit $\vect{X}\in\mathbb{R}^p$. Pour tout $i=1,...,p$, soit $\vect{X}_{-i}\in\mathbb{R}^{p-1}$ le vecteur aléatoire constitué de toutes les composantes de $\vect{X}$, sauf la i-ème. En d'autres termes, on a :</p>
 $$
-X_{-i} = (X_1,...,X_{i-1},X_{i+1},...,X_p).
-$$<p>Par conséquent, le vecteur $X$ est constitué des composantes $X_i$ et $X_{-i}$, ce qui implique $X = (X_i,X_{-i})$
+\vect{X}_{-i} = (X_1,...,X_{i-1},X_{i+1},...,X_p).
+$$<p>Par conséquent, le vecteur $X$ est constitué des composantes $X_i$ et $\vect{X}_{-i}$, ce qui implique $\vect{X} = (X_i,\vect{X}_{-i})$
 pour $i=1,...,p$.</p>
-<p>Ainsi la variable d'entrée de $Y=g(X)$ peut se décomposer en une part qui ne dépend que de $X_i$ et une autre part qui ne dépend que des composantes différentes de $X_i$ :</p>
+<p>Ainsi la variable d'entrée de $Y=g(\vect{X})$ peut se décomposer en une part qui ne dépend que de $X_i$ et une autre part qui ne dépend que des composantes différentes de $X_i$ :</p>
 $$
-Y = g(X_i,X_{-i}),
+Y = g(X_i,\vect{X}_{-i}),
 $$<p>pour $i=1,...,p$.</p>
 
 </div>
@@ -14552,9 +14553,9 @@ $$<p>pour $i=1,...,p$.</p>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Par définition, l'indice de sensibilité total de la variable d'entrée $X_i$ par rapport à la sortie $Y$ est :</p>
 $$
-T_i = 1 - \frac{V[E(g(X)|X_{-i})]}{V(g(X))}
+T_i = 1 - \frac{V[E(g(\vect{X})|X_{-i})]}{V(g(\vect{X}))}
 $$<p>pour $i=1,...,p$. 
-En d'autres termes, l'indice total de $X_i$ est le complémentaire de l'indice du premier ordre du groupe de variables $X_{-i}$. 
+En d'autres termes, l'indice total de $X_i$ est le complémentaire de l'indice du premier ordre du groupe de variables $\vect{X}_{-i}$. 
 On peut démontrer que la définition précédente est équivalente à celle fondée sur la décomposition de Hoeffding-Sobol'.</p>
 
 </div>
@@ -14589,18 +14590,18 @@ On peut démontrer que la définition précédente est équivalente à celle fon
 <h2 id="Estimation-des-indices-:-centrage-de-la-fonction">Estimation des indices : centrage de la fonction<a class="anchor-link" href="#Estimation-des-indices-:-centrage-de-la-fonction">&#182;</a></h2><p>Soit $c\in\mathbb{R}$ une constante. Ajouter la constante $c$ à la fonction $g$ ne change pas ses indices de sensibilité. 
 En effet, soit $\tilde{g}$ la fonction définie par :</p>
 $$
-\tilde{g}(X) = g(X) + c
-$$<p>pour tout $X\in[0,1]^p$.</p>
+\tilde{g}(\vect{X}) = g(\vect{X}) + c
+$$<p>pour tout $\vect{X}\in[0,1]^p$.</p>
 <p>Alors l'espérance de $\tilde{g}$ est égale à :</p>
 $$
-E[\tilde{g}(X)] = E[g(X) + c] = E[g(X)] + c.
+E[\tilde{g}(\vect{X})] = E[g(\vect{X}) + c] = E[g(\vect{X})] + c.
 $$<p>Sa variance est :</p>
 \begin{align*}
-V[\tilde{g}(X)] 
-&amp;= E[(\tilde{g}(X)-E(\tilde{g}(X)))^2] \\
-&amp;= E[(g(X) + c-E[g(X)] - c)^2] \\
-&amp;= E[(g(X) -E[g(X)])^2] \\
-&amp; = V[g(X)] 
+V[\tilde{g}(\vect{X})] 
+&amp;= E[(\tilde{g}(\vect{X})-E(\tilde{g}(\vect{X})))^2] \\
+&amp;= E[(g(\vect{X}) + c-E[g(\vect{X})] - c)^2] \\
+&amp;= E[(g(\vect{X}) -E[g(\vect{X})])^2] \\
+&amp; = V[g(\vect{X})] 
 \end{align*}
 </div>
 </div></section></section><section><section>
@@ -14609,29 +14610,29 @@ V[\tilde{g}(X)]
 <p>En d'autres termes, cela <em>décale</em> l'espérance, mais la variance est inchangée. 
 De la même manière, la variance conditionnelle est inchangée, puisque :</p>
 $$
-V[E(\tilde{g}(X)|X_i)] = V[E(g(X)|X_i)]
+V[E(\tilde{g}(\vect{X})|X_i)] = V[E(g(\vect{X})|X_i)]
 $$<p>pour $i=1,...,p$.
 C'est pourquoi les indices de sensibilité du premier ordre et totaux sont inchangés lorsqu'on considère $\tilde{g}$ en lieu et place de $g$:</p>
 $$
-S_i = \frac{V[E(\tilde{g}(X)|X_i)]}{V(\tilde{g}(X))}, \qquad 
-T_i = 1 - \frac{V[E(\tilde{g}(X)|X_{-i})]}{V(\tilde{g}(X))}.
-$$<p>Pour estimer les indices de sensibilité, on choisit de centrer la fonction par son espérance, c'est à dire que l'on choisit la constante $c=-E[g(X)]$. 
+S_i = \frac{V[E(\tilde{g}(\vect{X})|X_i)]}{V(\tilde{g}(\vect{X}))}, \qquad 
+T_i = 1 - \frac{V[E(\tilde{g}(\vect{X})|X_{-i})]}{V(\tilde{g}(\vect{X}))}.
+$$<p>Pour estimer les indices de sensibilité, on choisit de centrer la fonction par son espérance, c'est à dire que l'on choisit la constante $c=-E[g(\vect{X})]$. 
 En d'autres termes, on considère la fonction :</p>
 $$
-\tilde{g}(X) = g(X) - E[g(X)]
+\tilde{g}(\vect{X}) = g(\vect{X}) - E[g(\vect{X})]
 $$<p>pour tout $X\in[0,1]^p$. 
 Par conséquent,</p>
 $$
-E[\tilde{g}(X)]=E[g(X) - E(g(X))]
+E[\tilde{g}(\vect{X})]=E[g(\vect{X}) - E(g(\vect{X}))]
 $$<p>ce qui mène à l'équation :</p>
 $$
-E[\tilde{g}(X)]=0.
+E[\tilde{g}(\vect{X})]=0.
 $$
 </div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>En pratique, dans OpenTURNS, on estime donc d'abord la moyenne $E[g(X)]$ et la variance $V[g(X)]$ à l'aide d'une première technique d'estimation comme, par exemple, un plan Monte-Carlo simple.</p>
+<p>En pratique, dans OpenTURNS, on estime donc d'abord la moyenne $E[g(\vect{X})]$ et la variance $V[g(\vect{X})]$ à l'aide d'une première technique d'estimation comme, par exemple, un plan Monte-Carlo simple.</p>
 <p>Il s'avère que ce centrage permet de stabiliser l'estimation des indices de Sobol' pour des raisons à la fois numériques (l'estimation de la variance est plus précise, car elle mobilise des termes dont l'amplitude est réduite) et statistiques (l'estimation de la variance n'est plus biaisée).</p>
 
 </div>
@@ -14705,20 +14706,20 @@ $$
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Pour $i=1,...,p$, l'indice de sensibilité du premier ordre peut être estimé par :</p>
 $$
-S_i = \frac{\sum_{j=1}^n Y^{c,B,j} Y^{c,E,j}}{\sum_{j=1}^n \left(Y^{c,A,j}\right)^2}.
+\hat{S}_i = \frac{\sum_{j=1}^n Y^{c,B,j} Y^{c,E,j}}{\sum_{j=1}^n \left(Y^{c,A,j}\right)^2}.
 $$<p>Pour $i=1,...,p$, l'indice de sensibilité total peut être estimé par :</p>
 $$
-T_i = 1 - \frac{\sum_{j=1}^n Y^{c,A,j} Y^{c,E,j}}{\sum_{j=1}^n \left(Y^{c,A,j}\right)^2}.
+\hat{T}_i = 1 - \frac{\sum_{j=1}^n Y^{c,A,j} Y^{c,E,j}}{\sum_{j=1}^n \left(Y^{c,A,j}\right)^2}.
 $$
 </div>
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="La-m&#233;thode-de-Martinez-pour-l'estimation-des-indices-de-Sobol'">La m&#233;thode de Martinez pour l'estimation des indices de Sobol'<a class="anchor-link" href="#La-m&#233;thode-de-Martinez-pour-l'estimation-des-indices-de-Sobol'">&#182;</a></h2><p>La méthode de J.-M.Martinez est certainement l'estimateur le plus simple pour les indices de Sobol'.</p>
-<p>Cet estimateur repose sur le coefficient de corrélation linéaire empirique $\rho_n$ de Pearson.</p>
+<p>Cet estimateur repose sur le coefficient de corrélation linéaire empirique $\hat{\rho}_n$ de Pearson.</p>
 <p>Soient $X$ et $Y$ deux vecteurs de dimension $n$. Alors</p>
 $$
-\rho_n(X,Y) = \frac{\sum_{j=1}^n \left( x^{(j)} - \bar{x} \right) \left( y^{(j)} - \bar{y} \right)}{\sqrt{\sum_{j=1}^n \left(x^{(j)} - \bar{x} \right) ^2 \left( y^{(j)}-\bar{y} \right)^2}},
+\hat{\rho}_n(X,Y) = \frac{\sum_{j=1}^n \left( x^{(j)} - \bar{x} \right) \left( y^{(j)} - \bar{y} \right)}{\sqrt{\sum_{j=1}^n \left(x^{(j)} - \bar{x} \right) ^2 \left( y^{(j)}-\bar{y} \right)^2}},
 $$<p>où $\bar{x}$ et $\bar{y}$ sont les moyennes empiriques des vecteurs $X$ et $Y$ :</p>
 $$
 \bar{x} = \frac{1}{n} \sum_{j=1}^n x^{(j)}, \qquad \bar{y} = \frac{1}{n} \sum_{j=1}^n y^{(j)}.
@@ -14729,7 +14730,7 @@ $$
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Sur la base des notations précédentes, l'estimateur de Martinez est :</p>
 $$
-S_i = \rho_n\left(Y^B,Y^E\right), \qquad T_i = 1 - \rho_n\left(Y^A,Y^E\right).
+\hat{S}_i = \hat{\rho}_n\left(Y^B,Y^E\right), \qquad \hat{T}_i = 1 - \hat{\rho}_n\left(Y^A,Y^E\right).
 $$<p>On remarque que, puisque le coefficient de corrélation linéaire est centré, l'estimateur de Martinez évite par construction les difficultés associés aux autres estimateurs.</p>
 <p>De plus, si la sortie $Y$ suit la loi gaussienne, alors J.-M.Martinez a utilisé la transformation de Fisher pour obtenir la loi de l'estimateur.</p>
 
@@ -14765,18 +14766,18 @@ $$
 </div></section></section><section><section>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>En pratique, OpenTURNS utilise la fonction $\tilde{g}$ à la place de $g$, de telle sorte que $E[\tilde{g}(X)]=0$. Non seulement cela simplifie l'expression précédente sur le plan formel, mais, surtout, cela évite de former une différence de deux carrés, pouvant mener à une perte de précision "catastrophique" par <em>cancellation</em>.</p>
+<p>En pratique, OpenTURNS utilise la fonction $\tilde{g}$ à la place de $g$, de telle sorte que $E[\tilde{g}(\vect{X})]=0$. Non seulement cela simplifie l'expression précédente sur le plan formel, mais, surtout, cela évite de former une différence de deux carrés, pouvant mener à une perte de précision "catastrophique" par <em>cancellation</em>.</p>
 <p>Pour tout $i=1,...,p$, soit $x_i\in[0,1]$. 
 Par définition de l'espérance conditionnelle,</p>
 $$
 E(Y|X_i=x_i) = \int_{[0,1]^{p-1}} g(x_i,x_{-i}) dx_{-i}.
-$$<p>Soit $Z\in[0,1]^p$ un vecteur aléatoire de même loi que $X$ et indépendant de $X$. Alors la densité de probabilité du vecteur aléatoire $(X,Z)$ est le produit des densités marginales :</p>
+$$<p>Soit $\vect{Z}\in[0,1]^p$ un vecteur aléatoire de même loi que $\vect{X}$ et indépendant de \vect{X}$. Alors la densité de probabilité du vecteur aléatoire $(\vect{X},\vect{Z})$ est le produit des densités marginales :</p>
 $$
-f_{X,Z}(x,z) = f_X(x) f_Z(z)
-$$<p>pour tout $x,z\in[0,1]^p$.</p>
-<p>Soit $Z_{-i}$ le vecteur aléatoire de dimension réduite : $Z_{-i}\in[0,1]^{p-1}$ :</p>
+f_{\vect{X},\vect{Z}}(\vect{x},\vect{z}) = f_\vect{X}(\vect{x}) f_\vect{Z}(\vect{z})
+$$<p>pour tout $\vect{x},\vect{z}\in[0,1]^p$.</p>
+<p>Soit $\vect{Z}_{-i}$ le vecteur aléatoire de dimension réduite : $\vect{Z}_{-i}\in[0,1]^{p-1}$ :</p>
 $$
-Z_{-i} = (Z_1,...,Z_{i-1},Z_{i+1},...,Z_p).
+\vect{Z}_{-i} = (Z_1,...,Z_{i-1},Z_{i+1},...,Z_p).
 $$
 </div>
 </div></section></section><section><section>
@@ -14785,22 +14786,22 @@ $$
 <p>On peut démontrer que :</p>
 $$
 E[E(Y|X_i)^2]
-= \int_{[0,1]^{2p-1}} g(x_i,x_{-i}) g(x_i,z_{-i}) dx_{-i} dz_{-i} dx_i.  
-$$<p>Soit $x^e\in[0,1]^{2p-1}$ la variable aléatoire en dimension $2p-1$ suivante :</p>
+= \int_{[0,1]^{2p-1}} g(x_i,\vect{x}_{-i}) g(x_i,\vect{z}_{-i}) d\vect{x}_{-i} d\vect{z}_{-i} dx_i.  
+$$<p>Soit $\vect{x}^e\in[0,1]^{2p-1}$ la variable aléatoire en dimension $2p-1$ suivante :</p>
 \begin{align*}
-x^{e} &amp; = 
+\vect{x}^{e} &amp; = 
 (x_1, x_2, ..., x_p, z_1, ..., z_{i-1}, z_{i+1}, ..., z_{p})^T \\
-&amp;= (x_i,x_{-i},z_{-i}).
+&amp;= (x_i,\vect{x}_{-i},\vect{z}_{-i}).
 \end{align*}<p>Soit $g^{e}$ la fonction en dimension étendue définie par :</p>
 \begin{align*}
-g^{e}\left(x^e\right) 
+g^{e}\left(\vect{x}^e\right) 
 &amp;= g(x_1, x_2, ..., x_i, ..., x_p) g(z_1, ..., z_{i-1}, x_i, z_{i+1}, ..., z_{p}) \\
-&amp;= g(x_i,x_{-i}) g(x_i,z_{-i})
-\end{align*}<p>pour tout $x\in[0,1]^p$ et tout $z_{-i}\in[0,1]^{p-1}$.</p>
+&amp;= g(x_i,\vect{x}_{-i}) g(x_i,\vect{z}_{-i})
+\end{align*}<p>pour tout $\vect{x}\in[0,1]^p$ et tout $\vect{z}_{-i}\in[0,1]^{p-1}$.</p>
 <p>L'équation précédente montre que le numérateur de l'indice de Sobol' du premier ordre est égal à l'intégrale de la fonction $g^{e}$ :</p>
 $$
 E[E(Y|X_i)^2]
-= \int_{[0,1]^{2p-1}} g^e(x^e) dx^e.
+= \int_{[0,1]^{2p-1}} g^e(\vect{x}^e) d\vect{x}^e.
 $$
 </div>
 </div></section></section><section><section>
@@ -14808,16 +14809,16 @@ $$
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <h2 id="Indice-de-sensibilit&#233;-total-par-une-int&#233;grale-en-dimension-&#233;tendue">Indice de sensibilit&#233; total par une int&#233;grale en dimension &#233;tendue<a class="anchor-link" href="#Indice-de-sensibilit&#233;-total-par-une-int&#233;grale-en-dimension-&#233;tendue">&#182;</a></h2><p>Pour estimer l'indice de sensibilité total, nous devons estimer :</p>
 $$
-V[E(g(X)|X_{-i})] = E[E(g(X)|X_{-i})^2] - E(Y)^2.
+V[E(g(X)|\vect{X}_{-i})] = E[E(g(\vect{X})|\vect{X}_{-i})^2] - E(Y)^2.
 $$<p>On peut démontrer que :</p>
 $$
-E[E(g(X)|X_{-i})^2]
-= \int_{[0,1]^{p+1}} g(x_i,x_{-i}) g(z_i,x_{-i}) dx_{-i} dx_i dz_i.  
-$$<p>Soit $x^f\in[0,1]^{p+1}$ la variable aléatoire en dimension $p+1$ suivante :</p>
+E[E(g(\vect{X})|\vect{X}_{-i})^2]
+= \int_{[0,1]^{p+1}} g(x_i, \vect{x}_{-i}) g(z_i, \vect{x}_{-i}) d\vect{x}_{-i} dx_i dz_i.  
+$$<p>Soit $\vect{x}^f\in[0,1]^{p+1}$ la variable aléatoire en dimension $p+1$ suivante :</p>
 \begin{align*}
-x^{f} &amp; = 
+\vect{x}^{f} &amp; = 
 (x_1, x_2, ..., x_p, z_{i})^T \\
-&amp;= (x_i,x_{-i},z_{i}).
+&amp;= (x_i,\vect{x}_{-i},z_{i}).
 \end{align*}
 </div>
 </div></section></section><section><section>
@@ -14825,14 +14826,14 @@ x^{f} &amp; =
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>Soit $g^{f}$ la fonction en dimension étendue définie par :</p>
 \begin{align*}
-g^{f}\left(x^f\right) 
+g^{f}\left(\vect{x}^f\right) 
 &amp;= g(x_1, x_2, ..., x_i, ..., x_p) g(x_1, ..., x_{i-1}, z_i, x_{i+1}, ..., x_{p}) \\
-&amp;= g(x_i,x_{-i}) g(z_i,x_{-i})
-\end{align*}<p>pour tout $x\in[0,1]^p$ et tout $z_{i}\in[0,1]$.</p>
+&amp;= g(x_i,\vect{x}_{-i}) g(z_i,\vect{x}_{-i})
+\end{align*}<p>pour tout $\vect{x}\in[0,1]^p$ et tout $z_i\in[0,1]$.</p>
 <p>Le numérateur de l'indice de Sobol' total est égal à l'intégrale de la fonction $g^{f}$ :</p>
 $$
-E[E(Y|X_{-i})^2]
-= \int_{[0,1]^{p+1}} g^f\left(x^f\right) dx^f.
+E[E(Y|\vect{X}_{-i})^2]
+= \int_{[0,1]^{p+1}} g^f\left(\vect{x}^f\right) d\vect{x}^f.
 $$
 </div>
 </div></section></section><section><section>
@@ -14842,17 +14843,17 @@ $$
 <p>Pour l'estimation des indices du premier ordre, la méthode de Saltelli est fondée sur un échantillonnage Monte-Carlo simple pour l'estimation de l'intégrale en dimension $2p-1$ associée à la fonction $g^e$. Pour les indices totaux, la méthode de Saltelli est fondée sur une intégrale en dimension $p+1$ associée à la fonction $g^f$.</p>
 <p>L'algorithme est le suivant.</p>
 <ul>
-<li>On considère un plan d'expériences de type Monte-Carlo simple de taille $n$ et de dimension $2p-1$ pour la variable $x^e$, constitué des points $x^{e(1)}, ..., x^{e(n)}$. Les $p$ premières colonnes de ce plan d'expériences constituent un plan de type Monte-Carlo simple de taille $n$ et de dimension $p$ pour la variable $X$, constitué des points $x^{(1)}, ..., x^{(n)}$. </li>
+<li>On considère un plan d'expériences de type Monte-Carlo simple de taille $n$ et de dimension $2p-1$ pour la variable $\vect{x}^e$, constitué des points $\vect{x}^{e(1)}, ..., \vect{x}^{e(n)}$. Les $p$ premières colonnes de ce plan d'expériences constituent un plan de type Monte-Carlo simple de taille $n$ et de dimension $p$ pour le vecteur $\vect{X}$, constitué des points $\vect{x}^{(1)}, ..., \vect{x}^{(n)}$. </li>
 <li>On estime la moyenne $E(Y)$ par la moyenne empirique :</li>
 </ul>
 $$
-\bar{Y} = \frac{1}{n} \sum_{j=1}^n g\left(x^{(j)}\right).
+\bar{Y} = \frac{1}{n} \sum_{j=1}^n g\left(\vect{x}^{(j)}\right).
 $$<ul>
 <li>On considère la fonction centrée $\tilde{g}$ définie par :</li>
 </ul>
 $$
-\tilde{g}(x) = g(x) - \bar{Y},
-$$<p>pour tout $x\in[0,1]^p$.</p>
+\tilde{g}(\vect{x}) = g(\vect{x}) - \bar{Y},
+$$<p>pour tout $\vect{x}\in[0,1]^p$.</p>
 
 </div>
 </div></section></section><section><section>
@@ -14862,12 +14863,12 @@ $$<p>pour tout $x\in[0,1]^p$.</p>
 <li>On estime la variance $V(Y)$ par la variance empirique <em>biaisée</em> :</li>
 </ul>
 $$
-\hat{\sigma}^2 = \frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x^{(j)}\right)^2.
+\hat{\sigma}^2 = \frac{1}{n} \sum_{j=1}^n \tilde{g}\left(\vect{x}^{(j)}\right)^2.
 $$<ul>
 <li>Pour $i=1,...,p$, on estime $E[E(Y|X_i)^2]$ par la moyenne empirique :</li>
 </ul>
 $$
-\hat{E}_i = \frac{1}{n} \sum_{j=1}^n \tilde{g}^e\left(x^{e(j)}\right)
+\hat{E}_i = \frac{1}{n} \sum_{j=1}^n \tilde{g}^e\left(\vect{x}^{e(j)}\right)
 $$<p>où $\tilde{g}^e$ est la fonction centrée en dimension étendue $2p-1$.</p>
 
 </div>
@@ -14879,14 +14880,14 @@ $$<p>où $\tilde{g}^e$ est la fonction centrée en dimension étendue $2p-1$.</p
 </ul>
 \begin{align*}
 \hat{S}_i &amp;= \frac{\hat{E}_i}{\hat{\sigma}^2} \\
-&amp;= \frac{\frac{1}{n} \sum_{j=1}^n \tilde{g}^e\left(x^{e(j)}\right)}{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x^{(j)}\right)^2} \\
-&amp;= \frac{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x_i^{(j)},x_{-i}^{(j)}\right) \tilde{g}\left(x_i^{(j)},z_{-i}^{(j)}\right)}{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x^{(j)}\right)^2}
+&amp;= \frac{\frac{1}{n} \sum_{j=1}^n \tilde{g}^e\left(\vect{x}^{e(j)}\right)}{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(\vect{x}^{(j)}\right)^2} \\
+&amp;= \frac{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x_i^{(j)},\vect{x}_{-i}^{(j)}\right) \tilde{g}\left(x_i^{(j)},\vect{z}_{-i}^{(j)}\right)}{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(\vect{x}^{(j)}\right)^2}
 \end{align*}<p>où $\tilde{g}$ est la fonction centrée.</p>
 <ul>
-<li>On estime $E[E(Y|X_{-i})^2]$ par la moyenne empirique :</li>
+<li>On estime $E[E(Y|\vect{X}_{-i})^2]$ par la moyenne empirique :</li>
 </ul>
 $$
-\hat{E}_{-i} = \frac{1}{n} \sum_{j=1}^n \tilde{g}^f\left(x^{f(j)}\right).
+\hat{E}_{-i} = \frac{1}{n} \sum_{j=1}^n \tilde{g}^f\left(\vect{x}^{f(j)}\right).
 $$<p>où $\tilde{g}^f$ est la fonction centrée en dimension étendue $p+1$.</p>
 
 </div>
@@ -14898,8 +14899,8 @@ $$<p>où $\tilde{g}^f$ est la fonction centrée en dimension étendue $p+1$.</p>
 </ul>
 \begin{align*}
 \hat{T}_i &amp;= 1 - \frac{\hat{E}_{-i}}{\hat{\sigma}^2} \\
-&amp;= 1 - \frac{\frac{1}{n} \sum_{j=1}^n \tilde{g}^f\left(x^{f(j)}\right)}{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x^{(j)}\right)^2} \\
-&amp;= 1 - \frac{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x_i^{(j)},x_{-i}^{(j)}\right) \tilde{g}\left(z_{i}^{(j)},x_{-i}^{(j)}\right)}{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x^{(j)}\right)^2}
+&amp;= 1 - \frac{\frac{1}{n} \sum_{j=1}^n \tilde{g}^f\left(\vect{x}^{f(j)}\right)}{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(\vect{x}^{(j)}\right)^2} \\
+&amp;= 1 - \frac{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(x_i^{(j)},\vect{x}_{-i}^{(j)}\right) \tilde{g}\left(z_{i}^{(j)},\vect{x}_{-i}^{(j)}\right)}{\frac{1}{n} \sum_{j=1}^n \tilde{g}\left(\vect{x}^{(j)}\right)^2}
 \end{align*}<p>où $\tilde{g}$ est la fonction centrée.</p>
 
 </div>
