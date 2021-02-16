@@ -23,6 +23,7 @@ jobs:
             conda install -y matplotlib
             conda install -y scipy
             conda install -y pandas
+            pip install otbenchmark
       - run:
           name: Test
           command: |

@@ -9,6 +9,7 @@ pre-commit
 flake8
 spyder
 statsmodels
-openturns==1.14
+openturns==1.16
 otmorris
+otbenchmark
 
