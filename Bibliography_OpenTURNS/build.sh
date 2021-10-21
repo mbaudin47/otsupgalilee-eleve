@@ -1,0 +1,4 @@
+pdflatex bibliography_openturns
+bibtex bibliography_openturns
+pdflatex bibliography_openturns
+pdflatex bibliography_openturns
