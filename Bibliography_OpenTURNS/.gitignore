@@ -1,0 +1,11 @@
+*.aux
+*.log
+*.bbl
+*.nav
+*.out
+*.toc
+*.snm
+*.vrb
+*.blg
+bibliography_openturns.pdf
+
