@@ -38,7 +38,7 @@ def executeIpythonNotebook(ipythonNBFile):
     os.chdir(dirname)
     basename = os.path.basename(ipythonNBFile)
     # 2. Execute the notebook
-    command = "jupyter nbconvert --to notebook --execute "
+    command = "jupyter nbconvert --ExecutePreprocessor.timeout=300 --to notebook --execute "
     command += basename
     print(command)
     returncode = os.system(command)
