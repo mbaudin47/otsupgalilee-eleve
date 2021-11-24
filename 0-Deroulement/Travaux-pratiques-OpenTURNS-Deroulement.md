@@ -3,7 +3,7 @@
 
 ![Logo Sup Galilée](logo-sup-galilee.jpg)
 
-![Logo Paris 13](USPC-PARIS13-1.png)
+![Logo Paris 13](USPC-PARIS13-1_fond.png)
 
 ![Logo OpenTURNS](logo_OT.png)
 
@@ -48,7 +48,7 @@ L'environnement requis pour les séances de TP est le suivant :
 * numpy ≥ 1.15
 * scipy ≥ 1.1
 * matplotlib ≥ 2.2
-* OpenTURNS ≥ 1.18
+* OpenTURNS ≥ 1.17
 * Spyder ≥ 3.3.1  (optionnel)
 
 Pour installer OpenTURNS, je vous recommande Anaconda 3.7 :
@@ -58,6 +58,6 @@ www.anaconda.com
 L'installation d'OpenTURNS se fait alors avec les commandes :
 ```
 conda config --add channels conda-forge
-conda install openturns=1.14 otmorris
+conda install openturns=1.17 otmorris
 conda install jupyter matplotlib scipy
 ```
