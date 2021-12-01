@@ -70,7 +70,7 @@ This cheat sheet follows the steps of the ABC method.
 |---|---|
 | Create the parametric model | `ot.ParametricFunction(g, calibratedIndices, thetaPrior)` |
 | Linear least squares | `ot.LinearLeastSquaresCalibration(parametric_g, input_sample, output_sample, thetaPrior, "SVD")` |
-| Non linear least squares | `ot.NonLinearLeastSquaresCalibration(parametric_g, observedStrain, observedStress, thetaPrior)`
+| Non linear least squares | `ot.NonLinearLeastSquaresCalibration(parametric_g, input_sample, output_sample, thetaPrior)`
 | Linear gaussian | `ot.GaussianLinearCalibration(parametric_g, input_sample, output_sample, thetaPrior, theta_sigma, output_covariance)` |
 | Non linear gaussian | `ot.GaussianNonLinearCalibration(parametric_g, input_sample, output_sample, thetaPrior, theta_sigma, output_covariance)`
 | Bayesian calibration | `ot.RandomWalkMetropolisHastings(prior, conditional, model, x_obs, y_obs, initialState, proposal)` |
