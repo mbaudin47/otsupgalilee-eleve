@@ -58,22 +58,22 @@ This cheat sheet follows the steps of the ABC method.
 
 | **Purpose** |  **Class / Method** |
 |---|---|
-| Perform linear regression | `ot.LinearLeastSquares(sampleX, sampleY)` |
-| Standardized regression coefficients | `ot.CorrelationAnalysis_SignedSRC(sampleX, sampleY)` |
-| Draw indices | `ot.SobolIndicesAlgorithm.DrawCorrelationCoefficients(SRCindices, input_names, "SRC coefficients")` |
-| Estimate Sobol' indices with given n | `ot.SobolIndicesExperiment(X, size)` |
-| Estimate Sobol' indices | `estimator = ot.SaltelliSensitivityAlgorithm()` |
+| Perform linear regression | `ot.LinearLeastSquares(input_sample, output_sample)` |
+| Standardized regression coefficients | `ot.CorrelationAnalysis_SignedSRC(input_sample, output_sample)` |
+| Draw indices | `ot.SobolIndicesAlgorithm.DrawCorrelationCoefficients(src_indices, input_names, "SRC coefficients")` |
+| Estimate Sobol' indices given budget | `ot.SobolIndicesExperiment(distribution, sample_size)` |
+| Estimate Sobol' indices | `ot.SaltelliSensitivityAlgorithm()` |
 
 ## Step B' : calibration
 
 | **Purpose** |  **Class / Method** |
 |---|---|
-| Create the parametric model | `ot.ParametricFunction(g, calibratedIndices, thetaPrior)` |
-| Linear least squares | `ot.LinearLeastSquaresCalibration(parametric_g, input_sample, output_sample, thetaPrior, "SVD")` |
-| Non linear least squares | `ot.NonLinearLeastSquaresCalibration(parametric_g, input_sample, output_sample, thetaPrior)`
-| Linear gaussian | `ot.GaussianLinearCalibration(parametric_g, input_sample, output_sample, thetaPrior, theta_sigma, output_covariance)` |
-| Non linear gaussian | `ot.GaussianNonLinearCalibration(parametric_g, input_sample, output_sample, thetaPrior, theta_sigma, output_covariance)`
-| Bayesian calibration | `ot.RandomWalkMetropolisHastings(prior, conditional, model, x_obs, y_obs, initialState, proposal)` |
+| Create the parametric model | `ot.ParametricFunction(g, calibrated_indices, theta_prior)` |
+| Linear least squares | `ot.LinearLeastSquaresCalibration(parametric_g, input_sample, output_sample, theta_prior, "SVD")` |
+| Non linear least squares | `ot.NonLinearLeastSquaresCalibration(parametric_g, input_sample, output_sample, theta_prior)`
+| Linear gaussian | `ot.GaussianLinearCalibration(parametric_g, input_sample, output_sample, theta_prior, theta_sigma, output_covariance)` |
+| Non linear gaussian | `ot.GaussianNonLinearCalibration(parametric_g, input_sample, output_sample, theta_prior, theta_sigma, output_covariance)`
+| Bayesian calibration | `ot.RandomWalkMetropolisHastings(prior, conditional, model, input_sample, output_sample, initialState, proposal)` |
 
 ## Metamodel
 
