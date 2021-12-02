@@ -10,7 +10,7 @@ This cheat sheet follows the steps of the ABC method.
 
 ## Step A : define the study
 
-| Purpose | `Class` / `Method` |
+| **Purpose** |  **Class / Method** |
 |---|---|
 | Import _OpenTURNS_ | `import openturs as ot` |
 | Vector | `ot.Point(dimension)` |
@@ -24,6 +24,7 @@ This cheat sheet follows the steps of the ABC method.
 | Input random vector | `ot.RandomVector(inputDistribution)` |
 | Output random vector | `ot.CompositeRandomVector(g, inputRandomVector)` |
 | Generate observations | `randomVector.getSample(sample_size)` |
+| Set the seed | `ot.RandomGenerator.SetSeed(1976)` |
 | Get sample size | `sample.getSize()` |
 | Get sample dimension | `sample.getDimension()` |
 | Compute sample mean | `outputSample.computeMean()` |
@@ -31,9 +32,8 @@ This cheat sheet follows the steps of the ABC method.
 
 ## Step B : quantification of the sources of uncertainties
 
-| Purpose | `Class` / `Method` |
+| **Purpose** |  **Class / Method** |
 |---|---|
-| Import _OpenTURNS_ | `import openturs as ot` |
 | Fit a Normal | `ot.NormalFactory().build(sample)` |
 | Fit a Beta | `ot.BetaFactory().build(sample)` |
 | Fit an histogram | `ot.HistogramFactory().build(sample)` |
@@ -45,7 +45,7 @@ This cheat sheet follows the steps of the ABC method.
 
 ## Step C : push forward the uncertainties
 
-| Purpose | `Class` / `Method` |
+| **Purpose** |  **Class / Method** |
 |---|---|
 | Taylor expansion | `ot.TaylorExpansionMoments(output_random_vector)` |
 | Estimate mean | `ot.ExpectationSimulationAlgorithm(output_random_vector)` |
@@ -56,7 +56,7 @@ This cheat sheet follows the steps of the ABC method.
 
 ## Step C' : sensitivity analysis
 
-| Purpose | `Class` / `Method` |
+| **Purpose** |  **Class / Method** |
 |---|---|
 | Perform linear regression | `ot.LinearLeastSquares(sampleX, sampleY)` |
 | Standardized regression coefficients | `ot.CorrelationAnalysis_SignedSRC(sampleX, sampleY)` |
@@ -66,7 +66,7 @@ This cheat sheet follows the steps of the ABC method.
 
 ## Step B' : calibration
 
-| Purpose | `Class` / `Method` |
+| **Purpose** |  **Class / Method** |
 |---|---|
 | Create the parametric model | `ot.ParametricFunction(g, calibratedIndices, thetaPrior)` |
 | Linear least squares | `ot.LinearLeastSquaresCalibration(parametric_g, input_sample, output_sample, thetaPrior, "SVD")` |
@@ -77,19 +77,35 @@ This cheat sheet follows the steps of the ABC method.
 
 ## Metamodel
 
-| Purpose | `Class` / `Method` |
+| **Purpose** |  **Class / Method** |
 |---|---|
-| TODO | TODO |
+| Squared exponential | `ot.SquaredExponential([1.0] * dimension, [1.0])` |
+| Matern 5/2 covariance | `ot.MaternModel([1.0] * dimension, 2.5)` |
+| Kriging | `ot.KrigingAlgorithm(input_sample, output_sample, covarianceModel, basis)` |
+| Sample from kriging | `ot.KrigingRandomVector(result, input_sample)` |
+| Conditioned gaussian process | `ot.ConditionedGaussianProcess(kriging_result, mesh)` |
+| Multivariate basis | `ot.OrthogonalProductPolynomialFactory(distribution_collection)`
+| Polynomial chaos (given data) | `ot.FunctionalChaosAlgorithm(input_sample, output_sample)`
+| Polynomial chaos (given distribution) | `ot.FunctionalChaosAlgorithm(input_sample, output_sample, distribution, adaptive_strategy, projection_strategy)` |
+| Sobol' indices from chaos | `ot.FunctionalChaosSobolIndices(functional_chaos_result)` |
+| Sample from chaos | `ot.FunctionalChaosRandomVector(functional_chaos_result)` |
+| Validation | `ot.MetaModelValidation(input_test, output_test, metamodel)` |
 
 ## Design of experiments
 
-| Purpose | `Class` / `Method` |
+| **Purpose** |  **Class / Method** |
 |---|---|
-| TODO | TODO |
+| Monte-Carlo | `ot.MonteCarloExperiment(distribution, sample_size)` |
+| Latin Hypercube Sampling | `ot.LHSExperiment(distribution, sample_size)` |
+| Optimized LHS | `ot.SimulatedAnnealingLHS(lhs_experiment, criteria, temperature_profile)` |
+| Sobol' sequence | `ot.SobolSequence(dimension)` |
+| Low discrepancy sequence | `ot.LowDiscrepancyExperiment(ld_sequence, distribution, samplesize, False)` |
+| Import viewer | `import openturs.viewer as otv` |
+| Plot DOE | `otv.PlotDesign(sample, bounds)` |
 
 ## More resources
 
-| Resource | Link |
+| **Resource** | **Link** |
 |---|---|
 | Forum | https://openturns.discourse.group |
 | Chat | https://gitter.im/openturns/community |
