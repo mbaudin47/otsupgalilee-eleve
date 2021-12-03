@@ -103,6 +103,18 @@ This cheat sheet follows the steps of the ABC method.
 | Import viewer | `import openturs.viewer as otv` |
 | Plot DOE | `otv.PlotDesign(sample, bounds)` |
 
+## Graphics
+
+| **Purpose** |  **Class / Method** |
+|---|---|
+| Import viewer | `import openturns.viewer as otv` |
+| Graph | `ot.Graph(title, x_title, y_title, show_axes_bool)` |
+| Curve | `ot.Curve(sample_x, sample_y)` |
+| Cloud | `ot.Cloud(sample_x, sample_y)` |
+| Set colors | `graph.setColors(ot.Drawable().BuildDefaultPalette(number_of_graphs))` |
+| Customize size | `view = otv.View(graph, figure_kw={"figsize": (4.0, 3.0)})` |
+| Save figure | `view.getFigure().savefig("filename.pdf", bbox_inches="tight")` |
+
 ## More resources
 
 | **Resource** | **Link** |
