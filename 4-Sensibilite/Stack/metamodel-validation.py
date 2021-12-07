@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# Analyse de sensibilité globale par regression - application au cas 
+# Analyse de sensibilité globale par regression - application au cas
 # de la déviation verticale de la poutre
 #
 
@@ -26,7 +26,7 @@ X = ot.ComposedDistribution([dist_E, dist_F, dist_L, dist_I])
 g = ot.SymbolicFunction(["E", "F", "L", "I"], ["F* L^3 /  (3 * E * I)"])
 g.setOutputDescription(["Y (cm)"])
 
-# Pour pouvoir exploiter au mieux les simulations, nous équipons 
+# Pour pouvoir exploiter au mieux les simulations, nous équipons
 # la fonction d'un méchanisme d'historique.
 g = ot.MemoizeFunction(g)
 

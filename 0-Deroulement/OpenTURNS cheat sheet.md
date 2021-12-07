@@ -111,8 +111,12 @@ This cheat sheet follows the steps of the ABC method.
 | Graph | `ot.Graph(title, x_title, y_title, show_axes_bool)` |
 | Curve | `ot.Curve(sample_x, sample_y)` |
 | Cloud | `ot.Cloud(sample_x, sample_y)` |
+| Pairs | `graph = ot.VisualTest.DrawPairs(sample)` |
+| Pairs with distribution | `ot.VisualTest.DrawPairsMarginals(sample, distribution)` |
+| Parallel coordinate | `VisualTest_DrawParallelCoordinates(input_sample, output_sample, min_value, max_value, color)` |
 | Set colors | `graph.setColors(ot.Drawable().BuildDefaultPalette(number_of_graphs))` |
-| Customize size | `view = otv.View(graph, figure_kw={"figsize": (4.0, 3.0)})` |
+| Set size | `view = otv.View(graph, figure_kw={"figsize": (4.0, 3.0)})` |
+| Move legend | `otv.View(graph, legend_kw={"bbox_to_anchor":(1.0, 1.0), "loc":"upper left"})`| 
 | Save figure | `view.getFigure().savefig("filename.pdf", bbox_inches="tight")` |
 
 ## More resources
