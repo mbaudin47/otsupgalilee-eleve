@@ -27,14 +27,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="5.2780316"
-     inkscape:cx="121.54629"
-     inkscape:cy="176.20171"
+     inkscape:zoom="1.866066"
+     inkscape:cx="467.78211"
+     inkscape:cy="205.80399"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
      inkscape:window-width="1920"
-     inkscape:window-height="995"
+     inkscape:window-height="865"
      inkscape:window-x="0"
      inkscape:window-y="28"
      inkscape:window-maximized="1"
@@ -634,14 +634,14 @@
            y="1160.1202"
            style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium';fill:#0000ff;fill-opacity:1;stroke-width:0.29656604"
            id="tspan3779">Incertaines : <tspan
-   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Bold';stroke-width:0.29656604"
+   style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Bold Italic';stroke-width:0.29656604"
    id="tspan10442">X</tspan></tspan><tspan
            sodipodi:role="line"
            x="-495.4913"
            y="1175.7452"
            style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium';fill:#0000ff;fill-opacity:1;stroke-width:0.29656604"
            id="tspan3781">Fixes : <tspan
-   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Bold';stroke-width:0.29656604"
+   style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Bold Italic';stroke-width:0.29656604"
    id="tspan10444">d</tspan></tspan></text>
     </g>
     <g
@@ -668,8 +668,16 @@
            sodipodi:role="line"
            x="-385.37372"
            y="1167.0188"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Bold';fill:#0000ff;fill-opacity:1;stroke-width:0.29656604"
-           id="tspan3833">Y=g(X,d)</tspan></text>
+           style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Bold Italic';fill:#0000ff;fill-opacity:1;stroke-width:0.29656604"
+           id="tspan3833">y<tspan
+   style="-inkscape-font-specification:'CMU Serif Medium Italic';font-family:'CMU Serif';font-weight:500;font-style:italic;font-stretch:normal;font-variant:normal"
+   id="tspan1221">=</tspan>g<tspan
+   style="-inkscape-font-specification:'CMU Serif Medium Italic';font-family:'CMU Serif';font-weight:500;font-style:italic;font-stretch:normal;font-variant:normal"
+   id="tspan1219">(</tspan>x<tspan
+   style="-inkscape-font-specification:'CMU Serif Medium Italic';font-family:'CMU Serif';font-weight:500;font-style:italic;font-stretch:normal;font-variant:normal"
+   id="tspan1223">,</tspan>d<tspan
+   style="-inkscape-font-specification:'CMU Serif Medium Italic';font-family:'CMU Serif';font-weight:500;font-style:italic;font-stretch:normal;font-variant:normal"
+   id="tspan1225">)</tspan></tspan></text>
     </g>
     <g
        id="g10490"
@@ -695,8 +703,14 @@
            sodipodi:role="line"
            x="-297.89227"
            y="1166.6713"
-           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Bold';fill:#0000ff;fill-opacity:1;stroke-width:0.29656604"
-           id="tspan3879">Y=g(X)</tspan></text>
+           style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:12.5px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Bold Italic';fill:#0000ff;fill-opacity:1;stroke-width:0.29656604"
+           id="tspan3879">Y<tspan
+   style="-inkscape-font-specification:'CMU Serif Medium Italic';font-family:'CMU Serif';font-weight:500;font-style:italic;font-stretch:normal;font-variant:normal"
+   id="tspan1213">=</tspan>g<tspan
+   style="-inkscape-font-specification:'CMU Serif Medium Italic';font-family:'CMU Serif';font-weight:500;font-style:italic;font-stretch:normal;font-variant:normal"
+   id="tspan1215">(</tspan>X<tspan
+   style="-inkscape-font-specification:'CMU Serif Medium Italic';font-family:'CMU Serif';font-weight:500;font-style:italic;font-stretch:normal;font-variant:normal"
+   id="tspan1217">)</tspan></tspan></text>
     </g>
     <g
        id="g15421">
@@ -893,9 +907,11 @@
            x="984.36017"
            y="1146.8173"
            style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:42.14912796px;line-height:1.25;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Bold';fill:#0000ff;fill-opacity:1"
-           id="tspan3879-3">Y<tspan
-   id="tspan59831"
-   style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:42.14912796px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Bold';baseline-shift:sub">obs</tspan></tspan></text>
+           id="tspan3879-3"><tspan
+             style="-inkscape-font-specification:'CMU Serif Bold Italic';font-family:'CMU Serif';font-weight:bold;font-style:italic;font-stretch:normal;font-variant:normal"
+             id="tspan1227">Y</tspan><tspan
+             id="tspan59831"
+             style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:42.14912796px;font-family:'CMU Serif';-inkscape-font-specification:'CMU Serif Medium';baseline-shift:sub">obs</tspan></tspan></text>
     </g>
     <path
        inkscape:connector-curvature="0"
