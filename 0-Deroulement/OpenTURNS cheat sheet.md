@@ -128,7 +128,9 @@ This cheat sheet follows the steps of the ABC method.
 | Modules | https://github.com/openturns/openturns/wiki/Modules |
 | Install | http://openturns.github.io/openturns/master/install.html |
 | Bugs | https://github.com/openturns/openturns/issues |
+| Q&A | https://stackoverflow.com/questions/tagged/openturns |
 | Events | https://github.com/openturns/openturns/wiki/OpenTURNS-events |
 | Bibliography | https://github.com/openturns/openturns/wiki/Bibliography |
 | Bib resources | [Bibtex file](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/Bibliography_OpenTURNS/bibliography_openturns.bib) |
 | Presentations | https://github.com/openturns/presentation |
+
