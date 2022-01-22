@@ -16,19 +16,19 @@ This cheat sheet follows the steps of the ABC method.
 | Vector | `ot.Point(dimension)` |
 | Sample | `ot.Sample(size, dimension)` |
 | Symbolic function | `ot.SymbolicFunction(["x0", "x1"], ["1 + x0 + x1"])` |
-| Python function | `ot.PythonFunction(number_of_inputs, number_of_outputs, g)` |
-| Manage history and cache | `ot.MemoizeFunction(myfunction)` |
+| Python function | `ot.PythonFunction(number_of_inputs, number_of_outputs, py_function)` |
+| Manage history and cache | `ot.MemoizeFunction(g_function)` |
 | Normal | `ot.Normal(mu, sigma)` |
 | Uniform | `ot.Uniform(a, b)` |
-| Multivariate distribution with independent copula | `ot.ComposedDistribution((X0, X1, X2))` |
-| Input random vector | `ot.RandomVector(inputDistribution)` |
-| Output random vector | `ot.CompositeRandomVector(g, inputRandomVector)` |
+| Multivariate distr., indep. copula | `ot.ComposedDistribution((dist_x0, dist_x1, dist_x2))` |
+| Input random vector | `ot.RandomVector(input_distribution)` |
+| Output random vector | `ot.CompositeRandomVector(g_function, input_random_vector)` |
 | Generate observations | `randomVector.getSample(sample_size)` |
-| Set the seed | `ot.RandomGenerator.SetSeed(1976)` |
+| Set the seed | `ot.RandomGenerator.SetSeed(1)` |
 | Get sample size | `sample.getSize()` |
 | Get sample dimension | `sample.getDimension()` |
-| Compute sample mean | `outputSample.computeMean()` |
-| Compute sample standard deviation | `outputSample.computeStandardDeviation()` |
+| Sample mean | `sample.computeMean()` |
+| Sample st. dev. | `sample.computeStandardDeviation()` |
 
 ## Step B : quantification of the sources of uncertainties
 
@@ -68,7 +68,7 @@ This cheat sheet follows the steps of the ABC method.
 
 | **Purpose** |  **Class / Method** |
 |---|---|
-| Create the parametric model | `ot.ParametricFunction(g, calibrated_indices, theta_prior)` |
+| Create the parametric model | `ot.ParametricFunction(g_function, calibrated_indices, theta_prior)` |
 | Linear least squares | `ot.LinearLeastSquaresCalibration(parametric_g, input_sample, output_sample, theta_prior, "SVD")` |
 | Non linear least squares | `ot.NonLinearLeastSquaresCalibration(parametric_g, input_sample, output_sample, theta_prior)`
 | Linear gaussian | `ot.GaussianLinearCalibration(parametric_g, input_sample, output_sample, theta_prior, theta_sigma, output_covariance)` |
@@ -111,11 +111,11 @@ This cheat sheet follows the steps of the ABC method.
 | Graph | `ot.Graph(title, x_title, y_title, show_axes_bool)` |
 | Curve | `ot.Curve(sample_x, sample_y)` |
 | Cloud | `ot.Cloud(sample_x, sample_y)` |
-| Pairs | `graph = ot.VisualTest.DrawPairs(sample)` |
+| Pairs | `ot.VisualTest.DrawPairs(sample)` |
 | Pairs with distribution | `ot.VisualTest.DrawPairsMarginals(sample, distribution)` |
 | Parallel coordinate | `VisualTest_DrawParallelCoordinates(input_sample, output_sample, min_value, max_value, color)` |
 | Set colors | `graph.setColors(ot.Drawable().BuildDefaultPalette(number_of_graphs))` |
-| Set size | `view = otv.View(graph, figure_kw={"figsize": (4.0, 3.0)})` |
+| Set size | `otv.View(graph, figure_kw={"figsize": (4.0, 3.0)})` |
 | Move legend | `otv.View(graph, legend_kw={"bbox_to_anchor":(1.0, 1.0), "loc":"upper left"})`| 
 | Save figure | `view.getFigure().savefig("filename.pdf", bbox_inches="tight")` |
 
@@ -128,7 +128,9 @@ This cheat sheet follows the steps of the ABC method.
 | Modules | https://github.com/openturns/openturns/wiki/Modules |
 | Install | http://openturns.github.io/openturns/master/install.html |
 | Bugs | https://github.com/openturns/openturns/issues |
+| Q&A | https://stackoverflow.com/questions/tagged/openturns |
 | Events | https://github.com/openturns/openturns/wiki/OpenTURNS-events |
 | Bibliography | https://github.com/openturns/openturns/wiki/Bibliography |
 | Bib resources | [Bibtex file](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/Bibliography_OpenTURNS/bibliography_openturns.bib) |
 | Presentations | https://github.com/openturns/presentation |
+
