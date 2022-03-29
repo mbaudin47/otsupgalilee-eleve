@@ -11,18 +11,18 @@ jobs:
       - run:
           name: Install
           command: |
-            wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh -O $HOME/miniconda.sh
-            bash $HOME/miniconda.sh -b -p $HOME/miniconda
-            export PATH="$HOME/miniconda/bin:$PATH"
-            source $HOME/miniconda/bin/activate
+            wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -P /tmp
+            bash /tmp/Miniforge3-Linux-x86_64.sh -b -p $HOME/miniforge
+            export PATH="$HOME/miniforge/bin:$PATH"
+            source $HOME/miniforge/bin/activate
             conda config --add channels conda-forge
             conda install -y python==3.9 openturns=1.17 jupyter matplotlib scipy
             pip install otbenchmark
       - run:
           name: Test
           command: |
-            export PATH="$HOME/miniconda/bin:$PATH"
-            source $HOME/miniconda/bin/activate
+            export PATH="$HOME/miniforge/bin:$PATH"
+            source $HOME/miniforge/bin/activate
             ./.circleci/run_docker_linux.sh
 
 workflows:
