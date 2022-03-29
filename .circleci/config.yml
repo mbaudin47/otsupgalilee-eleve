@@ -16,7 +16,7 @@ jobs:
             export PATH="$HOME/miniforge/bin:$PATH"
             source $HOME/miniforge/bin/activate
             conda config --add channels conda-forge
-            conda install -y python==3.9 openturns=1.17 jupyter matplotlib scipy
+            conda install -y python==3.9 openturns==1.17 jupyter==1.0.0 matplotlib==3.5.0 scipy==1.7.0
             pip install otbenchmark
       - run:
           name: Test
