@@ -12,7 +12,7 @@ This cheat sheet follows the steps of the ABC method.
 
 | **Purpose** |  **Class / Method** |
 |---|---|
-| Import _OpenTURNS_ | `import openturs as ot` |
+| Import _OpenTURNS_ | `import openturns as ot` |
 | Vector | `ot.Point(dimension)` |
 | Sample | `ot.Sample(size, dimension)` |
 | Symbolic function | `ot.SymbolicFunction(["x0", "x1"], ["1 + x0 + x1"])` |
@@ -100,7 +100,7 @@ This cheat sheet follows the steps of the ABC method.
 | Optimized LHS | `ot.SimulatedAnnealingLHS(lhs_experiment, criteria, temperature_profile)` |
 | Sobol' sequence | `ot.SobolSequence(dimension)` |
 | Low discrepancy sequence | `ot.LowDiscrepancyExperiment(ld_sequence, distribution, samplesize, False)` |
-| Import viewer | `import openturs.viewer as otv` |
+| Import viewer | `import openturns.viewer as otv` |
 | Plot DOE | `otv.PlotDesign(sample, bounds)` |
 
 ## Graphics
