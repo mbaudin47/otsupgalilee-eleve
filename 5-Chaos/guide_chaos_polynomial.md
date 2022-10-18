@@ -1,16 +1,17 @@
 # Guide du chaos polynomial avec OpenTURNS
+Dans ce texte, j'énumère des méthodes permettant de tenter d'améliorer la qualité d'un polynôme du chaos créé avec OpenTURNS.
 
-Dans ce texte, j'énumère des méthodes permettant de tenter d'améliorer la qualité d'un polynôme du chaos créé avec OpenTURNS. Ce guide est une tentative de fournir une méthode pour tenter d'être systématique dans l'exploration des paramètres du chaos polynomial. J'essaye de parcourir les paramètres du plus simple au plus complexe et de tenir compte de l'expérience pratique issue de mes études et du contact avec les utilisateurs.
+Ce guide est une tentative de fournir une méthode pour tenter d'être systématique dans l'exploration des paramètres du chaos polynomial. J'essaye de parcourir les paramètres du plus simple au plus complexe et de tenir compte de l'expérience pratique issue de mes études et du contact avec les utilisateurs.
 
 ## Du plus simple au plus complexe
 Dans cette liste, j'énumère les paramètres du chaos polynomial qui sont susceptibles d'être modifiés. Cette expérience se fonde sur le fait que la méthode d'estimation par moindres carrés LARS fonctionne souvent très bien. Un point de départ acceptable peut être d'utiliser la fonction `ComputeSparseLeastSquaresChaos` dans [Exercice-chaos-cantilever-beam.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/5-Chaos/Exercice-chaos-cantilever-beam.ipynb)
 - Donner si possible la distribution du vecteur aléatoire $\boldsymbol{X}$ en entrée du métamodèle. Sinon, la classe `FunctionalChaosAlgorithm` tente d'inférer la loi à partir de l'échantillon d'entrée, ce qui peut être long et donner des résultats peu satisfaisants
 - Tester des degrés croissants de 1, 2, 3, ... Commencer par un degré 2.
 - Estimer les coefficients par régression 
-- Avec LARS
+- Avec la méthode LARS on peut réduire le nombre de coefficients grâce à la méthode de sélection de modèle. 
 - Utiliser la règle d'énumération linéaire
 - Estimer les coefficients par intégration
-- Utiliser la règle d'énumération hyperbolique avec $0.5 \leq q \leq 1$ (isotrope). Utiliser une boucle sur $q \in \{0.5, 0.6, 0.7, 0.8, 0.9\}$ et conserver le meilleur. 
+- Utiliser la règle d'énumération hyperbolique avec $0.5 \leq q \leq 1$ (isotrope). Utiliser une boucle sur $q \in \{0.5, 0.6, 0.7, 0.8, 0.9\}$ et conserver le meilleur. Cette règle permet de favoriser des degrés marginaux élevés, avec des interactions de degré faible. 
 - Utiliser la règle d'énumération hyperbolique anisotropique. Diminuer les poids marginaux permet d'augmenter le degré marginal pour certaines variables, sans nécessairement les augmenter pour les autres. 
 
 ## Valider le chaos polynomial
