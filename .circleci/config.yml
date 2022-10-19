@@ -16,6 +16,7 @@ jobs:
             conda create --name testot -y
             conda activate testot
             conda config --add channels conda-forge
+            conda update conda
             conda install -y python==3.9 openturns==1.17 jupyter>=1.0.0 matplotlib>=3.5.0 scipy>=1.7.0
             pip install otbenchmark
       - run:
@@ -23,6 +24,7 @@ jobs:
           command: |
             export PATH="$HOME/miniforge/bin:$PATH"
             source $HOME/miniforge/bin/activate
+            conda activate testot
             ./.circleci/run_docker_linux.sh
 
 workflows:
