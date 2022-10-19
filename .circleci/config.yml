@@ -13,6 +13,8 @@ jobs:
             bash /tmp/Miniforge3-Linux-x86_64.sh -b -p $HOME/miniforge
             export PATH="$HOME/miniforge/bin:$PATH"
             source $HOME/miniforge/bin/activate
+            conda create --name testot
+            conda activate testot
             conda config --add channels conda-forge
             conda install -y python==3.9 openturns==1.17 jupyter>=1.0.0 matplotlib>=3.5.0 scipy>=1.7.0
             pip install otbenchmark
