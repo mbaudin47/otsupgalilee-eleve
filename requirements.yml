@@ -1,8 +1,8 @@
-# run: conda env create --file environment.yml
+# run: conda env create --file requirements.yml
 # conda env update --file requirements.yml
 name: otsupgalilee
 dependencies:
-- python==3.9
+- python==3.10
 - pip
 - numpy
 - matplotlib
@@ -10,12 +10,12 @@ dependencies:
 - jupyter
 - jupyterlab
 - nbconvert
-- black==19.10b0
+- black
 - pre-commit
 - flake8
 - spyder
 - statsmodels
-- openturns==1.17
+- openturns==1.19
 - otmorris
 - pip:
   - otbenchmark
