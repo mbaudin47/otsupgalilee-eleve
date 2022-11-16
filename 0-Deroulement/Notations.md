@@ -27,25 +27,29 @@ On note $i\in\{1,...,p\}$ l'indice d'une composante du vecteur d'entrée $\bolds
 On note $f$ la densité de probabilité du vecteur aléatoire $\boldsymbol{X}$. 
 
 Soit $g : \mathcal{X} \rightarrow \mathbb{R}$ une fonction. On considère la variable aléatoire :
+
 $$
 Y = g(\boldsymbol{X}).
 $$
 
 Nous allons estimer l'espérance de $Y$ :
+
 $$
 \mathbb{E}(Y) = \int_{\mathcal{X}} g(\boldsymbol{X}) f(\boldsymbol{X}) d\boldsymbol{X}.
 $$
 De plus, nous allons estimer la variance de $Y$ :
+
 $$
 \mathbb{V}(Y) = \mathbb{E}\left[(Y - \mathbb{E}(Y))^2\right].
 $$
-Pour un seuil $s \in \mathbb{R}$ fixé, on peut souhaiter la probabilité de dépasser 
-le seuil $s$ :
+Pour un seuil $s \in \mathbb{R}$ fixé, on peut souhaiter la probabilité de dépasser le seuil $s$ :
+
 $$
 \mathbb{P}(Y > s) 
-= \int_{\mathcal{X}} g(\mathbf{x}) f(\mathbf{x}) d\mathbf{x}
+= \int_{\mathcal{X}} \mathbf{1}_{g(\mathbf{x}) > s} f(\mathbf{x}) d\mathbf{x}
 $$
 où $\mathbf{1}_{g(\mathbf{x}) > s}$ est la fonction indicatrice définie par :
+
 $$
 \begin{aligned}
 \mathbf{1}_{g(\mathbf{x}) > s}(\mathbf{x})
@@ -64,6 +68,7 @@ Soit $n\in\mathbb{N}$ un entier représentant la taille de l'échantillon.
 
 Soit $\left\{\boldsymbol{X}^{(j)}\right\}_{j=1,...,n}$ un échantillon i.i.d. du vecteur aléatoire $\boldsymbol{X}$. 
 Par conséquent, la réalisation $x_i^{(j)}$ est la i-ème composante de la j-ème réalisation, pour $i=1,...,p$ et $j=1,...,n$. Le plan d'expériences $A$ associé est donc :
+
 $$
 A = 
 \begin{pmatrix}
@@ -76,11 +81,13 @@ $$
 où chaque ligne représente une réalisation du vecteur aléatoire $\boldsymbol{X}$ et chaque colonne représente une composante.
 
 Soit 
+
 $$
 y^{(j)} = g\left(\boldsymbol{x}^{(j)}\right)
 $$
 pour $j=1,...,n$. 
 L'estimateur Monte-Carlo de la moyenne empirique est :
+
 $$
 \bar{y} = \frac{1}{n} \sum_{j=1}^n y^{(j)}.
 $$
