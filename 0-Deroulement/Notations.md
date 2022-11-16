@@ -89,6 +89,7 @@ Soit
 $$
 y^{(j)} = g\left(\boldsymbol{x}^{(j)}\right)
 $$
+
 pour $j=1,...,n$. 
 L'estimateur Monte-Carlo de la moyenne empirique est :
 
