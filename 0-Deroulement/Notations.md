@@ -37,17 +37,20 @@ Nous allons estimer l'espérance de $Y$ :
 $$
 \mathbb{E}(Y) = \int_{\mathcal{X}} g(\boldsymbol{X}) f(\boldsymbol{X}) d\boldsymbol{X}.
 $$
+
 De plus, nous allons estimer la variance de $Y$ :
 
 $$
 \mathbb{V}(Y) = \mathbb{E}\left[(Y - \mathbb{E}(Y))^2\right].
 $$
+
 Pour un seuil $s \in \mathbb{R}$ fixé, on peut souhaiter la probabilité de dépasser le seuil $s$ :
 
 $$
 \mathbb{P}(Y > s) 
 = \int_{\mathcal{X}} \mathbf{1}_{g(\mathbf{x}) > s} f(\mathbf{x}) d\mathbf{x}
 $$
+
 où $\mathbf{1}_{g(\mathbf{x}) > s}$ est la fonction indicatrice définie par :
 
 $$
@@ -78,6 +81,7 @@ x_1^{(2)} & x_2^{(2)} & \cdots & x_p^{(2)} \\
 x_1^{(n)} & x_2^{(n)} & \cdots & x_p^{(n)}
 \end{pmatrix}
 $$
+
 où chaque ligne représente une réalisation du vecteur aléatoire $\boldsymbol{X}$ et chaque colonne représente une composante.
 
 Soit 
