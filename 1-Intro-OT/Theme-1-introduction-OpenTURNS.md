@@ -16,4 +16,4 @@ Cours : introduction au Python, à OpenTURNS, à la méthodologie
 - [Simulation de pensions de retraites](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/1-Intro-OT/Exercice-montant-pensions-retraites.ipynb)
 
 ## La méthodologie ABC
-![[MethodologieIncertitude-FR.png]]
+![](MethodologieIncertitude-FR.png)

@@ -11,15 +11,15 @@
 
 ## Consortium
 
-![[1-Intro-OT/Logo-EDF.png]]
-![[Logo-Airbus.png]]
-![[Logo-Phimeca.png]]
-![[Logo-Imacs.png]]
-![[logo-ONERA.jpg]]
+![](1-Intro-OT/Logo-EDF.png)
+![](Logo-Airbus.png)
+![](Logo-Phimeca.png)
+![](Logo-Imacs.png)
+![](logo-ONERA.jpg)
 
 ## Fonctionnalités
 
-![[OT-overview.PNG]]
+![](OT-overview.PNG)
 
 - Multivariate probabilistic modeling including dependence
 - Numerical tools dedicated to the treatment of uncertainties
