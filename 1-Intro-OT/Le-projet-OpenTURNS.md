@@ -11,7 +11,7 @@
 
 ## Consortium
 
-![](1-Intro-OT/Logo-EDF.png)
+![](Logo-EDF.png)
 ![](Logo-Airbus.png)
 ![](Logo-Phimeca.png)
 ![](Logo-Imacs.png)
