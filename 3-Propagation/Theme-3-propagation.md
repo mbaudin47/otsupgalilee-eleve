@@ -9,5 +9,5 @@ L'objectif de cette séquence est de réaliser la propagation des incertitudes d
 - Exercice - Estimer une probabilité de dépassement de seuil dans le cas de la poutre en flexion : [Exercice-Probabilite-cantilever-beam.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/Seance1/3-Propagation/Exercice-Probabilite-cantilever-beam.ipynb)
 
 ## Questions StackOverflow
-- How to estimate the Taylor decomposition variance from a Python function with user-defined gradient in OpenTURNS? [Stack-Taylor_decomposition_Python_gradient.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/Seance1/3-Propagation/Stack-Taylor_decomposition_Python_gradient.ipynb)
-- Estimate importance factors on a Python function : [Stack-Taylor_decomposition_Python_gradient-basic.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/Seance1/3-Propagation/Stack-Taylor_decomposition_Python_gradient-basic.ipynb)
+- How to estimate the Taylor decomposition variance from a Python function with user-defined gradient in OpenTURNS? [Stack-Taylor-decomposition-Python-gradient.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/Seance1/3-Propagation/Stack-Taylor-decomposition-Python-gradient.ipynb)
+- Estimate importance factors on a Python function : [Stack-Taylor-decomposition-Python-gradient-basic.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/Seance1/3-Propagation/Stack-Taylor-decomposition-Python-gradient-basic.ipynb)

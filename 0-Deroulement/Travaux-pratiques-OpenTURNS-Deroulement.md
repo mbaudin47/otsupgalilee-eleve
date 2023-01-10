@@ -9,7 +9,7 @@
 
 ## Résumé
 
-Le but de ce document est de présenter le déroulement des séances de travaux pratiques OpenTURNS à l'école d'ingénieurs Sup-Galilée.
+Le but de ce document est de présenter le déroulement des séances de travaux pratiques OpenTURNS à l'école d'ingénieurs Sup-Galilée, dans l'option Mathématiques Appliquées et Calcul Scientifique (MACS).
 
 ## Contact
 
@@ -42,22 +42,19 @@ Le but de ce document est de présenter le déroulement des séances de travaux 
 ## Installation d'OpenTURNS
 
 L'environnement requis pour les séances de TP est le suivant :
-* Python ≥ 3.7
-* IPython ≥ 6.5.0
-* jupyter notebook ≥ 5.6.0
-* numpy ≥ 1.15
-* scipy ≥ 1.1
-* matplotlib ≥ 2.2
-* OpenTURNS ≥ 1.17
-* Spyder ≥ 3.3.1  (optionnel)
+* Python ≥ 3.7 ;
+* IPython ≥ 6.5.0 ;
+* Jupyter notebook ≥ 5.6.0 ;
+* Numpy ≥ 1.15 ;
+* Scipy ≥ 1.1 ;
+* Matplotlib ≥ 2.2 ;
+* OpenTURNS ≥ 1.17 ;
+* Spyder ≥ 3.3.1  (optionnel).
 
-Pour installer OpenTURNS, je vous recommande Anaconda 3.7 :
+Pour installer OpenTURNS, je vous recommande de suivre les instructions disponibles dans la [documentation d'OpenTURNS](http://openturns.github.io/openturns/latest/install.html).
 
-www.anaconda.com
-
-L'installation d'OpenTURNS se fait alors avec les commandes :
+Avec Conda, l'installation d'OpenTURNS et des outils nécessaires pour les travaux pratiques se fait avec les commandes :
 ```
-conda config --add channels conda-forge
 conda install openturns=1.17 otmorris
 conda install jupyter matplotlib scipy
 ```

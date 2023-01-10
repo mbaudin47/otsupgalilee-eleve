@@ -4,7 +4,7 @@ L'objectif de cette séquence est de réaliser l'analyse de sensibilité, c'est 
 
 ## Vue d'ensemble
 - Rappels de cours sur l'analyse de sensibilité d'un modèle linéaire : [Cours-Sensibilité-lineaire.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/4-Sensibilite/Cours-Sensibilite-lineaire.ipynb)
-- Exercice : [Exercice-Sensibilité-SRC-cantilever-beam.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/4-Sensibilite/Exercice_Sensibilite_SRC_cantilever_beam.ipynb)
+- Exercice : [Exercice-Sensibilité-SRC-cantilever-beam.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/4-Sensibilite/Exercice-Sensibilite-SRC-cantilever-beam.ipynb)
 - Rappels de cours sur l'analyse de sensibilité d'un modèle non-linéaire : [Cours-Sensibilite-nonlineaire.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/4-Sensibilite/Cours-Sensibilite-nonlineaire.ipynb)
 - Exercice : [Exercice-Sensibilité-Sobol-cantilever-beam.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/4-Sensibilite/Exercice-Sensibilite-Sobol-cantilever-beam.ipynb)
 
@@ -12,8 +12,8 @@ L'objectif de cette séquence est de réaliser l'analyse de sensibilité, c'est 
 - Devoir maison : [Devoir-Sensibilite-axial-stressed-beam.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/4-Sensibilite/Devoir-Sensibilite-axial-stressed-beam.ipynb)
 
 ## Recherche
-- [Compute confidence interval of SRC indices using bootstrap](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/4-Sensibilite/Exercice_SRC_with_bootstrap.ipynb)
-- [Loi des coefficients de la régression linéaire](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/4-Sensibilite/Exercice_lois_des_coefficients_r%C3%A9gression_lin%C3%A9aire.ipynb)
+- [Compute confidence interval of SRC indices using bootstrap](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/4-Sensibilite/Exercice-SRC-with-bootstrap.ipynb)
+- [Loi des coefficients de la régression linéaire](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/4-Sensibilite/Exercice-lois-des-coefficients-r%C3%A9gression-lin%C3%A9aire.ipynb)
 
 ## Stack
 - [Validation of a multidimensionnal metamodel](https://github.com/mbaudin47/otsupgalilee-eleve/blob/Seance1/4-Sensibilite/Stack/validation-metamodel-multidimensional.ipynb)

@@ -12,21 +12,7 @@ Nous fournissons des rappels de cours ainsi que des présentations thématiques 
 
 Plus de détails sur le déroulement du cours sont présentés dans la page suivante :
 
-[Déroulement du cours](0-Deroulement/Travaux-pratiques-OpenTURNS-Deroulement.ipynb)
-
-Les scripts OpenTURNS sont garantis pour OT 1.14.
-
-## Pré-requis
-
-L'environnement requis pour les séances de TP est le suivant :
-* Python 3.7
-* IPython 6.5.0
-* Jupyter notebook 5.6.0
-* Spyder 3.3.1
-* numpy 1.15
-* scipy 1.1
-* matplotlib 2.2
-* OpenTURNS 1.14
+[Déroulement du cours](0-Deroulement/Travaux-pratiques-OpenTURNS-Deroulement.md)
 
 ## Installation
 
