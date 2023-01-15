@@ -1,6 +1,5 @@
 # Thème 1 : introduction à OpenTURNS
 ## Introduction
-
 L'objectif de cette séquence est de réaliser une introduction à OpenTURNS, à la méthodologie générique de traitement des incertitudes et aux classes de base dans le logiciel.
 
 ## Vue d'ensemble
