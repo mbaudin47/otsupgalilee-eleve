@@ -3,10 +3,10 @@
 L'objectif de cette séquence est de déterminer la loi univariée qui s'ajuste le mieux à un échantillon. Dans la méthodologie générique de traitement des incertitudes, c'est l'étape B.
 
 ## Vue d'ensemble
-- Exercice - Approfondissement sur les distributions 1D : [Exercice-Approfondissement-distributions-1D.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/2-Quantification/Exercice-Approfondissement-distributions-1D.ipynb)
-- Rappels de cours - Ajustement d'une loi 1D sur un échantillon : [Cours-Ajustement-distribution-1D.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/2-Quantification/Cours-Ajustement-distribution-1D.ipynb)
-- Exercice - ajustement d'une loi 1D sur un échantillon de modules d'Young : [Exercice-cantilever-beam-fit-distribution.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/2-Quantification/Exercice-cantilever-beam-fit-distribution.ipynb)
-- Exercice - estimation non paramétrique : [Estimation-non-parametrique-old-faithful.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/2-Quantification/Estimation-non-parametrique-old-faithful.ipynb)
+- Exercice : approfondissement sur les distributions 1D, [Exercice-Approfondissement-distributions-1D.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/2-Quantification/Exercice-Approfondissement-distributions-1D.ipynb)
+- Cours : ajustement d'une loi 1D sur un échantillon, [Cours-Ajustement-distribution-1D.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/2-Quantification/Cours-Ajustement-distribution-1D.ipynb)
+- Exercice : ajustement d'une loi 1D sur un échantillon de modules d'Young, [Exercice-cantilever-beam-fit-distribution.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/2-Quantification/Exercice-cantilever-beam-fit-distribution.ipynb)
+- Exercice : estimation non paramétrique, [Estimation-non-parametrique-old-faithful.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/2-Quantification/Estimation-non-parametrique-old-faithful.ipynb)
 
 ## Devoirs
 - Convolution pour le calcul d'une probabilité : [Devoir-convolution-axial-stressed-beam.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/2-Quantification/Devoir-convolution-axial-stressed-beam.ipynb)
