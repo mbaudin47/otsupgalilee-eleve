@@ -9,6 +9,7 @@ jobs:
       - run:
           name: Install
           command: |
+            set -xe
             wget https://github.com/conda-forge/miniforge/releases/latest/download/Miniforge3-Linux-x86_64.sh -P /tmp
             bash /tmp/Miniforge3-Linux-x86_64.sh -b -p $HOME/miniforge
             export PATH="$HOME/miniforge/bin:$PATH"
