@@ -17,7 +17,7 @@ jobs:
             conda create --name testot -y
             conda activate testot
             conda config --add channels conda-forge
-            conda install -y python>=3.9 openturns==1.21 jupyter>=1.0.0 matplotlib==3.4.3  scipy tqdm
+            conda install -y python>=3.9 openturns==1.21 jupyter>=1.0.0 matplotlib  scipy tqdm
             pip install otbenchmark
       - run:
           name: Test
