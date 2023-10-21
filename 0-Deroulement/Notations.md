@@ -12,23 +12,32 @@ Soit $m \in \mathbb{N}$ le nombre de paramètres de la densité de probabilité 
 
 ## Variable aléatoire en sortie
 On note $i\in\{1,...,p\}$ l'indice d'une composante du vecteur d'entrée $\boldsymbol{X}$. Pour tout $i=1,...,p$, on a donc $X_i\in\mathbb{R}$. On note $f$ la densité de probabilité du vecteur aléatoire $\boldsymbol{X}$.  Soit $g : \mathcal{X} \rightarrow \mathbb{R}$ une fonction. On considère la variable aléatoire :
+
 $$
 Y = g(\boldsymbol{X}).
 $$
+
 Nous allons estimer l'espérance de $Y$ :
+
 $$
 \mathbb{E}(Y) = \int_{\mathcal{X}} g(\boldsymbol{X}) f(\boldsymbol{X}) d\boldsymbol{X}.
 $$
+
 De plus, nous allons estimer la variance de $Y$ :
+
 $$
 \operatorname{Var}(Y) = \mathbb{E}\left[(Y - \mathbb{E}(Y))^2\right].
 $$
+
 Pour un seuil $s \in \mathbb{R}$ fixé, on peut souhaiter la probabilité de dépasser le seuil $s$ :
+
 $$
 \mathbb{P}(Y > s) 
 = \int_{\mathcal{X}} \mathbf{1}_{g(\mathbf{x}) > s} f(\mathbf{x}) d\mathbf{x}
 $$
+
 où $\mathbf{1}_{g(\mathbf{x}) > s}$ est la fonction indicatrice définie par :
+
 $$
 \begin{aligned}
 \mathbf{1}_{g(\mathbf{x}) > s}(\mathbf{x})
@@ -65,6 +74,7 @@ où chaque ligne représente une réalisation du vecteur aléatoire $\boldsymbol
 $$
 y^{(j)} = g\left(\boldsymbol{x}^{(j)}\right)
 $$
+
 pour $j=1,...,n$. L'estimateur Monte-Carlo de la moyenne empirique est :
 
 $$
