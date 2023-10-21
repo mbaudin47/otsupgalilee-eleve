@@ -26,7 +26,7 @@ $$
 De plus, nous allons estimer la variance de $Y$ :
 
 $$
-\operatorname{Var}(Y) = \mathbb{E}\left[(Y - \mathbb{E}(Y))^2\right].
+\text{Var}(Y) = \mathbb{E}\left[(Y - \mathbb{E}(Y))^2\right].
 $$
 
 Pour un seuil $s \in \mathbb{R}$ fixé, on peut souhaiter la probabilité de dépasser le seuil $s$ :
