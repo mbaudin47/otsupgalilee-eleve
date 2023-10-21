@@ -1,10 +1,6 @@
 [![CircleCI](https://circleci.com/gh/mbaudin47/otsupgalilee-eleve.svg?style=svg)](https://circleci.com/gh/mbaudin47/otsupgalilee-eleve)
 
-![Logo Sup Galilée](0-Deroulement/logo-sup-galilee.jpg)
-
-![Logo Paris 13](0-Deroulement/USPC-PARIS13-1_fond.png)
-
-![Logo OpenTURNS](0-Deroulement/logo_OT-small.png)
+![Logo Sup Galilée](0-Deroulement/assemblage_logos.png)
 
 # otsupgalilee-eleve
 Cette page présente le matériel pédagogique à destination des élèves pour des cours OpenTURNS à SupGalilée (Université Paris XIII), dans l'option Mathématiques Appliquées et Calcul Scientifique (MACS). L'objectif pédagogique de ce cours est de compléter la formation des élèves sur le traitement des incertitudes par une formation qui mêle la théorie et la pratique en langage Python avec la librairie OpenTURNS.
