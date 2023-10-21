@@ -11,7 +11,7 @@ Nous fournissons des rappels de cours ainsi que des présentations thématiques 
 ## Principes
 Les principes généraux de la formation sont les suivants.
 * Travaux pratiques OpenTURNS : 10 séances de 3h de mi-janvier à fin février
-* Evaluation : Travail, éventuellement en groupe, sur un petit projet.
+* Évaluation : Travail, éventuellement en groupe, sur un petit projet.
 
 La liste suivante présente un exemple de déroulement possible :
 * Séance 1 : introduction à la méthodologie ABC, à OpenTURNS
@@ -19,8 +19,8 @@ La liste suivante présente un exemple de déroulement possible :
 * Séance 3 : quantification des incertitudes - étape B
 * Séance 4 : propagation des incertitudes - étape C
 * Séance 5 : analyse de sensibilité globale - étape C'
-* Séance 6 : créer des métamodèles de chaos
-* Séance 7 : créer des métamodèles de krigeage
+* Séance 6 : créer des méta-modèles de chaos
+* Séance 7 : créer des méta-modèles de krigeage
 * Séance 8 : calage par des méthodes bayésiennes et non bayésiennes
 * Séance 9 : calage par des méthodes bayésiennes et non bayésiennes - suite
 * Séance 10 : introduction à SALOME et son interface graphique d'OpenTURNS
