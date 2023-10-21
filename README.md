@@ -2,7 +2,7 @@
 
 ![Logo Sup Galilée](0-Deroulement/logo-sup-galilee.jpg)
 
-![Logo Paris 13](USPC-PARIS13-1_fond.png)
+![Logo Paris 13](0-Deroulement/USPC-PARIS13-1_fond.png)
 
 ![Logo OpenTURNS](0-Deroulement/logo_OT-small.png)
 
@@ -53,15 +53,14 @@ L'environnement requis pour les séances de TP est le suivant :
 * Numpy ≥ 1.15 ;
 * Scipy ≥ 1.1 ;
 * Matplotlib ≥ 2.2 ;
-* OpenTURNS ≥ 1.17 ;
+* OpenTURNS ≥ 1.21 ;
 * Spyder ≥ 3.3.1  (optionnel).
 
 Pour installer OpenTURNS, je vous recommande de suivre les instructions disponibles dans la [documentation d'OpenTURNS](http://openturns.github.io/openturns/latest/install.html).
 
 Avec Conda, l'installation d'OpenTURNS et des outils nécessaires pour les travaux pratiques se fait avec les commandes :
 ```
-conda install openturns=1.17 otmorris
-conda install jupyter matplotlib scipy
+conda install openturns=1.21 otmorris jupyter matplotlib scipy
 ```
 
 ## Installation du contenu pédagotique
