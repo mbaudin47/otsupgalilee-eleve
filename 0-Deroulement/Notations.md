@@ -45,7 +45,7 @@ $$
 Soit $n\in\mathbb{N}$ un entier représentant la taille de l'échantillon. Soit:
 
 $$
-\left\{ \boldsymbol{X}^{(j)} \right\}_{j=1,...,n}
+\left\lbrace \boldsymbol{X}^{(j)} \right\rbrace_{j=1,...,n}
 $$
 
 un échantillon i.i.d. du vecteur aléatoire $\boldsymbol{X}$. Par conséquent, la réalisation $x_i^{(j)}$ est la i-ème composante de la j-ème réalisation, pour $i=1,...,p$ et $j=1,...,n$. Le plan d'expériences $A$ associé est donc :
