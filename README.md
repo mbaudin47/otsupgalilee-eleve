@@ -4,9 +4,7 @@
 
 # otsupgalilee-eleve
 Cette page présente le matériel pédagogique à destination des élèves pour des cours OpenTURNS à SupGalilée (Université Paris XIII), dans l'option Mathématiques Appliquées et Calcul Scientifique (MACS). L'objectif pédagogique de ce cours est de compléter la formation des élèves sur le traitement des incertitudes par une formation qui mêle la théorie et la pratique en langage Python avec la librairie OpenTURNS.
-
 Nous fournissons des rappels de cours ainsi que des présentations thématiques accompagnés d'exercices corrigés. Plusieurs devoirs sont fournis pour chaque thème. 
-
 Plus de détails sur le déroulement du cours sont présentés dans la page suivante :
 
 **Contact** : Michaël Baudin, michael.baudin.supgalilee@gmail.com
