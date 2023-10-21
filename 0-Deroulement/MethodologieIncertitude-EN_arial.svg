@@ -24,9 +24,9 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="1.3195079"
-     inkscape:cx="513.5684"
-     inkscape:cy="222.38717"
+     inkscape:zoom="1.866066"
+     inkscape:cx="426.10416"
+     inkscape:cy="264.84939"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -469,6 +469,19 @@
          d="M -10.666667,0 -14.933333,4.2666667 0,0 -14.933333,-4.2666667 Z"
          style="fill:#d62728;fill-rule:evenodd;stroke:#d62728;stroke-width:0.85333335pt;marker-start:none;stroke-opacity:1.0;fill-opacity:1.0" />
     </marker>
+    <marker
+       inkscape:stockid="Arrow1Lendoz8678"
+       orient="auto"
+       refY="0"
+       refX="0"
+       style="overflow:visible"
+       id="Arrow1Lendoz8678">
+      <path
+         inkscape:connector-curvature="0"
+         id="path1167"
+         d="M -10.666667,0 -14.933333,4.2666667 0,0 -14.933333,-4.2666667 Z"
+         style="fill:#9467bd;fill-rule:evenodd;stroke:#9467bd;stroke-width:0.85333335pt;marker-start:none;stroke-opacity:1.0;fill-opacity:1.0" />
+    </marker>
   </defs>
   <metadata
      id="metadata7">
@@ -587,7 +600,7 @@
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#1f77b4;fill-opacity:1"
    id="tspan9326">d</tspan>)</tspan></text>
     <rect
-       style="fill:none;stroke:#0000ff;stroke-width:1.52381;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="fill:none;stroke:#1f77b4;stroke-width:1.52381;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect2988-8"
        width="87.738968"
        height="76.964005"
@@ -689,7 +702,7 @@
        id="path4079-7"
        inkscape:connector-curvature="0" />
     <rect
-       style="fill:none;stroke:#000000;stroke-width:1.52381;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="fill:none;stroke:#9467bd;stroke-width:1.52381;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect2985-8"
        width="249.79041"
        height="57.14286"
@@ -697,7 +710,7 @@
        y="1461.6882" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:0%;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.380952"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:0%;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#9467bd;fill-opacity:1;stroke:none;stroke-width:0.380952;"
        x="-380.11374"
        y="1484.6792"
        id="text3755-9"><tspan
@@ -705,15 +718,15 @@
          id="tspan3757-2"
          x="-380.11374"
          y="1484.6792"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#000000;fill-opacity:1;stroke-width:0.380952">Step C' : Sensitivity Analysis, </tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#9467bd;fill-opacity:1;stroke-width:0.380952;">Step C' : Sensitivity Analysis, </tspan><tspan
          id="tspan6165"
          sodipodi:role="line"
          x="-380.11374"
          y="1501.3458"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#000000;fill-opacity:1;stroke-width:0.380952">Ranking</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#9467bd;fill-opacity:1;stroke-width:0.380952;">Ranking</tspan></text>
     <path
        sodipodi:nodetypes="cc"
-       style="fill:none;stroke:#000101;stroke-width:1.52381;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lendoz8)"
+       style="fill:none;stroke:#9467bd;stroke-width:1.52381;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lendoz8678)"
        d="M 59.398471,1448.2556 H -593.05091"
        id="path4079-7-1"
        inkscape:connector-curvature="0" />
@@ -791,26 +804,26 @@
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:0%;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ff8000;fill-opacity:1;stroke:none;stroke-width:0.380952"
        x="-395.55554"
-       y="1365.6517"
+       y="1365.1377"
        id="text3755-9-1"><tspan
          id="tspan6165-1"
          sodipodi:role="line"
          x="-395.55554"
-         y="1365.6517"
+         y="1365.1377"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ff8000;fill-opacity:1;stroke-width:0.380952">Step B' : Quantification </tspan><tspan
          sodipodi:role="line"
          x="-395.55554"
-         y="1382.3184"
+         y="1381.8043"
          style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#ff8000;fill-opacity:1;stroke-width:0.380952"
          id="tspan7716">of sources</tspan><tspan
          id="tspan59732"
          sodipodi:role="line"
          x="-395.55554"
-         y="1398.985"
+         y="1398.4709"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#ff8000;fill-opacity:1;stroke-width:0.380952">Inverse methods, calibration, </tspan><tspan
          sodipodi:role="line"
          x="-395.55554"
-         y="1415.6516"
+         y="1415.1376"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#ff8000;fill-opacity:1;stroke-width:0.380952"
          id="tspan7718">assimilation</tspan></text>
     <path
@@ -820,12 +833,12 @@
        id="path4079-7-1-2"
        inkscape:connector-curvature="0" />
     <rect
-       style="fill:none;stroke:#1f77b4;stroke-width:1.52381;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="fill:none;stroke:#1f77b4;stroke-width:1.66953;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect2988-8-1"
-       width="87.738968"
-       height="76.964005"
-       x="-110.97912"
-       y="1349.9976" />
+       width="87.593246"
+       height="92.541473"
+       x="-110.90626"
+       y="1342.2089" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:0%;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#1f77b4;fill-opacity:1;stroke:none;stroke-width:0.380952"
