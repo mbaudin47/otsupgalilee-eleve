@@ -12,7 +12,7 @@ L'objectif de cette séquence est de créer un métamodèle de type chaos polyno
 - Polynômes du chaos : 
 	- Cours : [Cours-chaos-polynomial-decomposition.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/5-Chaos/Cours-chaos-polynomial-decomposition.ipynb)
 	- Exercice : [Exercice-chaos-cantilever-beam.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/5-Chaos/Exercice-chaos-cantilever-beam.ipynb)
-- Ouvrons la boîte : l'estimation des coefficients : 
+- Ouvrons la boîte de l'estimation des coefficients : 
 	- Exercice, estimation par moindres carrés : [Exercice-chaos-cantilever-beam-LeastSquares.ipynb](Exercice-chaos-cantilever-beam-LeastSquares.ipynb)
 	- Exercice, estimation par intégration : [Exercice-chaos-cantilever-beam-Integration.ipynb](Exercice-chaos-cantilever-beam-Integration.ipynb)
 - Devoir à la maison : quadrature de Gauss, [Exercice-gauss
