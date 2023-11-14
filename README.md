@@ -10,8 +10,8 @@ Nous fournissons des rappels de cours ainsi que des présentations thématiques 
 
 ## Principes
 Les principes généraux de la formation sont les suivants.
-* Travaux pratiques OpenTURNS : 10 séances de 3h de mi-janvier à fin février
-* Évaluation : Travail, éventuellement en groupe, sur un petit projet.
+* Travaux pratiques OpenTURNS : 16 séances de 3h de novembre à février
+* Évaluation : Travail, éventuellement en groupe, sur un projet.
 
 La liste suivante présente un exemple de déroulement possible :
 * Séance 1 : introduction à la méthodologie ABC, à OpenTURNS
