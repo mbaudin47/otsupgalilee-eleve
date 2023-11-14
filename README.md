@@ -1,24 +1,17 @@
 [![CircleCI](https://circleci.com/gh/mbaudin47/otsupgalilee-eleve.svg?style=svg)](https://circleci.com/gh/mbaudin47/otsupgalilee-eleve)
 
-![Logo Sup Galilée](0-Deroulement/logo-sup-galilee.jpg)
-
-![Logo Paris 13](USPC-PARIS13-1_fond.png)
-
-![Logo OpenTURNS](0-Deroulement/logo_OT.png)
+![Logo Sup Galilée](0-Deroulement/assemblage_logos.png)
 
 # otsupgalilee-eleve
 Cette page présente le matériel pédagogique à destination des élèves pour des cours OpenTURNS à SupGalilée (Université Paris XIII), dans l'option Mathématiques Appliquées et Calcul Scientifique (MACS). L'objectif pédagogique de ce cours est de compléter la formation des élèves sur le traitement des incertitudes par une formation qui mêle la théorie et la pratique en langage Python avec la librairie OpenTURNS.
-
 Nous fournissons des rappels de cours ainsi que des présentations thématiques accompagnés d'exercices corrigés. Plusieurs devoirs sont fournis pour chaque thème. 
-
-Plus de détails sur le déroulement du cours sont présentés dans la page suivante :
 
 **Contact** : Michaël Baudin, michael.baudin.supgalilee@gmail.com
 
 ## Principes
 Les principes généraux de la formation sont les suivants.
 * Travaux pratiques OpenTURNS : 10 séances de 3h de mi-janvier à fin février
-* Evaluation : Travail, éventuellement en groupe, sur un petit projet.
+* Évaluation : Travail, éventuellement en groupe, sur un petit projet.
 
 La liste suivante présente un exemple de déroulement possible :
 * Séance 1 : introduction à la méthodologie ABC, à OpenTURNS
@@ -26,8 +19,8 @@ La liste suivante présente un exemple de déroulement possible :
 * Séance 3 : quantification des incertitudes - étape B
 * Séance 4 : propagation des incertitudes - étape C
 * Séance 5 : analyse de sensibilité globale - étape C'
-* Séance 6 : créer des métamodèles de chaos
-* Séance 7 : créer des métamodèles de krigeage
+* Séance 6 : créer des méta-modèles de chaos
+* Séance 7 : créer des méta-modèles de krigeage
 * Séance 8 : calage par des méthodes bayésiennes et non bayésiennes
 * Séance 9 : calage par des méthodes bayésiennes et non bayésiennes - suite
 * Séance 10 : introduction à SALOME et son interface graphique d'OpenTURNS
@@ -53,15 +46,14 @@ L'environnement requis pour les séances de TP est le suivant :
 * Numpy ≥ 1.15 ;
 * Scipy ≥ 1.1 ;
 * Matplotlib ≥ 2.2 ;
-* OpenTURNS ≥ 1.17 ;
+* OpenTURNS ≥ 1.21 ;
 * Spyder ≥ 3.3.1  (optionnel).
 
 Pour installer OpenTURNS, je vous recommande de suivre les instructions disponibles dans la [documentation d'OpenTURNS](http://openturns.github.io/openturns/latest/install.html).
 
 Avec Conda, l'installation d'OpenTURNS et des outils nécessaires pour les travaux pratiques se fait avec les commandes :
 ```
-conda install openturns=1.17 otmorris
-conda install jupyter matplotlib scipy
+conda install openturns=1.21 otmorris jupyter matplotlib scipy
 ```
 
 ## Installation du contenu pédagotique
