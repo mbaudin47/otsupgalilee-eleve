@@ -12,8 +12,7 @@ Puis coller l’URL dans le navigateur, par exemple :
 
 http://localhost:8888/?token=1b9126b2e45a2747674264ced1e9094b207daa148d792f02
 
-Exemple :
-
+**Exemple.**
 
     wims-tmp-2019-40@g209-2:~$ /LOCAL/anaconda3-2017/bin/jupyter notebook
     [I 13:33:20.127 NotebookApp] Writing notebook server cookie secret to /run/user/1763821/jupyter/notebook_cookie_secret
@@ -31,18 +30,13 @@ Choisir l’interpréteur Python 2 :
 
     Kernel > Change kernel > Python 2
 
-
-```python
-
-```
-
 ## Télécharger les fichiers
 
 Les scripts pour les séances de TP sont disponibles sur github :
 
     git clone https://github.com/mbaudin47/otsupgalilee-eleve.git
 
-Exemple :
+**Exemple.**
 
     wims-tmp-2019-40@g209-5:~/tmp$ git clone https://github.com/mbaudin47/otsupgalilee-eleve.git
     Clonage dans 'otsupgalilee-eleve'...
