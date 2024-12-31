@@ -26,7 +26,7 @@ La liste suivante présente un exemple de déroulement possible :
 * Séance 10 : introduction à SALOME et son interface graphique d'OpenTURNS
 
 ## Table des matières
-Les thèmes disponibles sont les suivants :
+Les thèmes présentés sont les suivants :
 - [Présentation](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/0-Deroulement/Presentation.md)
 - [Thème 1 : Introduction à OpenTURNS](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/1-Intro-OT/Theme-1-introduction-OpenTURNS.md)
 - [Thème 2 : Quantification des incertitudes](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/2-Quantification/Theme-2-quantification.md)
@@ -46,14 +46,13 @@ L'environnement requis pour les séances de TP est le suivant :
 * Numpy ≥ 1.15 ;
 * Scipy ≥ 1.1 ;
 * Matplotlib ≥ 2.2 ;
-* OpenTURNS ≥ 1.21 ;
-* Spyder ≥ 3.3.1  (optionnel).
+* OpenTURNS ≥ 1.24.
 
 Pour installer OpenTURNS, je vous recommande de suivre les instructions disponibles dans la [documentation d'OpenTURNS](http://openturns.github.io/openturns/latest/install.html).
 
 Avec Conda, l'installation d'OpenTURNS et des outils nécessaires pour les travaux pratiques se fait avec les commandes :
 ```
-conda install openturns=1.21 otmorris jupyter matplotlib scipy
+conda install openturns=1.24 otmorris jupyter matplotlib scipy
 ```
 
 ## Installation du contenu pédagotique
