@@ -4,12 +4,12 @@ scipy
 jupyter
 jupyterlab
 nbconvert
-black==19.10b0
+black
 pre-commit
 flake8
 spyder
 statsmodels
-openturns==1.17
+tqdm
+openturns==1.24
 otmorris
 otbenchmark
-
