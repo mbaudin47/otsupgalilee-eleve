@@ -10,6 +10,7 @@ flake8
 spyder
 statsmodels
 tqdm
+tabulate
 openturns==1.24
 otmorris
 otbenchmark
