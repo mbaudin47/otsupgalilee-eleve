@@ -113,7 +113,6 @@ print("D=", D, ", Index=", index, ", Obs.=", observation)
 # %%
 graph = drawKSDistance(sample, distribution, observation, D, distFactory)
 view = viewer.View(graph)
-plt.show()
 figure = view.getFigure()
 figure.savefig("KS_statistics.png", bbox_inches="tight")
 
