@@ -2,7 +2,7 @@
 
 ![](logo_OT-small.png)
 
-This _OpenTURNS_ v1.17 cheat sheet provides a quick overview of all the programming interface. For full documentation, please read [the doc](http://openturns.github.io/openturns/master/contents.html). A beginner may be interested in the [Quick start guides](http://openturns.github.io/openturns/master/search.html?q=quick+start).
+This _OpenTURNS_ v1.24 cheat sheet provides a quick overview of all the programming interface. For full documentation, please read [the doc](http://openturns.github.io/openturns/master/contents.html). A beginner may be interested in the [Quick start guides](http://openturns.github.io/openturns/master/search.html?q=quick+start).
 
 This cheat sheet follows the steps of the ABC method.
 
@@ -20,7 +20,7 @@ This cheat sheet follows the steps of the ABC method.
 | Manage history and cache | `ot.MemoizeFunction(g_function)` |
 | Normal | `ot.Normal(mu, sigma)` |
 | Uniform | `ot.Uniform(a, b)` |
-| Multivariate distr., indep. copula | `ot.ComposedDistribution((dist_x0, dist_x1, dist_x2))` |
+| Multivariate distr., indep. copula | `ot.JointDistribution((dist_x0, dist_x1, dist_x2))` |
 | Input random vector | `ot.RandomVector(input_distribution)` |
 | Output random vector | `ot.CompositeRandomVector(g_function, input_random_vector)` |
 | Generate observations | `randomVector.getSample(sample_size)` |
@@ -89,7 +89,7 @@ This cheat sheet follows the steps of the ABC method.
 | Polynomial chaos (given distribution) | `ot.FunctionalChaosAlgorithm(input_sample, output_sample, distribution, adaptive_strategy, projection_strategy)` |
 | Sobol' indices from chaos | `ot.FunctionalChaosSobolIndices(functional_chaos_result)` |
 | Sample from chaos | `ot.FunctionalChaosRandomVector(functional_chaos_result)` |
-| Validation | `ot.MetaModelValidation(input_test, output_test, metamodel)` |
+| Validation | `ot.MetaModelValidation(output_test, metamodel(input_test))` |
 
 ## Design of experiments
 

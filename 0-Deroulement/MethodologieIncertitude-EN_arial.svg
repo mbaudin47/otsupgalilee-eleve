@@ -625,7 +625,9 @@
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#1f77b4;fill-opacity:1"
    id="tspan3328">Y</tspan>=<tspan
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#1f77b4;fill-opacity:1"
-   id="tspan3330">g</tspan>(<tspan
+   id="tspan3330">g<tspan
+   style="font-size:65%;baseline-shift:sub"
+   id="tspan1107">d</tspan></tspan>(<tspan
    style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#1f77b4;fill-opacity:1"
    id="tspan9318">X</tspan>)</tspan></text>
     <rect
@@ -662,7 +664,7 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:sans-serif;fill:#1f77b4;fill-opacity:1;stroke-width:0.380952"
          id="tspan3929">probability</tspan></text>
     <path
-       style="fill:url(#radialGradient7792);fill-opacity:1.0;stroke:#d62728;stroke-width:0.761905;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:url(#radialGradient7792);fill-opacity:1;stroke:#d62728;stroke-width:0.761905;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m -68.102643,1264.5492 c 29.387751,0.2721 20.65018,-41.6793 39.955323,-41.6793 19.3051447,0 10.340144,41.6326 41.632646,41.6326"
        id="path3931"
        inkscape:connector-curvature="0"
@@ -710,7 +712,7 @@
        y="1461.6882" />
     <text
        xml:space="preserve"
-       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:0%;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#9467bd;fill-opacity:1;stroke:none;stroke-width:0.380952;"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:13.3333px;line-height:0%;font-family:sans-serif;-inkscape-font-specification:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#9467bd;fill-opacity:1;stroke:none;stroke-width:0.380952"
        x="-380.11374"
        y="1484.6792"
        id="text3755-9"><tspan
@@ -718,12 +720,12 @@
          id="tspan3757-2"
          x="-380.11374"
          y="1484.6792"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#9467bd;fill-opacity:1;stroke-width:0.380952;">Step C' : Sensitivity Analysis, </tspan><tspan
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#9467bd;fill-opacity:1;stroke-width:0.380952">Step C' : Sensitivity Analysis, </tspan><tspan
          id="tspan6165"
          sodipodi:role="line"
          x="-380.11374"
          y="1501.3458"
-         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#9467bd;fill-opacity:1;stroke-width:0.380952;">Ranking</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:13.3333px;line-height:1.25;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';fill:#9467bd;fill-opacity:1;stroke-width:0.380952">Ranking</tspan></text>
     <path
        sodipodi:nodetypes="cc"
        style="fill:none;stroke:#9467bd;stroke-width:1.52381;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lendoz8678)"
