@@ -7,10 +7,12 @@
 
 # # Model definition
 
+# %%
 import openturns as ot
 import openturns.viewer as otv
 
 
+# %%
 dist_E = ot.Beta(0.9, 2.2, 2.8e7, 4.8e7)
 dist_E.setDescription(["E"])
 F_para = ot.LogNormalMuSigma(3.0e4, 9.0e3, 15.0e3)  # in N
@@ -26,17 +28,20 @@ X = ot.ComposedDistribution([dist_E, dist_F, dist_L, dist_I])
 g = ot.SymbolicFunction(["E", "F", "L", "I"], ["F* L^3 /  (3 * E * I)"])
 g.setOutputDescription(["Y (cm)"])
 
+# %%
 # Pour pouvoir exploiter au mieux les simulations, nous équipons
 # la fonction d'un méchanisme d'historique.
 g = ot.MemoizeFunction(g)
 
 
+# %%
 # Enfin, nous définissons le vecteur aléatoire de sortie.
 
 XRV = ot.RandomVector(X)
 Y = ot.CompositeRandomVector(g, XRV)
 Y.setDescription(["Y (cm)"])
 
+# %%
 # ## Régression linéaire avec LinearLeastSquares
 
 n = 1000
@@ -47,7 +52,7 @@ myLeastSquares = ot.LinearLeastSquares(sampleX, sampleY)
 myLeastSquares.run()
 responseSurface = myLeastSquares.getMetaModel()
 
-val = ot.MetaModelValidation(sampleX, sampleY, responseSurface)
+val = ot.MetaModelValidation(sampleY, responseSurface(sampleX))
 
 graph = val.drawValidation()
 view = otv.View(graph)

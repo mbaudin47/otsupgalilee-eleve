@@ -1,62 +1,55 @@
 # -*- coding: utf-8 -*-
 """
-Find Ipython Notebook files in the directory, and subdirectories.
+Find Python script files in the directory, and subdirectories.
 
 Examples
 --------
-$ python3 find-ipynb-files.py <directoryname>
+$ python3 find-py-files.py <directoryname>
 """
 
 import os
 
 
-def findIpythonNotebookfiles(dirname, maximumNumberOfFiles=100):
+def findPythonScriptFiles(dirname, maximumNumberOfFiles=100):
     """
-    Cherche la liste des fichiers .ipynb dans le répertoire courant.
+    Cherche la liste des fichiers .py dans le répertoire courant.
     """
     print("+ Searching in ", dirname, "...")
     nbfiles = 0
     for dirpath, dirnames, filenames in os.walk(dirname):
         for shortfilename in filenames:
             filename, fileExtension = os.path.splitext(shortfilename)
-            if (fileExtension == ".ipynb") and (not ".ipynb_checkpoints" in dirpath):
+            if fileExtension == ".py":
                 fullfile = os.path.join(dirpath, shortfilename)
                 print("(%d) %-40s" % (nbfiles, fullfile))
                 nbfiles = nbfiles + 1
-                executeIpythonNotebook(fullfile)
+                executePythonScript(fullfile)
                 if nbfiles > maximumNumberOfFiles:
                     break
     print("Number of tested files:", nbfiles)
     return None
 
 
-def executeIpythonNotebook(ipythonNBFile):
+def executePythonScript(pythonFile):
     """
-    Execute the given notebook file.
+    Execute the given Python script file.
     This function fails if the execution fails.
     Generates a temporary script which is deleted afterwards.
     """
-    print("+ Testing ", ipythonNBFile)
-    dirname = os.path.dirname(ipythonNBFile)
+    print("+ Testing ", pythonFile)
+    dirname = os.path.dirname(pythonFile)
     # 1. Got into the directory
     cwd = os.getcwd()
     os.chdir(dirname)
-    basename = os.path.basename(ipythonNBFile)
+    basename = os.path.basename(pythonFile)
     # 2. Execute the notebook
-    command = (
-        "jupyter nbconvert --ExecutePreprocessor.timeout=300 --to notebook --execute "
-    )
+    command = "python "
     command += '"' + basename + '"'
     print(command)
     returncode = os.system(command)
     if returncode != 0:
         raise ValueError("Wrong return code = %s" % (returncode))
     print("OK")
-    # 3. Delete the temporary generated NB file
-    filename, fileExtension = os.path.splitext(basename)
-    convertNBFile = filename + ".nbconvert" + fileExtension
-    print("Delete ", convertNBFile)
-    os.remove(convertNBFile)
     # 4. Go back where we come from
     os.chdir(cwd)
     return None
@@ -68,9 +61,9 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         print("Number of arguments=%d" % (len(sys.argv)))
         print("Arguments=%s" % (sys.argv))
-        raise Exception("find-ipynb-files.py <directoryname>")
+        raise Exception("find-py-files.py <directoryname>")
 
     dirname = sys.argv[1]
     print(f"dirname = {dirname}")
-    print("CWD = ", os.getcwd())
-    findIpythonNotebookfiles(dirname)
+    print(f"CWD = {os.getcwd()}")
+    findPythonScriptFiles(dirname)

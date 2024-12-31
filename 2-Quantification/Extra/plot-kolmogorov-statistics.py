@@ -2,6 +2,7 @@
 The Kolmogorov-Smirnov statistics
 =================================
 """
+
 # %%
 
 # %%
@@ -20,6 +21,7 @@ ot.Log.Show(ot.Log.NONE)
 
 # %%
 # The computeKSStatisticsIndex function computes the Kolmogorov-Smirnov distance between the sample and the distribution. Furthermore, it returns the index which achieves the maximum distance in the sorted sample. The following function is for teaching purposes only: use `FittingTest` for real applications.
+
 
 # %%
 def computeKSStatisticsIndex(sample, distribution):
@@ -49,6 +51,7 @@ def computeKSStatisticsIndex(sample, distribution):
 
 # %%
 # The drawKSDistance function plots the empirical distribution function of the sample and the Kolmogorov-Smirnov distance at point x. The empirical CDF is a staircase function and is discontinuous at each observation. The computeEmpiricalCDF() method computes the probability P(X <= x), but this only takes into account for half the extreme values of the CDF. The other half is P(X < x) which is approximated by P(X <= x - delta) where delta is close to zero.
+
 
 # %%
 def drawKSDistance(
@@ -110,7 +113,6 @@ print("D=", D, ", Index=", index, ", Obs.=", observation)
 # %%
 graph = drawKSDistance(sample, distribution, observation, D, distFactory)
 view = viewer.View(graph)
-plt.show()
 figure = view.getFigure()
 figure.savefig("KS_statistics.png", bbox_inches="tight")
 
