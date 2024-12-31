@@ -26,9 +26,9 @@ http://localhost:8888/?token=1b9126b2e45a2747674264ced1e9094b207daa148d792f02
             http://localhost:8888/?token=6c93b732ebb3f85066491993f3df1f2b2a47d7a76e339b2e
     [I 13:33:21.424 NotebookApp] Accepting one-time-token-authenticated connection from ::1
 
-Choisir l’interpréteur Python 2 :
+Choisir l’interpréteur Python 3 :
 
-    Kernel > Change kernel > Python 2
+    Kernel > Change kernel > Python 3
 
 ## Télécharger les fichiers
 
