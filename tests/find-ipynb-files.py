@@ -71,6 +71,6 @@ if __name__ == "__main__":
         raise Exception("find-ipynb-files.py <directoryname>")
 
     dirname = sys.argv[1]
+    print(f"dirname = {dirname}")
     print("CWD = ", os.getcwd())
-    os.chdir(dirname)
     findIpythonNotebookfiles(dirname)
