@@ -15,7 +15,7 @@ Introduction au Python, à OpenTURNS, à la méthodologie
 - [Simulation de pensions de retraites](Devoirs/Exercice-montant-pensions-retraites.ipynb)
 
 ## Extras
-- [Utiliser Markdown avec OpenTURNS](OpenTURNS_Markdown.ipynb)
+- [Formatter des résultats issus d'OpenTURNS](format_OpenTURNS_results.ipynb)
 
 ## La méthodologie ABC
 ![](MethodologieIncertitude-FR.png)
