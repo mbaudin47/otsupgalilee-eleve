@@ -15,8 +15,6 @@ L'objectif de cette séquence est de déterminer la loi univariée qui s'ajuste 
 - Simuler une paire de dés : [Heybey-2022-2023-Exercice-1-sujet.ipynb](Devoirs/Heybey-2022-2023-Exercice-1-sujet.ipynb)
 
 ## Extra
-- [The Kolmogorov-Smirnov statistics](Extra/plot-kolmogorov-statistics.ipynb)
-- [The Kolmogorov-Smirnov p-value](Extra/plot-kolmogorov-pvalue.ipynb)
 - [Integrate a function with Gauss-Kronrod algorithm](Extra/integrate-function-GaussKronrod.ipynb)
 - [Méthode du maximum de vraisemblance](Extra/Maximum-de-vraisemblance.ipynb)
 - [Compare BIC scores of a list of distributions](Extra/Rank-distribution-with-BIC.ipynb)
