@@ -11,11 +11,11 @@ Introduction au Python, à OpenTURNS, à la méthodologie
 - Exercice : La classe RandomVector : [RandomVector.ipynb](RandomVector.ipynb)
 
 ## Devoirs
-- [Somme de deux gaussiennes](Exercice-Somme-de-deux-gaussiennes.ipynb)
-- [Simulation de pensions de retraites](Exercice-montant-pensions-retraites.ipynb)
+- [Somme de deux gaussiennes](Devoirs/Exercice-Somme-de-deux-gaussiennes.ipynb)
+- [Simulation de pensions de retraites](Devoirs/Exercice-montant-pensions-retraites.ipynb)
 
 ## Extras
-- [Utiliser Markdown avec OpenTURNS](OpenTURNS_Markdown.ipynb)
+- [Formatter des résultats issus d'OpenTURNS](format_OpenTURNS_results.ipynb)
 
 ## La méthodologie ABC
 ![](MethodologieIncertitude-FR.png)
