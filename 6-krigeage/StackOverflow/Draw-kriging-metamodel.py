@@ -9,7 +9,7 @@ import openturns as ot
 
 
 dimension = 2  # dimension of your input (x,y)
-distribution = ot.ComposedDistribution([ot.Uniform(-10.0, 50.0)] * dimension)
+distribution = ot.JointDistribution([ot.Uniform(-10.0, 50.0)] * dimension)
 inputdata = distribution.getSample(100)
 
 g = ot.SymbolicFunction(["x", "y"], ["30 + 3.0 * sin(x / 10.0) * (y / 10.0) ^ 2"])

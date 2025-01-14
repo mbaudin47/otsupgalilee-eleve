@@ -55,7 +55,7 @@ Avec Conda, l'installation d'OpenTURNS et des outils nécessaires pour les trava
 conda install openturns=1.24 otmorris jupyter matplotlib scipy
 ```
 
-## Installation du contenu pédagotique
+## Installation du contenu pédagogique
 L'instruction suivante permet de récupérer le contenu de la formation:
 ```bash
 git clone https://github.com/mbaudin47/otsupgalilee-eleve.git

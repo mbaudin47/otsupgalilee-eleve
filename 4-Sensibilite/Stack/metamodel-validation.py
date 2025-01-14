@@ -23,7 +23,7 @@ dist_L.setDescription(["L"])
 dist_I = ot.Beta(2.5, 1.5, 310.0, 450.0)  # in cm^4
 dist_I.setDescription(["I"])
 
-X = ot.ComposedDistribution([dist_E, dist_F, dist_L, dist_I])
+X = ot.JointDistribution([dist_E, dist_F, dist_L, dist_I])
 
 g = ot.SymbolicFunction(["E", "F", "L", "I"], ["F* L^3 /  (3 * E * I)"])
 g.setOutputDescription(["Y (cm)"])
