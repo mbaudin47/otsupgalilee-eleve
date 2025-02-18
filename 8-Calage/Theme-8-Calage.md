@@ -5,9 +5,9 @@ L'objectif de cette séquence est de caler un modèle par des méthodes détermi
 ## Vue d'ensemble
 - Calage déterministe : 
 	- Cours : [Cours-calage-deterministe.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/8-Calage/Cours-calage-deterministe.ipynb)
-	- Exercice : [Exercice-calage-deterministe.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/8-Calage/Exercice-calage-deterministe.ipynb)
+	- Exercice : [Exercice-calage-deterministe-Chaboche.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/8-Calage/Exercice-calage-deterministe-Chaboche.ipynb)
 - Calage bayésien : 
-	- Cours : [Cours-calage-bayesien.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/8-Calage/Cours-calage-bayesien.ipynb)
-	- Exercice : [Exercice-calage-bayesien.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/8-Calage/Exercice-calage-bayesien.ipynb)
+	- Cours : [Cours-calage-gaussien.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/8-Calage/Cours-calage-gaussien.ipynb)
+	- Exercice : [Exercice-calage-bayesien-Chaboche.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/8-Calage/Exercice-calage-bayesien-Chaboche.ipynb)
 
-- Devoir à la maison : [Devoir-calage-bayesien.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/8-Calage/Devoir-calage-bayesien.ipynb)
+- Analyse du modèle de Chaboche : [Chaboche-model-analysis.ipynb](https://github.com/mbaudin47/otsupgalilee-eleve/blob/master/8-Calage/Chaboche-model-analysis.ipynb)
