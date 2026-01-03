@@ -7,7 +7,6 @@ nbconvert
 black
 pre-commit
 flake8
-spyder
 statsmodels
 tqdm
 tabulate
