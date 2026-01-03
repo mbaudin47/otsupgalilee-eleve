@@ -6,7 +6,7 @@ Ce guide est une tentative de fournir une méthode pour tenter d'être systémat
 ## Du plus simple au plus complexe
 Dans cette liste, j'énumère les paramètres du krigeage qui sont susceptibles d'être modifiés. Un point de départ acceptable peut être d'utiliser l'exemple [de la poutre encastrée](https://openturns.github.io/openturns/latest/auto_meta_modeling/kriging_metamodel/plot_kriging_hyperparameters_optimization.html) dans lequel on montre comment configurer le problème d'optimisation.
 - Configurer les bornes de l'algorithme d'optimisation pour faciliter le travail de la librairie d'optimisation. 
-- Initialiser correctement les paramètres du modèle de covariance avant de créer l'instance de la classe `KrigingAlgorithm`. Cela permet d'initialiser l'algorithme de krigeage avec des paramètres plus appropriés. 
+- Initialiser correctement les paramètres du modèle de covariance avant de créer l'instance de la classe `GaussianProcessFitter`. Cela permet d'initialiser l'algorithme de krigeage avec des paramètres plus appropriés. 
 - Dessiner la fonction de vraisemblance : est-elle plate ? l'optimum est-il sur les bords de l'intervalle ?
 - Utiliser une tendance plus appropriée : tester une constante, un modèle linéaire, un modèle quadratique, un polynôme du chaos.
 - Augmenter la taille de l'échantillon d'apprentissage. 
