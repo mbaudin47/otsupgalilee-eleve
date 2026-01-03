@@ -1,4 +1,10 @@
 #!/bin/sh
+#
+# Example
+# -------
+# $ cd tests
+# $ bash run-all.sh
+#
 
 set -xe
 
