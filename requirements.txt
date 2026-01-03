@@ -10,6 +10,6 @@ flake8
 statsmodels
 tqdm
 tabulate
-openturns==1.24
+openturns==1.26
 otmorris
 otbenchmark
