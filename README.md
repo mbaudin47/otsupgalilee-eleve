@@ -46,13 +46,13 @@ L'environnement requis pour les séances de TP est le suivant :
 * Numpy ≥ 1.15 ;
 * Scipy ≥ 1.1 ;
 * Matplotlib ≥ 2.2 ;
-* OpenTURNS ≥ 1.24.
+* OpenTURNS ≥ 1.26.
 
 Pour installer OpenTURNS, je vous recommande de suivre les instructions disponibles dans la [documentation d'OpenTURNS](http://openturns.github.io/openturns/latest/install.html).
 
 Avec Conda, l'installation d'OpenTURNS et des outils nécessaires pour les travaux pratiques se fait avec les commandes :
 ```
-conda install openturns=1.24 otmorris jupyter matplotlib scipy
+conda install openturns=1.26 otmorris jupyter matplotlib scipy
 ```
 
 ## Installation du contenu pédagogique
