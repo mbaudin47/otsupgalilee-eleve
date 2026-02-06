@@ -30,7 +30,7 @@ g.setOutputDescription(["Y (cm)"])
 
 # %%
 # Pour pouvoir exploiter au mieux les simulations, nous équipons
-# la fonction d'un méchanisme d'historique.
+# la fonction d'un mécanisme d'historique.
 g = ot.MemoizeFunction(g)
 
 
