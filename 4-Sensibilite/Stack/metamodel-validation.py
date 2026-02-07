@@ -13,17 +13,17 @@ import openturns.viewer as otv
 
 
 # %%
-distE = ot.Beta(0.9, 2.2, 2.8e7, 4.8e7)
-distE.setDescription(["E"])
+distributionE = ot.Beta(0.9, 2.2, 2.8e7, 4.8e7)
+distributionE.setDescription(["E"])
 parametersF = ot.LogNormalMuSigma(3.0e4, 9.0e3, 15.0e3)  # in N
-distF = ot.ParametrizedDistribution(parametersF)
-distF.setDescription(["F"])
-distL = ot.Uniform(250.0, 260.0)  # in cm
-distL.setDescription(["L"])
-distI = ot.Beta(2.5, 1.5, 310.0, 450.0)  # in cm^4
-distI.setDescription(["I"])
+distributionF = ot.ParametrizedDistribution(parametersF)
+distributionF.setDescription(["F"])
+distributionL = ot.Uniform(250.0, 260.0)  # in cm
+distributionL.setDescription(["L"])
+distributionI = ot.Beta(2.5, 1.5, 310.0, 450.0)  # in cm^4
+distributionI.setDescription(["I"])
 
-X = ot.JointDistribution([distE, distF, distL, distI])
+X = ot.JointDistribution([distributionE, distributionF, distributionL, distributionI])
 
 g = ot.SymbolicFunction(["E", "F", "L", "I"], ["F* L^3 /  (3 * E * I)"])
 g.setOutputDescription(["Y (cm)"])
