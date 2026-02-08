@@ -8,19 +8,19 @@ import otguibase
 myStudy = otguibase.OTStudy("Study_CantileverBeam")
 
 ## Model
-distributionE = ot.Beta(0.9, 3.5, 2.5e7, 5.0e7)
-distributionF = ot.LogNormalMuSigma(30.0e3, 9.0e3, 15.0e3).getDistribution()
-distributionL = ot.Uniform(250.0, 260.0)
-distributionI = ot.Beta(2.5, 4.0, 310.0, 450.0)
+distributionE = ot.Beta(0.9, 3.5, 65.0e9, 75.0e9)
+distributionF = ot.LogNormalMuSigma(300.0, 30.0, 0.0).getDistribution()
+distributionL = ot.Uniform(2.50, 2.60)
+distributionI = ot.Beta(2.5, 4.0, 1.3e-7, 1.7e-7)
 
-E = otguibase.Input("E", 3e7, distributionE, "Young's modulus (Pa)")
-F = otguibase.Input("F", 3e4, distributionF, "Force applied (N)")
-L = otguibase.Input("L", 250, distributionL, "Length (m)")
-I = otguibase.Input("I", 400, distributionI, "Section modulus (m4)")
+E = otguibase.Input("E", 70.0e9, distributionE, "Young's modulus (Pa)")
+F = otguibase.Input("F", 300.0, distributionF, "Force applied (N)")
+L = otguibase.Input("L", 2.55, distributionL, "Length (m)")
+I = otguibase.Input("I", 1.5e-7, distributionI, "Section modulus (m4)")
 y = otguibase.Output("y", "Vertical deviation (m)")
 
 model = otguibase.SymbolicPhysicalModel(
-    "myPhysicalModel", [E, F, L, I], [y], ["F*L^3/(3*E*I)"]
+    "myPhysicalModel", [E, F, L, I], [y], ["F * L^3 / (3 * E * I)"]
 )
 myStudy.add(model)
 
