@@ -60,7 +60,7 @@ This cheat sheet follows the steps of the ABC method.
 |---|---|
 | Perform linear regression | `ot.LinearLeastSquares(input_sample, output_sample)` |
 | Standardized regression coefficients | `ot.CorrelationAnalysis_SignedSRC(input_sample, output_sample)` |
-| Draw indices | `ot.SobolIndicesAlgorithm.DrawCorrelationCoefficients(src_indices, input_names, "SRC coefficients")` |
+| Draw indices | `ot.SobolIndicesAlgorithm.DrawCorrelationCoefficients(src_indices, inputNames, "SRC coefficients")` |
 | Estimate Sobol' indices given budget | `ot.SobolIndicesExperiment(distribution, sample_size)` |
 | Estimate Sobol' indices | `ot.SaltelliSensitivityAlgorithm()` |
 
