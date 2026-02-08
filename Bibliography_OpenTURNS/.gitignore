@@ -7,5 +7,7 @@
 *.snm
 *.vrb
 *.blg
+*.fdb_latexmk
+*.fls
+*.synctex.gz
 bibliography_openturns.pdf
-
