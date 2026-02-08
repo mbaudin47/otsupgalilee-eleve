@@ -6,6 +6,6 @@ L'objectif de cette séquence est de présenter l'ensemble des séances de TP.
 Cours : introduction au Python, à OpenTURNS, à la méthodologie
 - [Notations](Notations.md)
 - [Notes informatiques](Notes-informatiques.md)
-- [Modèle de poutre encastrée](Poutre-encastree.ipynb)
+- [Modèle de poutre encastrée](Poutre-encastree.md)
 
 ![Méthodologie ABC](MethodologieIncertitude-EN_arial.png)
