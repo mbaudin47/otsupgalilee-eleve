@@ -26,7 +26,7 @@ distributionI.setDescription(["I"])
 X = ot.JointDistribution([distributionE, distributionF, distributionL, distributionI])
 
 g = ot.SymbolicFunction(["E", "F", "L", "I"], ["F* L^3 /  (3 * E * I)"])
-g.setOutputDescription(["Y (cm)"])
+g.setOutputDescription(["Y (m)"])
 
 # %%
 # Pour pouvoir exploiter au mieux les simulations, nous équipons
@@ -39,7 +39,7 @@ g = ot.MemoizeFunction(g)
 
 XRV = ot.RandomVector(X)
 Y = ot.CompositeRandomVector(g, XRV)
-Y.setDescription(["Y (cm)"])
+Y.setDescription(["Y (m)"])
 
 # %%
 # ## Régression linéaire avec LinearLeastSquares
