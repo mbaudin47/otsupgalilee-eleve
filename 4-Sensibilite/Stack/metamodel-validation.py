@@ -14,14 +14,14 @@ import openturns.viewer as otv
 
 # %%
 distributionE = ot.Beta(0.9, 3.5, 65.0e9, 75.0e9)
-distributionE.setDescription(["E"])
+distributionE.setDescription(["E (Pa)"])
 parametersF = ot.LogNormalMuSigma(300.0, 30.0, 0.0)  # Paramétrage par les moments
 distributionF = ot.ParametrizedDistribution(parametersF)
-distributionF.setDescription(["F"])
-distributionL = ot.Uniform(2.50, 2.60)  # in m
-distributionL.setDescription(["L"])
-distributionI = ot.Beta(2.5, 4.0, 1.3e-7, 1.7e-7)  # in m^4
-distributionI.setDescription(["I"])
+distributionF.setDescription(["F (N)"])
+distributionL = ot.Uniform(2.50, 2.60)  # En mètres
+distributionL.setDescription(["L (m)"])
+distributionI = ot.Beta(2.5, 4.0, 1.3e-7, 1.7e-7)  # En m⁴
+distributionI.setDescription(["I (m⁴)"])
 
 X = ot.JointDistribution([distributionE, distributionF, distributionL, distributionI])
 
