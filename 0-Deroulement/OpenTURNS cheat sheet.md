@@ -80,7 +80,7 @@ This cheat sheet follows the steps of the ABC method.
 | **Purpose** |  **Class / Method** |
 |---|---|
 | Squared exponential | `ot.SquaredExponential([1.0] * dimension, [1.0])` |
-| Matern 5/2 covariance | `ot.MaternModel([1.0] * dimension, 2.5)` |
+| Matérn 5/2 covariance | `ot.MaternModel([1.0] * dimension, 2.5)` |
 | Kriging | `otexp.GaussianProcessFitter(input_sample, output_sample, covarianceModel, basis)` |
 | Sample from kriging | `ot.KrigingRandomVector(result, input_sample)` |
 | Conditioned gaussian process | `ot.ConditionedGaussianProcess(kriging_result, mesh)` |
